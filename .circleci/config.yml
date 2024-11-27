@@ -15,7 +15,8 @@ jobs:
             echo "Processing external-import/comlaude"
             cd external-import/comlaude
             echo "$DOCKERHUB_PASS" | docker login -u "$DOCKERHUB_USERNAME" --password-stdin
-            docker build -t opencti/connector-comlaude:6.4.1 . --build-arg BASE_IMAGE=renizmy/opencti-base:6.4.1 && docker tag opencti/connector-comlaude:latest
+            docker build -t opencti/connector-comlaude:6.4.1 . --build-arg BASE_IMAGE=renizmy/opencti-base:6.4.1
+            docker tag opencti/connector-comlaude:6.4.1 opencti/connector-comlaude:latest
             docker push opencti/connector-comlaude:6.4.1
             docker push opencti/connector-comlaude:latest
 
@@ -26,7 +27,8 @@ jobs:
             echo "Processing external-import/shadowserver"
             cd external-import/shadowserver
             echo "$DOCKERHUB_PASS" | docker login -u "$DOCKERHUB_USERNAME" --password-stdin
-            docker build -t opencti/connector-shadowserver:6.4.1 . --build-arg BASE_IMAGE=renizmy/opencti-base:6.4.1 && docker tag opencti/connector-shadowserver:latest
+            docker build -t opencti/connector-shadowserver:6.4.1 . --build-arg BASE_IMAGE=renizmy/opencti-base:6.4.1
+            docker tag opencti/connector-shadowserver:6.4.1 opencti/connector-shadowserver:latest
             docker push opencti/connector-shadowserver:6.4.1
             docker push opencti/connector-shadowserver:latest
 
@@ -37,7 +39,8 @@ jobs:
             echo "Processing external-import/tweetfeed"
             cd external-import/tweetfeed
             echo "$DOCKERHUB_PASS" | docker login -u "$DOCKERHUB_USERNAME" --password-stdin
-            docker build -t opencti/connector-tweetfeed:6.4.1 . --build-arg BASE_IMAGE=renizmy/opencti-base:6.4.1 && docker tag opencti/connector-tweetfeed:latest
+            docker build -t opencti/connector-tweetfeed:6.4.1 . --build-arg BASE_IMAGE=renizmy/opencti-base:6.4.1
+            docker tag opencti/connector-tweetfeed:6.4.1 opencti/connector-tweetfeed:latest
             docker push opencti/connector-tweetfeed:6.4.1
             docker push opencti/connector-tweetfeed:latest
 
@@ -48,7 +51,8 @@ jobs:
             echo "Processing external-import/lastinfosec"
             cd external-import/lastinfosec
             echo "$DOCKERHUB_PASS" | docker login -u "$DOCKERHUB_USERNAME" --password-stdin
-            docker build -t opencti/connector-lastinfosec:6.4.1 . --build-arg BASE_IMAGE=renizmy/opencti-base:6.4.1 && docker tag opencti/connector-lastinfosec:latest
+            docker build -t opencti/connector-lastinfosec:6.4.1 . --build-arg BASE_IMAGE=renizmy/opencti-base:6.4.1
+            docker tag opencti/connector-lastinfosec:6.4.1 opencti/connector-lastinfosec:latest
             docker push opencti/connector-lastinfosec:6.4.1
             docker push opencti/connector-lastinfosec:latest
 
@@ -59,7 +63,8 @@ jobs:
             echo "Processing external-import/sentinelone-threats"
             cd external-import/sentinelone-threats
             echo "$DOCKERHUB_PASS" | docker login -u "$DOCKERHUB_USERNAME" --password-stdin
-            docker build -t opencti/connector-sentinelone-threats:6.4.1 . --build-arg BASE_IMAGE=renizmy/opencti-base:6.4.1 && docker tag opencti/connector-sentinelone-threats:latest
+            docker build -t opencti/connector-sentinelone-threats:6.4.1 . --build-arg BASE_IMAGE=renizmy/opencti-base:6.4.1
+            docker tag opencti/connector-sentinelone-threats:6.4.1 opencti/connector-sentinelone-threats:latest
             docker push opencti/connector-sentinelone-threats:6.4.1
             docker push opencti/connector-sentinelone-threats:latest
 
@@ -70,7 +75,8 @@ jobs:
             echo "Processing external-import/citalid"
             cd external-import/citalid
             echo "$DOCKERHUB_PASS" | docker login -u "$DOCKERHUB_USERNAME" --password-stdin
-            docker build -t opencti/connector-citalid:6.4.1 . --build-arg BASE_IMAGE=renizmy/opencti-base:6.4.1 && docker tag opencti/connector-citalid:latest
+            docker build -t opencti/connector-citalid:6.4.1 . --build-arg BASE_IMAGE=renizmy/opencti-base:6.4.1
+            docker tag opencti/connector-citalid:6.4.1 opencti/connector-citalid:latest
             docker push opencti/connector-citalid:6.4.1
             docker push opencti/connector-citalid:latest
 
@@ -81,7 +87,8 @@ jobs:
             echo "Processing external-import/malcore"
             cd external-import/malcore
             echo "$DOCKERHUB_PASS" | docker login -u "$DOCKERHUB_USERNAME" --password-stdin
-            docker build -t opencti/connector-malcore:6.4.1 . --build-arg BASE_IMAGE=renizmy/opencti-base:6.4.1 && docker tag opencti/connector-malcore:latest
+            docker build -t opencti/connector-malcore:6.4.1 . --build-arg BASE_IMAGE=renizmy/opencti-base:6.4.1
+            docker tag opencti/connector-malcore:6.4.1 opencti/connector-malcore:latest
             docker push opencti/connector-malcore:6.4.1
             docker push opencti/connector-malcore:latest
 
@@ -92,7 +99,8 @@ jobs:
             echo "Processing external-import/rst-report-hub"
             cd external-import/rst-report-hub
             echo "$DOCKERHUB_PASS" | docker login -u "$DOCKERHUB_USERNAME" --password-stdin
-            docker build -t opencti/connector-rst-report-hub:6.4.1 . --build-arg BASE_IMAGE=renizmy/opencti-base:6.4.1 && docker tag opencti/connector-rst-report-hub:latest
+            docker build -t opencti/connector-rst-report-hub:6.4.1 . --build-arg BASE_IMAGE=renizmy/opencti-base:6.4.1
+            docker tag opencti/connector-rst-report-hub:6.4.1 opencti/connector-rst-report-hub:latest
             docker push opencti/connector-rst-report-hub:6.4.1
             docker push opencti/connector-rst-report-hub:latest
 
@@ -103,7 +111,8 @@ jobs:
             echo "Processing external-import/malpedia"
             cd external-import/malpedia
             echo "$DOCKERHUB_PASS" | docker login -u "$DOCKERHUB_USERNAME" --password-stdin
-            docker build -t opencti/connector-malpedia:6.4.1 . --build-arg BASE_IMAGE=renizmy/opencti-base:6.4.1 && docker tag opencti/connector-malpedia:latest
+            docker build -t opencti/connector-malpedia:6.4.1 . --build-arg BASE_IMAGE=renizmy/opencti-base:6.4.1
+            docker tag opencti/connector-malpedia:6.4.1 opencti/connector-malpedia:latest
             docker push opencti/connector-malpedia:6.4.1
             docker push opencti/connector-malpedia:latest
 
@@ -114,7 +123,8 @@ jobs:
             echo "Processing external-import/cyber-campaign-collection"
             cd external-import/cyber-campaign-collection
             echo "$DOCKERHUB_PASS" | docker login -u "$DOCKERHUB_USERNAME" --password-stdin
-            docker build -t opencti/connector-cyber-campaign-collection:6.4.1 . --build-arg BASE_IMAGE=renizmy/opencti-base:6.4.1 && docker tag opencti/connector-cyber-campaign-collection:latest
+            docker build -t opencti/connector-cyber-campaign-collection:6.4.1 . --build-arg BASE_IMAGE=renizmy/opencti-base:6.4.1
+            docker tag opencti/connector-cyber-campaign-collection:6.4.1 opencti/connector-cyber-campaign-collection:latest
             docker push opencti/connector-cyber-campaign-collection:6.4.1
             docker push opencti/connector-cyber-campaign-collection:latest
 
@@ -125,7 +135,8 @@ jobs:
             echo "Processing external-import/abuse-ssl"
             cd external-import/abuse-ssl
             echo "$DOCKERHUB_PASS" | docker login -u "$DOCKERHUB_USERNAME" --password-stdin
-            docker build -t opencti/connector-abuse-ssl:6.4.1 . --build-arg BASE_IMAGE=renizmy/opencti-base:6.4.1 && docker tag opencti/connector-abuse-ssl:latest
+            docker build -t opencti/connector-abuse-ssl:6.4.1 . --build-arg BASE_IMAGE=renizmy/opencti-base:6.4.1
+            docker tag opencti/connector-abuse-ssl:6.4.1 opencti/connector-abuse-ssl:latest
             docker push opencti/connector-abuse-ssl:6.4.1
             docker push opencti/connector-abuse-ssl:latest
 
@@ -136,7 +147,8 @@ jobs:
             echo "Processing external-import/urlhaus-recent-payloads"
             cd external-import/urlhaus-recent-payloads
             echo "$DOCKERHUB_PASS" | docker login -u "$DOCKERHUB_USERNAME" --password-stdin
-            docker build -t opencti/connector-urlhaus-recent-payloads:6.4.1 . --build-arg BASE_IMAGE=renizmy/opencti-base:6.4.1 && docker tag opencti/connector-urlhaus-recent-payloads:latest
+            docker build -t opencti/connector-urlhaus-recent-payloads:6.4.1 . --build-arg BASE_IMAGE=renizmy/opencti-base:6.4.1
+            docker tag opencti/connector-urlhaus-recent-payloads:6.4.1 opencti/connector-urlhaus-recent-payloads:latest
             docker push opencti/connector-urlhaus-recent-payloads:6.4.1
             docker push opencti/connector-urlhaus-recent-payloads:latest
 
@@ -147,7 +159,8 @@ jobs:
             echo "Processing external-import/crits"
             cd external-import/crits
             echo "$DOCKERHUB_PASS" | docker login -u "$DOCKERHUB_USERNAME" --password-stdin
-            docker build -t opencti/connector-crits:6.4.1 . --build-arg BASE_IMAGE=renizmy/opencti-base:6.4.1 && docker tag opencti/connector-crits:latest
+            docker build -t opencti/connector-crits:6.4.1 . --build-arg BASE_IMAGE=renizmy/opencti-base:6.4.1
+            docker tag opencti/connector-crits:6.4.1 opencti/connector-crits:latest
             docker push opencti/connector-crits:6.4.1
             docker push opencti/connector-crits:latest
 
@@ -158,7 +171,8 @@ jobs:
             echo "Processing external-import/sentinel-incidents"
             cd external-import/sentinel-incidents
             echo "$DOCKERHUB_PASS" | docker login -u "$DOCKERHUB_USERNAME" --password-stdin
-            docker build -t opencti/connector-sentinel-incidents:6.4.1 . --build-arg BASE_IMAGE=renizmy/opencti-base:6.4.1 && docker tag opencti/connector-sentinel-incidents:latest
+            docker build -t opencti/connector-sentinel-incidents:6.4.1 . --build-arg BASE_IMAGE=renizmy/opencti-base:6.4.1
+            docker tag opencti/connector-sentinel-incidents:6.4.1 opencti/connector-sentinel-incidents:latest
             docker push opencti/connector-sentinel-incidents:6.4.1
             docker push opencti/connector-sentinel-incidents:latest
 
@@ -169,7 +183,8 @@ jobs:
             echo "Processing external-import/urlhaus"
             cd external-import/urlhaus
             echo "$DOCKERHUB_PASS" | docker login -u "$DOCKERHUB_USERNAME" --password-stdin
-            docker build -t opencti/connector-urlhaus:6.4.1 . --build-arg BASE_IMAGE=renizmy/opencti-base:6.4.1 && docker tag opencti/connector-urlhaus:latest
+            docker build -t opencti/connector-urlhaus:6.4.1 . --build-arg BASE_IMAGE=renizmy/opencti-base:6.4.1
+            docker tag opencti/connector-urlhaus:6.4.1 opencti/connector-urlhaus:latest
             docker push opencti/connector-urlhaus:6.4.1
             docker push opencti/connector-urlhaus:latest
 
@@ -180,7 +195,8 @@ jobs:
             echo "Processing external-import/mwdb"
             cd external-import/mwdb
             echo "$DOCKERHUB_PASS" | docker login -u "$DOCKERHUB_USERNAME" --password-stdin
-            docker build -t opencti/connector-mwdb:6.4.1 . --build-arg BASE_IMAGE=renizmy/opencti-base:6.4.1 && docker tag opencti/connector-mwdb:latest
+            docker build -t opencti/connector-mwdb:6.4.1 . --build-arg BASE_IMAGE=renizmy/opencti-base:6.4.1
+            docker tag opencti/connector-mwdb:6.4.1 opencti/connector-mwdb:latest
             docker push opencti/connector-mwdb:6.4.1
             docker push opencti/connector-mwdb:latest
 
@@ -191,7 +207,8 @@ jobs:
             echo "Processing external-import/cve"
             cd external-import/cve
             echo "$DOCKERHUB_PASS" | docker login -u "$DOCKERHUB_USERNAME" --password-stdin
-            docker build -t opencti/connector-cve:6.4.1 . --build-arg BASE_IMAGE=renizmy/opencti-base:6.4.1 && docker tag opencti/connector-cve:latest
+            docker build -t opencti/connector-cve:6.4.1 . --build-arg BASE_IMAGE=renizmy/opencti-base:6.4.1
+            docker tag opencti/connector-cve:6.4.1 opencti/connector-cve:latest
             docker push opencti/connector-cve:6.4.1
             docker push opencti/connector-cve:latest
 
@@ -202,7 +219,8 @@ jobs:
             echo "Processing external-import/malwarebazaar-recent-additions"
             cd external-import/malwarebazaar-recent-additions
             echo "$DOCKERHUB_PASS" | docker login -u "$DOCKERHUB_USERNAME" --password-stdin
-            docker build -t opencti/connector-malwarebazaar-recent-additions:6.4.1 . --build-arg BASE_IMAGE=renizmy/opencti-base:6.4.1 && docker tag opencti/connector-malwarebazaar-recent-additions:latest
+            docker build -t opencti/connector-malwarebazaar-recent-additions:6.4.1 . --build-arg BASE_IMAGE=renizmy/opencti-base:6.4.1
+            docker tag opencti/connector-malwarebazaar-recent-additions:6.4.1 opencti/connector-malwarebazaar-recent-additions:latest
             docker push opencti/connector-malwarebazaar-recent-additions:6.4.1
             docker push opencti/connector-malwarebazaar-recent-additions:latest
 
@@ -213,7 +231,8 @@ jobs:
             echo "Processing external-import/mandiant"
             cd external-import/mandiant
             echo "$DOCKERHUB_PASS" | docker login -u "$DOCKERHUB_USERNAME" --password-stdin
-            docker build -t opencti/connector-mandiant:6.4.1 . --build-arg BASE_IMAGE=renizmy/opencti-base:6.4.1 && docker tag opencti/connector-mandiant:latest
+            docker build -t opencti/connector-mandiant:6.4.1 . --build-arg BASE_IMAGE=renizmy/opencti-base:6.4.1
+            docker tag opencti/connector-mandiant:6.4.1 opencti/connector-mandiant:latest
             docker push opencti/connector-mandiant:6.4.1
             docker push opencti/connector-mandiant:latest
 
@@ -224,7 +243,8 @@ jobs:
             echo "Processing external-import/cybersixgill"
             cd external-import/cybersixgill
             echo "$DOCKERHUB_PASS" | docker login -u "$DOCKERHUB_USERNAME" --password-stdin
-            docker build -t opencti/connector-cybersixgill:6.4.1 . --build-arg BASE_IMAGE=renizmy/opencti-base:6.4.1 && docker tag opencti/connector-cybersixgill:latest
+            docker build -t opencti/connector-cybersixgill:6.4.1 . --build-arg BASE_IMAGE=renizmy/opencti-base:6.4.1
+            docker tag opencti/connector-cybersixgill:6.4.1 opencti/connector-cybersixgill:latest
             docker push opencti/connector-cybersixgill:6.4.1
             docker push opencti/connector-cybersixgill:latest
 
@@ -235,7 +255,8 @@ jobs:
             echo "Processing external-import/phishunt"
             cd external-import/phishunt
             echo "$DOCKERHUB_PASS" | docker login -u "$DOCKERHUB_USERNAME" --password-stdin
-            docker build -t opencti/connector-phishunt:6.4.1 . --build-arg BASE_IMAGE=renizmy/opencti-base:6.4.1 && docker tag opencti/connector-phishunt:latest
+            docker build -t opencti/connector-phishunt:6.4.1 . --build-arg BASE_IMAGE=renizmy/opencti-base:6.4.1
+            docker tag opencti/connector-phishunt:6.4.1 opencti/connector-phishunt:latest
             docker push opencti/connector-phishunt:6.4.1
             docker push opencti/connector-phishunt:latest
 
@@ -246,7 +267,8 @@ jobs:
             echo "Processing external-import/disarm-framework"
             cd external-import/disarm-framework
             echo "$DOCKERHUB_PASS" | docker login -u "$DOCKERHUB_USERNAME" --password-stdin
-            docker build -t opencti/connector-disarm-framework:6.4.1 . --build-arg BASE_IMAGE=renizmy/opencti-base:6.4.1 && docker tag opencti/connector-disarm-framework:latest
+            docker build -t opencti/connector-disarm-framework:6.4.1 . --build-arg BASE_IMAGE=renizmy/opencti-base:6.4.1
+            docker tag opencti/connector-disarm-framework:6.4.1 opencti/connector-disarm-framework:latest
             docker push opencti/connector-disarm-framework:6.4.1
             docker push opencti/connector-disarm-framework:latest
 
@@ -257,7 +279,8 @@ jobs:
             echo "Processing external-import/opencsam"
             cd external-import/opencsam
             echo "$DOCKERHUB_PASS" | docker login -u "$DOCKERHUB_USERNAME" --password-stdin
-            docker build -t opencti/connector-opencsam:6.4.1 . --build-arg BASE_IMAGE=renizmy/opencti-base:6.4.1 && docker tag opencti/connector-opencsam:latest
+            docker build -t opencti/connector-opencsam:6.4.1 . --build-arg BASE_IMAGE=renizmy/opencti-base:6.4.1
+            docker tag opencti/connector-opencsam:6.4.1 opencti/connector-opencsam:latest
             docker push opencti/connector-opencsam:6.4.1
             docker push opencti/connector-opencsam:latest
 
@@ -268,7 +291,8 @@ jobs:
             echo "Processing external-import/crowdstrike"
             cd external-import/crowdstrike
             echo "$DOCKERHUB_PASS" | docker login -u "$DOCKERHUB_USERNAME" --password-stdin
-            docker build -t opencti/connector-crowdstrike:6.4.1 . --build-arg BASE_IMAGE=renizmy/opencti-base:6.4.1 && docker tag opencti/connector-crowdstrike:latest
+            docker build -t opencti/connector-crowdstrike:6.4.1 . --build-arg BASE_IMAGE=renizmy/opencti-base:6.4.1
+            docker tag opencti/connector-crowdstrike:6.4.1 opencti/connector-crowdstrike:latest
             docker push opencti/connector-crowdstrike:6.4.1
             docker push opencti/connector-crowdstrike:latest
 
@@ -279,7 +303,8 @@ jobs:
             echo "Processing external-import/cisa-known-exploited-vulnerabilities"
             cd external-import/cisa-known-exploited-vulnerabilities
             echo "$DOCKERHUB_PASS" | docker login -u "$DOCKERHUB_USERNAME" --password-stdin
-            docker build -t opencti/connector-cisa-known-exploited-vulnerabilities:6.4.1 . --build-arg BASE_IMAGE=renizmy/opencti-base:6.4.1 && docker tag opencti/connector-cisa-known-exploited-vulnerabilities:latest
+            docker build -t opencti/connector-cisa-known-exploited-vulnerabilities:6.4.1 . --build-arg BASE_IMAGE=renizmy/opencti-base:6.4.1
+            docker tag opencti/connector-cisa-known-exploited-vulnerabilities:6.4.1 opencti/connector-cisa-known-exploited-vulnerabilities:latest
             docker push opencti/connector-cisa-known-exploited-vulnerabilities:6.4.1
             docker push opencti/connector-cisa-known-exploited-vulnerabilities:latest
 
@@ -290,7 +315,8 @@ jobs:
             echo "Processing external-import/opencti"
             cd external-import/opencti
             echo "$DOCKERHUB_PASS" | docker login -u "$DOCKERHUB_USERNAME" --password-stdin
-            docker build -t opencti/connector-opencti:6.4.1 . --build-arg BASE_IMAGE=renizmy/opencti-base:6.4.1 && docker tag opencti/connector-opencti:latest
+            docker build -t opencti/connector-opencti:6.4.1 . --build-arg BASE_IMAGE=renizmy/opencti-base:6.4.1
+            docker tag opencti/connector-opencti:6.4.1 opencti/connector-opencti:latest
             docker push opencti/connector-opencti:6.4.1
             docker push opencti/connector-opencti:latest
 
@@ -301,7 +327,8 @@ jobs:
             echo "Processing external-import/cluster25"
             cd external-import/cluster25
             echo "$DOCKERHUB_PASS" | docker login -u "$DOCKERHUB_USERNAME" --password-stdin
-            docker build -t opencti/connector-cluster25:6.4.1 . --build-arg BASE_IMAGE=renizmy/opencti-base:6.4.1 && docker tag opencti/connector-cluster25:latest
+            docker build -t opencti/connector-cluster25:6.4.1 . --build-arg BASE_IMAGE=renizmy/opencti-base:6.4.1
+            docker tag opencti/connector-cluster25:6.4.1 opencti/connector-cluster25:latest
             docker push opencti/connector-cluster25:6.4.1
             docker push opencti/connector-cluster25:latest
 
@@ -312,7 +339,8 @@ jobs:
             echo "Processing external-import/maltiverse"
             cd external-import/maltiverse
             echo "$DOCKERHUB_PASS" | docker login -u "$DOCKERHUB_USERNAME" --password-stdin
-            docker build -t opencti/connector-maltiverse:6.4.1 . --build-arg BASE_IMAGE=renizmy/opencti-base:6.4.1 && docker tag opencti/connector-maltiverse:latest
+            docker build -t opencti/connector-maltiverse:6.4.1 . --build-arg BASE_IMAGE=renizmy/opencti-base:6.4.1
+            docker tag opencti/connector-maltiverse:6.4.1 opencti/connector-maltiverse:latest
             docker push opencti/connector-maltiverse:6.4.1
             docker push opencti/connector-maltiverse:latest
 
@@ -323,7 +351,8 @@ jobs:
             echo "Processing external-import/threatfox"
             cd external-import/threatfox
             echo "$DOCKERHUB_PASS" | docker login -u "$DOCKERHUB_USERNAME" --password-stdin
-            docker build -t opencti/connector-threatfox:6.4.1 . --build-arg BASE_IMAGE=renizmy/opencti-base:6.4.1 && docker tag opencti/connector-threatfox:latest
+            docker build -t opencti/connector-threatfox:6.4.1 . --build-arg BASE_IMAGE=renizmy/opencti-base:6.4.1
+            docker tag opencti/connector-threatfox:6.4.1 opencti/connector-threatfox:latest
             docker push opencti/connector-threatfox:6.4.1
             docker push opencti/connector-threatfox:latest
 
@@ -334,7 +363,8 @@ jobs:
             echo "Processing external-import/taxii2"
             cd external-import/taxii2
             echo "$DOCKERHUB_PASS" | docker login -u "$DOCKERHUB_USERNAME" --password-stdin
-            docker build -t opencti/connector-taxii2:6.4.1 . --build-arg BASE_IMAGE=renizmy/opencti-base:6.4.1 && docker tag opencti/connector-taxii2:latest
+            docker build -t opencti/connector-taxii2:6.4.1 . --build-arg BASE_IMAGE=renizmy/opencti-base:6.4.1
+            docker tag opencti/connector-taxii2:6.4.1 opencti/connector-taxii2:latest
             docker push opencti/connector-taxii2:6.4.1
             docker push opencti/connector-taxii2:latest
 
@@ -345,7 +375,8 @@ jobs:
             echo "Processing external-import/thehive"
             cd external-import/thehive
             echo "$DOCKERHUB_PASS" | docker login -u "$DOCKERHUB_USERNAME" --password-stdin
-            docker build -t opencti/connector-thehive:6.4.1 . --build-arg BASE_IMAGE=renizmy/opencti-base:6.4.1 && docker tag opencti/connector-thehive:latest
+            docker build -t opencti/connector-thehive:6.4.1 . --build-arg BASE_IMAGE=renizmy/opencti-base:6.4.1
+            docker tag opencti/connector-thehive:6.4.1 opencti/connector-thehive:latest
             docker push opencti/connector-thehive:6.4.1
             docker push opencti/connector-thehive:latest
 
@@ -356,7 +387,8 @@ jobs:
             echo "Processing external-import/google-drive"
             cd external-import/google-drive
             echo "$DOCKERHUB_PASS" | docker login -u "$DOCKERHUB_USERNAME" --password-stdin
-            docker build -t opencti/connector-google-drive:6.4.1 . --build-arg BASE_IMAGE=renizmy/opencti-base:6.4.1 && docker tag opencti/connector-google-drive:latest
+            docker build -t opencti/connector-google-drive:6.4.1 . --build-arg BASE_IMAGE=renizmy/opencti-base:6.4.1
+            docker tag opencti/connector-google-drive:6.4.1 opencti/connector-google-drive:latest
             docker push opencti/connector-google-drive:6.4.1
             docker push opencti/connector-google-drive:latest
 
@@ -367,7 +399,8 @@ jobs:
             echo "Processing external-import/cisco-sma"
             cd external-import/cisco-sma
             echo "$DOCKERHUB_PASS" | docker login -u "$DOCKERHUB_USERNAME" --password-stdin
-            docker build -t opencti/connector-cisco-sma:6.4.1 . --build-arg BASE_IMAGE=renizmy/opencti-base:6.4.1 && docker tag opencti/connector-cisco-sma:latest
+            docker build -t opencti/connector-cisco-sma:6.4.1 . --build-arg BASE_IMAGE=renizmy/opencti-base:6.4.1
+            docker tag opencti/connector-cisco-sma:6.4.1 opencti/connector-cisco-sma:latest
             docker push opencti/connector-cisco-sma:6.4.1
             docker push opencti/connector-cisco-sma:latest
 
@@ -378,7 +411,8 @@ jobs:
             echo "Processing external-import/valhalla"
             cd external-import/valhalla
             echo "$DOCKERHUB_PASS" | docker login -u "$DOCKERHUB_USERNAME" --password-stdin
-            docker build -t opencti/connector-valhalla:6.4.1 . --build-arg BASE_IMAGE=renizmy/opencti-base:6.4.1 && docker tag opencti/connector-valhalla:latest
+            docker build -t opencti/connector-valhalla:6.4.1 . --build-arg BASE_IMAGE=renizmy/opencti-base:6.4.1
+            docker tag opencti/connector-valhalla:6.4.1 opencti/connector-valhalla:latest
             docker push opencti/connector-valhalla:6.4.1
             docker push opencti/connector-valhalla:latest
 
@@ -389,7 +423,8 @@ jobs:
             echo "Processing external-import/kaspersky"
             cd external-import/kaspersky
             echo "$DOCKERHUB_PASS" | docker login -u "$DOCKERHUB_USERNAME" --password-stdin
-            docker build -t opencti/connector-kaspersky:6.4.1 . --build-arg BASE_IMAGE=renizmy/opencti-base:6.4.1 && docker tag opencti/connector-kaspersky:latest
+            docker build -t opencti/connector-kaspersky:6.4.1 . --build-arg BASE_IMAGE=renizmy/opencti-base:6.4.1
+            docker tag opencti/connector-kaspersky:6.4.1 opencti/connector-kaspersky:latest
             docker push opencti/connector-kaspersky:6.4.1
             docker push opencti/connector-kaspersky:latest
 
@@ -400,7 +435,8 @@ jobs:
             echo "Processing external-import/obstracts"
             cd external-import/obstracts
             echo "$DOCKERHUB_PASS" | docker login -u "$DOCKERHUB_USERNAME" --password-stdin
-            docker build -t opencti/connector-obstracts:6.4.1 . --build-arg BASE_IMAGE=renizmy/opencti-base:6.4.1 && docker tag opencti/connector-obstracts:latest
+            docker build -t opencti/connector-obstracts:6.4.1 . --build-arg BASE_IMAGE=renizmy/opencti-base:6.4.1
+            docker tag opencti/connector-obstracts:6.4.1 opencti/connector-obstracts:latest
             docker push opencti/connector-obstracts:6.4.1
             docker push opencti/connector-obstracts:latest
 
@@ -411,7 +447,8 @@ jobs:
             echo "Processing external-import/red-flag-domains"
             cd external-import/red-flag-domains
             echo "$DOCKERHUB_PASS" | docker login -u "$DOCKERHUB_USERNAME" --password-stdin
-            docker build -t opencti/connector-red-flag-domains:6.4.1 . --build-arg BASE_IMAGE=renizmy/opencti-base:6.4.1 && docker tag opencti/connector-red-flag-domains:latest
+            docker build -t opencti/connector-red-flag-domains:6.4.1 . --build-arg BASE_IMAGE=renizmy/opencti-base:6.4.1
+            docker tag opencti/connector-red-flag-domains:6.4.1 opencti/connector-red-flag-domains:latest
             docker push opencti/connector-red-flag-domains:6.4.1
             docker push opencti/connector-red-flag-domains:latest
 
@@ -422,7 +459,8 @@ jobs:
             echo "Processing external-import/stopforumspam"
             cd external-import/stopforumspam
             echo "$DOCKERHUB_PASS" | docker login -u "$DOCKERHUB_USERNAME" --password-stdin
-            docker build -t opencti/connector-stopforumspam:6.4.1 . --build-arg BASE_IMAGE=renizmy/opencti-base:6.4.1 && docker tag opencti/connector-stopforumspam:latest
+            docker build -t opencti/connector-stopforumspam:6.4.1 . --build-arg BASE_IMAGE=renizmy/opencti-base:6.4.1
+            docker tag opencti/connector-stopforumspam:6.4.1 opencti/connector-stopforumspam:latest
             docker push opencti/connector-stopforumspam:6.4.1
             docker push opencti/connector-stopforumspam:latest
 
@@ -433,7 +471,8 @@ jobs:
             echo "Processing external-import/flashpoint"
             cd external-import/flashpoint
             echo "$DOCKERHUB_PASS" | docker login -u "$DOCKERHUB_USERNAME" --password-stdin
-            docker build -t opencti/connector-flashpoint:6.4.1 . --build-arg BASE_IMAGE=renizmy/opencti-base:6.4.1 && docker tag opencti/connector-flashpoint:latest
+            docker build -t opencti/connector-flashpoint:6.4.1 . --build-arg BASE_IMAGE=renizmy/opencti-base:6.4.1
+            docker tag opencti/connector-flashpoint:6.4.1 opencti/connector-flashpoint:latest
             docker push opencti/connector-flashpoint:6.4.1
             docker push opencti/connector-flashpoint:latest
 
@@ -444,7 +483,8 @@ jobs:
             echo "Processing external-import/mitre-atlas"
             cd external-import/mitre-atlas
             echo "$DOCKERHUB_PASS" | docker login -u "$DOCKERHUB_USERNAME" --password-stdin
-            docker build -t opencti/connector-mitre-atlas:6.4.1 . --build-arg BASE_IMAGE=renizmy/opencti-base:6.4.1 && docker tag opencti/connector-mitre-atlas:latest
+            docker build -t opencti/connector-mitre-atlas:6.4.1 . --build-arg BASE_IMAGE=renizmy/opencti-base:6.4.1
+            docker tag opencti/connector-mitre-atlas:6.4.1 opencti/connector-mitre-atlas:latest
             docker push opencti/connector-mitre-atlas:6.4.1
             docker push opencti/connector-mitre-atlas:latest
 
@@ -455,7 +495,8 @@ jobs:
             echo "Processing external-import/chapsvision"
             cd external-import/chapsvision
             echo "$DOCKERHUB_PASS" | docker login -u "$DOCKERHUB_USERNAME" --password-stdin
-            docker build -t opencti/connector-chapsvision:6.4.1 . --build-arg BASE_IMAGE=renizmy/opencti-base:6.4.1 && docker tag opencti/connector-chapsvision:latest
+            docker build -t opencti/connector-chapsvision:6.4.1 . --build-arg BASE_IMAGE=renizmy/opencti-base:6.4.1
+            docker tag opencti/connector-chapsvision:6.4.1 opencti/connector-chapsvision:latest
             docker push opencti/connector-chapsvision:6.4.1
             docker push opencti/connector-chapsvision:latest
 
@@ -466,7 +507,8 @@ jobs:
             echo "Processing external-import/fortinet-ti"
             cd external-import/fortinet-ti
             echo "$DOCKERHUB_PASS" | docker login -u "$DOCKERHUB_USERNAME" --password-stdin
-            docker build -t opencti/connector-fortinet-ti:6.4.1 . --build-arg BASE_IMAGE=renizmy/opencti-base:6.4.1 && docker tag opencti/connector-fortinet-ti:latest
+            docker build -t opencti/connector-fortinet-ti:6.4.1 . --build-arg BASE_IMAGE=renizmy/opencti-base:6.4.1
+            docker tag opencti/connector-fortinet-ti:6.4.1 opencti/connector-fortinet-ti:latest
             docker push opencti/connector-fortinet-ti:6.4.1
             docker push opencti/connector-fortinet-ti:latest
 
@@ -477,7 +519,8 @@ jobs:
             echo "Processing external-import/tanium-incidents"
             cd external-import/tanium-incidents
             echo "$DOCKERHUB_PASS" | docker login -u "$DOCKERHUB_USERNAME" --password-stdin
-            docker build -t opencti/connector-tanium-incidents:6.4.1 . --build-arg BASE_IMAGE=renizmy/opencti-base:6.4.1 && docker tag opencti/connector-tanium-incidents:latest
+            docker build -t opencti/connector-tanium-incidents:6.4.1 . --build-arg BASE_IMAGE=renizmy/opencti-base:6.4.1
+            docker tag opencti/connector-tanium-incidents:6.4.1 opencti/connector-tanium-incidents:latest
             docker push opencti/connector-tanium-incidents:6.4.1
             docker push opencti/connector-tanium-incidents:latest
 
@@ -488,7 +531,8 @@ jobs:
             echo "Processing external-import/tenable-vuln-management"
             cd external-import/tenable-vuln-management
             echo "$DOCKERHUB_PASS" | docker login -u "$DOCKERHUB_USERNAME" --password-stdin
-            docker build -t opencti/connector-tenable-vuln-management:6.4.1 . --build-arg BASE_IMAGE=renizmy/opencti-base:6.4.1 && docker tag opencti/connector-tenable-vuln-management:latest
+            docker build -t opencti/connector-tenable-vuln-management:6.4.1 . --build-arg BASE_IMAGE=renizmy/opencti-base:6.4.1
+            docker tag opencti/connector-tenable-vuln-management:6.4.1 opencti/connector-tenable-vuln-management:latest
             docker push opencti/connector-tenable-vuln-management:6.4.1
             docker push opencti/connector-tenable-vuln-management:latest
 
@@ -499,7 +543,8 @@ jobs:
             echo "Processing external-import/intelfinder"
             cd external-import/intelfinder
             echo "$DOCKERHUB_PASS" | docker login -u "$DOCKERHUB_USERNAME" --password-stdin
-            docker build -t opencti/connector-intelfinder:6.4.1 . --build-arg BASE_IMAGE=renizmy/opencti-base:6.4.1 && docker tag opencti/connector-intelfinder:latest
+            docker build -t opencti/connector-intelfinder:6.4.1 . --build-arg BASE_IMAGE=renizmy/opencti-base:6.4.1
+            docker tag opencti/connector-intelfinder:6.4.1 opencti/connector-intelfinder:latest
             docker push opencti/connector-intelfinder:6.4.1
             docker push opencti/connector-intelfinder:latest
 
@@ -510,7 +555,8 @@ jobs:
             echo "Processing external-import/intel471"
             cd external-import/intel471
             echo "$DOCKERHUB_PASS" | docker login -u "$DOCKERHUB_USERNAME" --password-stdin
-            docker build -t opencti/connector-intel471:6.4.1 . --build-arg BASE_IMAGE=renizmy/opencti-base:6.4.1 && docker tag opencti/connector-intel471:latest
+            docker build -t opencti/connector-intel471:6.4.1 . --build-arg BASE_IMAGE=renizmy/opencti-base:6.4.1
+            docker tag opencti/connector-intel471:6.4.1 opencti/connector-intel471:latest
             docker push opencti/connector-intel471:6.4.1
             docker push opencti/connector-intel471:latest
 
@@ -521,7 +567,8 @@ jobs:
             echo "Processing external-import/misp"
             cd external-import/misp
             echo "$DOCKERHUB_PASS" | docker login -u "$DOCKERHUB_USERNAME" --password-stdin
-            docker build -t opencti/connector-misp:6.4.1 . --build-arg BASE_IMAGE=renizmy/opencti-base:6.4.1 && docker tag opencti/connector-misp:latest
+            docker build -t opencti/connector-misp:6.4.1 . --build-arg BASE_IMAGE=renizmy/opencti-base:6.4.1
+            docker tag opencti/connector-misp:6.4.1 opencti/connector-misp:latest
             docker push opencti/connector-misp:6.4.1
             docker push opencti/connector-misp:latest
 
@@ -532,7 +579,8 @@ jobs:
             echo "Processing external-import/misp-feed"
             cd external-import/misp-feed
             echo "$DOCKERHUB_PASS" | docker login -u "$DOCKERHUB_USERNAME" --password-stdin
-            docker build -t opencti/connector-misp-feed:6.4.1 . --build-arg BASE_IMAGE=renizmy/opencti-base:6.4.1 && docker tag opencti/connector-misp-feed:latest
+            docker build -t opencti/connector-misp-feed:6.4.1 . --build-arg BASE_IMAGE=renizmy/opencti-base:6.4.1
+            docker tag opencti/connector-misp-feed:6.4.1 opencti/connector-misp-feed:latest
             docker push opencti/connector-misp-feed:6.4.1
             docker push opencti/connector-misp-feed:latest
 
@@ -543,7 +591,8 @@ jobs:
             echo "Processing external-import/eset"
             cd external-import/eset
             echo "$DOCKERHUB_PASS" | docker login -u "$DOCKERHUB_USERNAME" --password-stdin
-            docker build -t opencti/connector-eset:6.4.1 . --build-arg BASE_IMAGE=renizmy/opencti-base:6.4.1 && docker tag opencti/connector-eset:latest
+            docker build -t opencti/connector-eset:6.4.1 . --build-arg BASE_IMAGE=renizmy/opencti-base:6.4.1
+            docker tag opencti/connector-eset:6.4.1 opencti/connector-eset:latest
             docker push opencti/connector-eset:6.4.1
             docker push opencti/connector-eset:latest
 
@@ -554,7 +603,8 @@ jobs:
             echo "Processing external-import/greynoise-feed"
             cd external-import/greynoise-feed
             echo "$DOCKERHUB_PASS" | docker login -u "$DOCKERHUB_USERNAME" --password-stdin
-            docker build -t opencti/connector-greynoise-feed:6.4.1 . --build-arg BASE_IMAGE=renizmy/opencti-base:6.4.1 && docker tag opencti/connector-greynoise-feed:latest
+            docker build -t opencti/connector-greynoise-feed:6.4.1 . --build-arg BASE_IMAGE=renizmy/opencti-base:6.4.1
+            docker tag opencti/connector-greynoise-feed:6.4.1 opencti/connector-greynoise-feed:latest
             docker push opencti/connector-greynoise-feed:6.4.1
             docker push opencti/connector-greynoise-feed:latest
 
@@ -565,7 +615,8 @@ jobs:
             echo "Processing external-import/recorded-future"
             cd external-import/recorded-future
             echo "$DOCKERHUB_PASS" | docker login -u "$DOCKERHUB_USERNAME" --password-stdin
-            docker build -t opencti/connector-recorded-future:6.4.1 . --build-arg BASE_IMAGE=renizmy/opencti-base:6.4.1 && docker tag opencti/connector-recorded-future:latest
+            docker build -t opencti/connector-recorded-future:6.4.1 . --build-arg BASE_IMAGE=renizmy/opencti-base:6.4.1
+            docker tag opencti/connector-recorded-future:6.4.1 opencti/connector-recorded-future:latest
             docker push opencti/connector-recorded-future:6.4.1
             docker push opencti/connector-recorded-future:latest
 
@@ -576,7 +627,8 @@ jobs:
             echo "Processing external-import/riskiq"
             cd external-import/riskiq
             echo "$DOCKERHUB_PASS" | docker login -u "$DOCKERHUB_USERNAME" --password-stdin
-            docker build -t opencti/connector-riskiq:6.4.1 . --build-arg BASE_IMAGE=renizmy/opencti-base:6.4.1 && docker tag opencti/connector-riskiq:latest
+            docker build -t opencti/connector-riskiq:6.4.1 . --build-arg BASE_IMAGE=renizmy/opencti-base:6.4.1
+            docker tag opencti/connector-riskiq:6.4.1 opencti/connector-riskiq:latest
             docker push opencti/connector-riskiq:6.4.1
             docker push opencti/connector-riskiq:latest
 
@@ -587,7 +639,8 @@ jobs:
             echo "Processing external-import/group-ib"
             cd external-import/group-ib
             echo "$DOCKERHUB_PASS" | docker login -u "$DOCKERHUB_USERNAME" --password-stdin
-            docker build -t opencti/connector-group-ib:6.4.1 . --build-arg BASE_IMAGE=renizmy/opencti-base:6.4.1 && docker tag opencti/connector-group-ib:latest
+            docker build -t opencti/connector-group-ib:6.4.1 . --build-arg BASE_IMAGE=renizmy/opencti-base:6.4.1
+            docker tag opencti/connector-group-ib:6.4.1 opencti/connector-group-ib:latest
             docker push opencti/connector-group-ib:6.4.1
             docker push opencti/connector-group-ib:latest
 
@@ -598,7 +651,8 @@ jobs:
             echo "Processing external-import/harfanglab-incidents"
             cd external-import/harfanglab-incidents
             echo "$DOCKERHUB_PASS" | docker login -u "$DOCKERHUB_USERNAME" --password-stdin
-            docker build -t opencti/connector-harfanglab-incidents:6.4.1 . --build-arg BASE_IMAGE=renizmy/opencti-base:6.4.1 && docker tag opencti/connector-harfanglab-incidents:latest
+            docker build -t opencti/connector-harfanglab-incidents:6.4.1 . --build-arg BASE_IMAGE=renizmy/opencti-base:6.4.1
+            docker tag opencti/connector-harfanglab-incidents:6.4.1 opencti/connector-harfanglab-incidents:latest
             docker push opencti/connector-harfanglab-incidents:6.4.1
             docker push opencti/connector-harfanglab-incidents:latest
 
@@ -609,7 +663,8 @@ jobs:
             echo "Processing external-import/silobreaker"
             cd external-import/silobreaker
             echo "$DOCKERHUB_PASS" | docker login -u "$DOCKERHUB_USERNAME" --password-stdin
-            docker build -t opencti/connector-silobreaker:6.4.1 . --build-arg BASE_IMAGE=renizmy/opencti-base:6.4.1 && docker tag opencti/connector-silobreaker:latest
+            docker build -t opencti/connector-silobreaker:6.4.1 . --build-arg BASE_IMAGE=renizmy/opencti-base:6.4.1
+            docker tag opencti/connector-silobreaker:6.4.1 opencti/connector-silobreaker:latest
             docker push opencti/connector-silobreaker:6.4.1
             docker push opencti/connector-silobreaker:latest
 
@@ -620,7 +675,8 @@ jobs:
             echo "Processing external-import/alienvault"
             cd external-import/alienvault
             echo "$DOCKERHUB_PASS" | docker login -u "$DOCKERHUB_USERNAME" --password-stdin
-            docker build -t opencti/connector-alienvault:6.4.1 . --build-arg BASE_IMAGE=renizmy/opencti-base:6.4.1 && docker tag opencti/connector-alienvault:latest
+            docker build -t opencti/connector-alienvault:6.4.1 . --build-arg BASE_IMAGE=renizmy/opencti-base:6.4.1
+            docker tag opencti/connector-alienvault:6.4.1 opencti/connector-alienvault:latest
             docker push opencti/connector-alienvault:6.4.1
             docker push opencti/connector-alienvault:latest
 
@@ -631,7 +687,8 @@ jobs:
             echo "Processing external-import/zerofox"
             cd external-import/zerofox
             echo "$DOCKERHUB_PASS" | docker login -u "$DOCKERHUB_USERNAME" --password-stdin
-            docker build -t opencti/connector-zerofox:6.4.1 . --build-arg BASE_IMAGE=renizmy/opencti-base:6.4.1 && docker tag opencti/connector-zerofox:latest
+            docker build -t opencti/connector-zerofox:6.4.1 . --build-arg BASE_IMAGE=renizmy/opencti-base:6.4.1
+            docker tag opencti/connector-zerofox:6.4.1 opencti/connector-zerofox:latest
             docker push opencti/connector-zerofox:6.4.1
             docker push opencti/connector-zerofox:latest
 
@@ -642,7 +699,8 @@ jobs:
             echo "Processing external-import/cuckoo"
             cd external-import/cuckoo
             echo "$DOCKERHUB_PASS" | docker login -u "$DOCKERHUB_USERNAME" --password-stdin
-            docker build -t opencti/connector-cuckoo:6.4.1 . --build-arg BASE_IMAGE=renizmy/opencti-base:6.4.1 && docker tag opencti/connector-cuckoo:latest
+            docker build -t opencti/connector-cuckoo:6.4.1 . --build-arg BASE_IMAGE=renizmy/opencti-base:6.4.1
+            docker tag opencti/connector-cuckoo:6.4.1 opencti/connector-cuckoo:latest
             docker push opencti/connector-cuckoo:6.4.1
             docker push opencti/connector-cuckoo:latest
 
@@ -653,7 +711,8 @@ jobs:
             echo "Processing external-import/cpe"
             cd external-import/cpe
             echo "$DOCKERHUB_PASS" | docker login -u "$DOCKERHUB_USERNAME" --password-stdin
-            docker build -t opencti/connector-cpe:6.4.1 . --build-arg BASE_IMAGE=renizmy/opencti-base:6.4.1 && docker tag opencti/connector-cpe:latest
+            docker build -t opencti/connector-cpe:6.4.1 . --build-arg BASE_IMAGE=renizmy/opencti-base:6.4.1
+            docker tag opencti/connector-cpe:6.4.1 opencti/connector-cpe:latest
             docker push opencti/connector-cpe:6.4.1
             docker push opencti/connector-cpe:latest
 
@@ -664,7 +723,8 @@ jobs:
             echo "Processing external-import/restore-files"
             cd external-import/restore-files
             echo "$DOCKERHUB_PASS" | docker login -u "$DOCKERHUB_USERNAME" --password-stdin
-            docker build -t opencti/connector-restore-files:6.4.1 . --build-arg BASE_IMAGE=renizmy/opencti-base:6.4.1 && docker tag opencti/connector-restore-files:latest
+            docker build -t opencti/connector-restore-files:6.4.1 . --build-arg BASE_IMAGE=renizmy/opencti-base:6.4.1
+            docker tag opencti/connector-restore-files:6.4.1 opencti/connector-restore-files:latest
             docker push opencti/connector-restore-files:6.4.1
             docker push opencti/connector-restore-files:latest
 
@@ -675,7 +735,8 @@ jobs:
             echo "Processing external-import/stixify"
             cd external-import/stixify
             echo "$DOCKERHUB_PASS" | docker login -u "$DOCKERHUB_USERNAME" --password-stdin
-            docker build -t opencti/connector-stixify:6.4.1 . --build-arg BASE_IMAGE=renizmy/opencti-base:6.4.1 && docker tag opencti/connector-stixify:latest
+            docker build -t opencti/connector-stixify:6.4.1 . --build-arg BASE_IMAGE=renizmy/opencti-base:6.4.1
+            docker tag opencti/connector-stixify:6.4.1 opencti/connector-stixify:latest
             docker push opencti/connector-stixify:6.4.1
             docker push opencti/connector-stixify:latest
 
@@ -686,7 +747,8 @@ jobs:
             echo "Processing external-import/orange-cyberdefense"
             cd external-import/orange-cyberdefense
             echo "$DOCKERHUB_PASS" | docker login -u "$DOCKERHUB_USERNAME" --password-stdin
-            docker build -t opencti/connector-orange-cyberdefense:6.4.1 . --build-arg BASE_IMAGE=renizmy/opencti-base:6.4.1 && docker tag opencti/connector-orange-cyberdefense:latest
+            docker build -t opencti/connector-orange-cyberdefense:6.4.1 . --build-arg BASE_IMAGE=renizmy/opencti-base:6.4.1
+            docker tag opencti/connector-orange-cyberdefense:6.4.1 opencti/connector-orange-cyberdefense:latest
             docker push opencti/connector-orange-cyberdefense:6.4.1
             docker push opencti/connector-orange-cyberdefense:latest
 
@@ -697,7 +759,8 @@ jobs:
             echo "Processing external-import/abuseipdb-ipblacklist"
             cd external-import/abuseipdb-ipblacklist
             echo "$DOCKERHUB_PASS" | docker login -u "$DOCKERHUB_USERNAME" --password-stdin
-            docker build -t opencti/connector-abuseipdb-ipblacklist:6.4.1 . --build-arg BASE_IMAGE=renizmy/opencti-base:6.4.1 && docker tag opencti/connector-abuseipdb-ipblacklist:latest
+            docker build -t opencti/connector-abuseipdb-ipblacklist:6.4.1 . --build-arg BASE_IMAGE=renizmy/opencti-base:6.4.1
+            docker tag opencti/connector-abuseipdb-ipblacklist:6.4.1 opencti/connector-abuseipdb-ipblacklist:latest
             docker push opencti/connector-abuseipdb-ipblacklist:6.4.1
             docker push opencti/connector-abuseipdb-ipblacklist:latest
 
@@ -708,7 +771,8 @@ jobs:
             echo "Processing external-import/sekoia"
             cd external-import/sekoia
             echo "$DOCKERHUB_PASS" | docker login -u "$DOCKERHUB_USERNAME" --password-stdin
-            docker build -t opencti/connector-sekoia:6.4.1 . --build-arg BASE_IMAGE=renizmy/opencti-base:6.4.1 && docker tag opencti/connector-sekoia:latest
+            docker build -t opencti/connector-sekoia:6.4.1 . --build-arg BASE_IMAGE=renizmy/opencti-base:6.4.1
+            docker tag opencti/connector-sekoia:6.4.1 opencti/connector-sekoia:latest
             docker push opencti/connector-sekoia:6.4.1
             docker push opencti/connector-sekoia:latest
 
@@ -719,7 +783,8 @@ jobs:
             echo "Processing external-import/vxvault"
             cd external-import/vxvault
             echo "$DOCKERHUB_PASS" | docker login -u "$DOCKERHUB_USERNAME" --password-stdin
-            docker build -t opencti/connector-vxvault:6.4.1 . --build-arg BASE_IMAGE=renizmy/opencti-base:6.4.1 && docker tag opencti/connector-vxvault:latest
+            docker build -t opencti/connector-vxvault:6.4.1 . --build-arg BASE_IMAGE=renizmy/opencti-base:6.4.1
+            docker tag opencti/connector-vxvault:6.4.1 opencti/connector-vxvault:latest
             docker push opencti/connector-vxvault:6.4.1
             docker push opencti/connector-vxvault:latest
 
@@ -730,7 +795,8 @@ jobs:
             echo "Processing external-import/mitre"
             cd external-import/mitre
             echo "$DOCKERHUB_PASS" | docker login -u "$DOCKERHUB_USERNAME" --password-stdin
-            docker build -t opencti/connector-mitre:6.4.1 . --build-arg BASE_IMAGE=renizmy/opencti-base:6.4.1 && docker tag opencti/connector-mitre:latest
+            docker build -t opencti/connector-mitre:6.4.1 . --build-arg BASE_IMAGE=renizmy/opencti-base:6.4.1
+            docker tag opencti/connector-mitre:6.4.1 opencti/connector-mitre:latest
             docker push opencti/connector-mitre:6.4.1
             docker push opencti/connector-mitre:latest
 
@@ -741,7 +807,8 @@ jobs:
             echo "Processing external-import/crtsh"
             cd external-import/crtsh
             echo "$DOCKERHUB_PASS" | docker login -u "$DOCKERHUB_USERNAME" --password-stdin
-            docker build -t opencti/connector-crtsh:6.4.1 . --build-arg BASE_IMAGE=renizmy/opencti-base:6.4.1 && docker tag opencti/connector-crtsh:latest
+            docker build -t opencti/connector-crtsh:6.4.1 . --build-arg BASE_IMAGE=renizmy/opencti-base:6.4.1
+            docker tag opencti/connector-crtsh:6.4.1 opencti/connector-crtsh:latest
             docker push opencti/connector-crtsh:6.4.1
             docker push opencti/connector-crtsh:latest
 
@@ -752,7 +819,8 @@ jobs:
             echo "Processing external-import/virustotal-livehunt-notifications"
             cd external-import/virustotal-livehunt-notifications
             echo "$DOCKERHUB_PASS" | docker login -u "$DOCKERHUB_USERNAME" --password-stdin
-            docker build -t opencti/connector-virustotal-livehunt-notifications:6.4.1 . --build-arg BASE_IMAGE=renizmy/opencti-base:6.4.1 && docker tag opencti/connector-virustotal-livehunt-notifications:latest
+            docker build -t opencti/connector-virustotal-livehunt-notifications:6.4.1 . --build-arg BASE_IMAGE=renizmy/opencti-base:6.4.1
+            docker tag opencti/connector-virustotal-livehunt-notifications:6.4.1 opencti/connector-virustotal-livehunt-notifications:latest
             docker push opencti/connector-virustotal-livehunt-notifications:6.4.1
             docker push opencti/connector-virustotal-livehunt-notifications:latest
 
@@ -763,7 +831,8 @@ jobs:
             echo "Processing external-import/infoblox"
             cd external-import/infoblox
             echo "$DOCKERHUB_PASS" | docker login -u "$DOCKERHUB_USERNAME" --password-stdin
-            docker build -t opencti/connector-infoblox:6.4.1 . --build-arg BASE_IMAGE=renizmy/opencti-base:6.4.1 && docker tag opencti/connector-infoblox:latest
+            docker build -t opencti/connector-infoblox:6.4.1 . --build-arg BASE_IMAGE=renizmy/opencti-base:6.4.1
+            docker tag opencti/connector-infoblox:6.4.1 opencti/connector-infoblox:latest
             docker push opencti/connector-infoblox:6.4.1
             docker push opencti/connector-infoblox:latest
 
@@ -774,7 +843,8 @@ jobs:
             echo "Processing external-import/cofense"
             cd external-import/cofense
             echo "$DOCKERHUB_PASS" | docker login -u "$DOCKERHUB_USERNAME" --password-stdin
-            docker build -t opencti/connector-cofense:6.4.1 . --build-arg BASE_IMAGE=renizmy/opencti-base:6.4.1 && docker tag opencti/connector-cofense:latest
+            docker build -t opencti/connector-cofense:6.4.1 . --build-arg BASE_IMAGE=renizmy/opencti-base:6.4.1
+            docker tag opencti/connector-cofense:6.4.1 opencti/connector-cofense:latest
             docker push opencti/connector-cofense:6.4.1
             docker push opencti/connector-cofense:latest
 
@@ -785,7 +855,8 @@ jobs:
             echo "Processing external-import/rst-threat-feed"
             cd external-import/rst-threat-feed
             echo "$DOCKERHUB_PASS" | docker login -u "$DOCKERHUB_USERNAME" --password-stdin
-            docker build -t opencti/connector-rst-threat-feed:6.4.1 . --build-arg BASE_IMAGE=renizmy/opencti-base:6.4.1 && docker tag opencti/connector-rst-threat-feed:latest
+            docker build -t opencti/connector-rst-threat-feed:6.4.1 . --build-arg BASE_IMAGE=renizmy/opencti-base:6.4.1
+            docker tag opencti/connector-rst-threat-feed:6.4.1 opencti/connector-rst-threat-feed:latest
             docker push opencti/connector-rst-threat-feed:6.4.1
             docker push opencti/connector-rst-threat-feed:latest
 
@@ -796,7 +867,8 @@ jobs:
             echo "Processing external-import/siemrules"
             cd external-import/siemrules
             echo "$DOCKERHUB_PASS" | docker login -u "$DOCKERHUB_USERNAME" --password-stdin
-            docker build -t opencti/connector-siemrules:6.4.1 . --build-arg BASE_IMAGE=renizmy/opencti-base:6.4.1 && docker tag opencti/connector-siemrules:latest
+            docker build -t opencti/connector-siemrules:6.4.1 . --build-arg BASE_IMAGE=renizmy/opencti-base:6.4.1
+            docker tag opencti/connector-siemrules:6.4.1 opencti/connector-siemrules:latest
             docker push opencti/connector-siemrules:6.4.1
             docker push opencti/connector-siemrules:latest
 
@@ -807,7 +879,8 @@ jobs:
             echo "Processing external-import/cape"
             cd external-import/cape
             echo "$DOCKERHUB_PASS" | docker login -u "$DOCKERHUB_USERNAME" --password-stdin
-            docker build -t opencti/connector-cape:6.4.1 . --build-arg BASE_IMAGE=renizmy/opencti-base:6.4.1 && docker tag opencti/connector-cape:latest
+            docker build -t opencti/connector-cape:6.4.1 . --build-arg BASE_IMAGE=renizmy/opencti-base:6.4.1
+            docker tag opencti/connector-cape:6.4.1 opencti/connector-cape:latest
             docker push opencti/connector-cape:6.4.1
             docker push opencti/connector-cape:latest
 
@@ -818,7 +891,8 @@ jobs:
             echo "Processing external-import/ironnet"
             cd external-import/ironnet
             echo "$DOCKERHUB_PASS" | docker login -u "$DOCKERHUB_USERNAME" --password-stdin
-            docker build -t opencti/connector-ironnet:6.4.1 . --build-arg BASE_IMAGE=renizmy/opencti-base:6.4.1 && docker tag opencti/connector-ironnet:latest
+            docker build -t opencti/connector-ironnet:6.4.1 . --build-arg BASE_IMAGE=renizmy/opencti-base:6.4.1
+            docker tag opencti/connector-ironnet:6.4.1 opencti/connector-ironnet:latest
             docker push opencti/connector-ironnet:6.4.1
             docker push opencti/connector-ironnet:latest
 
@@ -829,7 +903,8 @@ jobs:
             echo "Processing external-import/urlscan"
             cd external-import/urlscan
             echo "$DOCKERHUB_PASS" | docker login -u "$DOCKERHUB_USERNAME" --password-stdin
-            docker build -t opencti/connector-urlscan:6.4.1 . --build-arg BASE_IMAGE=renizmy/opencti-base:6.4.1 && docker tag opencti/connector-urlscan:latest
+            docker build -t opencti/connector-urlscan:6.4.1 . --build-arg BASE_IMAGE=renizmy/opencti-base:6.4.1
+            docker tag opencti/connector-urlscan:6.4.1 opencti/connector-urlscan:latest
             docker push opencti/connector-urlscan:6.4.1
             docker push opencti/connector-urlscan:latest
 
@@ -840,7 +915,8 @@ jobs:
             echo "Processing external-import/anyrun-feed"
             cd external-import/anyrun-feed
             echo "$DOCKERHUB_PASS" | docker login -u "$DOCKERHUB_USERNAME" --password-stdin
-            docker build -t opencti/connector-anyrun-feed:6.4.1 . --build-arg BASE_IMAGE=renizmy/opencti-base:6.4.1 && docker tag opencti/connector-anyrun-feed:latest
+            docker build -t opencti/connector-anyrun-feed:6.4.1 . --build-arg BASE_IMAGE=renizmy/opencti-base:6.4.1
+            docker tag opencti/connector-anyrun-feed:6.4.1 opencti/connector-anyrun-feed:latest
             docker push opencti/connector-anyrun-feed:6.4.1
             docker push opencti/connector-anyrun-feed:latest
 
@@ -851,7 +927,8 @@ jobs:
             echo "Processing external-import/ransomwarelive"
             cd external-import/ransomwarelive
             echo "$DOCKERHUB_PASS" | docker login -u "$DOCKERHUB_USERNAME" --password-stdin
-            docker build -t opencti/connector-ransomwarelive:6.4.1 . --build-arg BASE_IMAGE=renizmy/opencti-base:6.4.1 && docker tag opencti/connector-ransomwarelive:latest
+            docker build -t opencti/connector-ransomwarelive:6.4.1 . --build-arg BASE_IMAGE=renizmy/opencti-base:6.4.1
+            docker tag opencti/connector-ransomwarelive:6.4.1 opencti/connector-ransomwarelive:latest
             docker push opencti/connector-ransomwarelive:6.4.1
             docker push opencti/connector-ransomwarelive:latest
 
@@ -862,7 +939,8 @@ jobs:
             echo "Processing external-import/feedly"
             cd external-import/feedly
             echo "$DOCKERHUB_PASS" | docker login -u "$DOCKERHUB_USERNAME" --password-stdin
-            docker build -t opencti/connector-feedly:6.4.1 . --build-arg BASE_IMAGE=renizmy/opencti-base:6.4.1 && docker tag opencti/connector-feedly:latest
+            docker build -t opencti/connector-feedly:6.4.1 . --build-arg BASE_IMAGE=renizmy/opencti-base:6.4.1
+            docker tag opencti/connector-feedly:6.4.1 opencti/connector-feedly:latest
             docker push opencti/connector-feedly:6.4.1
             docker push opencti/connector-feedly:latest
 
@@ -873,7 +951,8 @@ jobs:
             echo "Processing external-import/socprime"
             cd external-import/socprime
             echo "$DOCKERHUB_PASS" | docker login -u "$DOCKERHUB_USERNAME" --password-stdin
-            docker build -t opencti/connector-socprime:6.4.1 . --build-arg BASE_IMAGE=renizmy/opencti-base:6.4.1 && docker tag opencti/connector-socprime:latest
+            docker build -t opencti/connector-socprime:6.4.1 . --build-arg BASE_IMAGE=renizmy/opencti-base:6.4.1
+            docker tag opencti/connector-socprime:6.4.1 opencti/connector-socprime:latest
             docker push opencti/connector-socprime:6.4.1
             docker push opencti/connector-socprime:latest
 
@@ -884,7 +963,8 @@ jobs:
             echo "Processing external-import/diode-import"
             cd external-import/diode-import
             echo "$DOCKERHUB_PASS" | docker login -u "$DOCKERHUB_USERNAME" --password-stdin
-            docker build -t opencti/connector-diode-import:6.4.1 . --build-arg BASE_IMAGE=renizmy/opencti-base:6.4.1 && docker tag opencti/connector-diode-import:latest
+            docker build -t opencti/connector-diode-import:6.4.1 . --build-arg BASE_IMAGE=renizmy/opencti-base:6.4.1
+            docker tag opencti/connector-diode-import:6.4.1 opencti/connector-diode-import:latest
             docker push opencti/connector-diode-import:6.4.1
             docker push opencti/connector-diode-import:latest
 
@@ -895,7 +975,8 @@ jobs:
             echo "Processing external-import/threatmatch"
             cd external-import/threatmatch
             echo "$DOCKERHUB_PASS" | docker login -u "$DOCKERHUB_USERNAME" --password-stdin
-            docker build -t opencti/connector-threatmatch:6.4.1 . --build-arg BASE_IMAGE=renizmy/opencti-base:6.4.1 && docker tag opencti/connector-threatmatch:latest
+            docker build -t opencti/connector-threatmatch:6.4.1 . --build-arg BASE_IMAGE=renizmy/opencti-base:6.4.1
+            docker tag opencti/connector-threatmatch:6.4.1 opencti/connector-threatmatch:latest
             docker push opencti/connector-threatmatch:6.4.1
             docker push opencti/connector-threatmatch:latest
 
@@ -906,7 +987,8 @@ jobs:
             echo "Processing external-import/vulmatch"
             cd external-import/vulmatch
             echo "$DOCKERHUB_PASS" | docker login -u "$DOCKERHUB_USERNAME" --password-stdin
-            docker build -t opencti/connector-vulmatch:6.4.1 . --build-arg BASE_IMAGE=renizmy/opencti-base:6.4.1 && docker tag opencti/connector-vulmatch:latest
+            docker build -t opencti/connector-vulmatch:6.4.1 . --build-arg BASE_IMAGE=renizmy/opencti-base:6.4.1
+            docker tag opencti/connector-vulmatch:6.4.1 opencti/connector-vulmatch:latest
             docker push opencti/connector-vulmatch:6.4.1
             docker push opencti/connector-vulmatch:latest
 
@@ -925,7 +1007,8 @@ jobs:
             echo "Processing stream/harfanglab-intel"
             cd stream/harfanglab-intel
             echo "$DOCKERHUB_PASS" | docker login -u "$DOCKERHUB_USERNAME" --password-stdin
-            docker build -t opencti/connector-harfanglab-intel:6.4.1 . --build-arg BASE_IMAGE=renizmy/opencti-base:6.4.1 && docker tag opencti/connector-harfanglab-intel:latest
+            docker build -t opencti/connector-harfanglab-intel:6.4.1 . --build-arg BASE_IMAGE=renizmy/opencti-base:6.4.1
+            docker tag opencti/connector-harfanglab-intel:6.4.1 opencti/connector-harfanglab-intel:latest
             docker push opencti/connector-harfanglab-intel:6.4.1
             docker push opencti/connector-harfanglab-intel:latest
 
@@ -936,7 +1019,8 @@ jobs:
             echo "Processing stream/crowdstrike-endpoint-security"
             cd stream/crowdstrike-endpoint-security
             echo "$DOCKERHUB_PASS" | docker login -u "$DOCKERHUB_USERNAME" --password-stdin
-            docker build -t opencti/connector-crowdstrike-endpoint-security:6.4.1 . --build-arg BASE_IMAGE=renizmy/opencti-base:6.4.1 && docker tag opencti/connector-crowdstrike-endpoint-security:latest
+            docker build -t opencti/connector-crowdstrike-endpoint-security:6.4.1 . --build-arg BASE_IMAGE=renizmy/opencti-base:6.4.1
+            docker tag opencti/connector-crowdstrike-endpoint-security:6.4.1 opencti/connector-crowdstrike-endpoint-security:latest
             docker push opencti/connector-crowdstrike-endpoint-security:6.4.1
             docker push opencti/connector-crowdstrike-endpoint-security:latest
 
@@ -947,7 +1031,8 @@ jobs:
             echo "Processing stream/webhook"
             cd stream/webhook
             echo "$DOCKERHUB_PASS" | docker login -u "$DOCKERHUB_USERNAME" --password-stdin
-            docker build -t opencti/connector-webhook:6.4.1 . --build-arg BASE_IMAGE=renizmy/opencti-base:6.4.1 && docker tag opencti/connector-webhook:latest
+            docker build -t opencti/connector-webhook:6.4.1 . --build-arg BASE_IMAGE=renizmy/opencti-base:6.4.1
+            docker tag opencti/connector-webhook:6.4.1 opencti/connector-webhook:latest
             docker push opencti/connector-webhook:6.4.1
             docker push opencti/connector-webhook:latest
 
@@ -958,7 +1043,8 @@ jobs:
             echo "Processing stream/splunk"
             cd stream/splunk
             echo "$DOCKERHUB_PASS" | docker login -u "$DOCKERHUB_USERNAME" --password-stdin
-            docker build -t opencti/connector-splunk:6.4.1 . --build-arg BASE_IMAGE=renizmy/opencti-base:6.4.1 && docker tag opencti/connector-splunk:latest
+            docker build -t opencti/connector-splunk:6.4.1 . --build-arg BASE_IMAGE=renizmy/opencti-base:6.4.1
+            docker tag opencti/connector-splunk:6.4.1 opencti/connector-splunk:latest
             docker push opencti/connector-splunk:6.4.1
             docker push opencti/connector-splunk:latest
 
@@ -969,7 +1055,8 @@ jobs:
             echo "Processing stream/sentinel-intel"
             cd stream/sentinel-intel
             echo "$DOCKERHUB_PASS" | docker login -u "$DOCKERHUB_USERNAME" --password-stdin
-            docker build -t opencti/connector-sentinel-intel:6.4.1 . --build-arg BASE_IMAGE=renizmy/opencti-base:6.4.1 && docker tag opencti/connector-sentinel-intel:latest
+            docker build -t opencti/connector-sentinel-intel:6.4.1 . --build-arg BASE_IMAGE=renizmy/opencti-base:6.4.1
+            docker tag opencti/connector-sentinel-intel:6.4.1 opencti/connector-sentinel-intel:latest
             docker push opencti/connector-sentinel-intel:6.4.1
             docker push opencti/connector-sentinel-intel:latest
 
@@ -980,7 +1067,8 @@ jobs:
             echo "Processing stream/qradar"
             cd stream/qradar
             echo "$DOCKERHUB_PASS" | docker login -u "$DOCKERHUB_USERNAME" --password-stdin
-            docker build -t opencti/connector-qradar:6.4.1 . --build-arg BASE_IMAGE=renizmy/opencti-base:6.4.1 && docker tag opencti/connector-qradar:latest
+            docker build -t opencti/connector-qradar:6.4.1 . --build-arg BASE_IMAGE=renizmy/opencti-base:6.4.1
+            docker tag opencti/connector-qradar:6.4.1 opencti/connector-qradar:latest
             docker push opencti/connector-qradar:6.4.1
             docker push opencti/connector-qradar:latest
 
@@ -991,7 +1079,8 @@ jobs:
             echo "Processing stream/harfanglab"
             cd stream/harfanglab
             echo "$DOCKERHUB_PASS" | docker login -u "$DOCKERHUB_USERNAME" --password-stdin
-            docker build -t opencti/connector-harfanglab:6.4.1 . --build-arg BASE_IMAGE=renizmy/opencti-base:6.4.1 && docker tag opencti/connector-harfanglab:latest
+            docker build -t opencti/connector-harfanglab:6.4.1 . --build-arg BASE_IMAGE=renizmy/opencti-base:6.4.1
+            docker tag opencti/connector-harfanglab:6.4.1 opencti/connector-harfanglab:latest
             docker push opencti/connector-harfanglab:6.4.1
             docker push opencti/connector-harfanglab:latest
 
@@ -1002,7 +1091,8 @@ jobs:
             echo "Processing stream/virustotal-livehunt-rules"
             cd stream/virustotal-livehunt-rules
             echo "$DOCKERHUB_PASS" | docker login -u "$DOCKERHUB_USERNAME" --password-stdin
-            docker build -t opencti/connector-virustotal-livehunt-rules:6.4.1 . --build-arg BASE_IMAGE=renizmy/opencti-base:6.4.1 && docker tag opencti/connector-virustotal-livehunt-rules:latest
+            docker build -t opencti/connector-virustotal-livehunt-rules:6.4.1 . --build-arg BASE_IMAGE=renizmy/opencti-base:6.4.1
+            docker tag opencti/connector-virustotal-livehunt-rules:6.4.1 opencti/connector-virustotal-livehunt-rules:latest
             docker push opencti/connector-virustotal-livehunt-rules:6.4.1
             docker push opencti/connector-virustotal-livehunt-rules:latest
 
@@ -1013,7 +1103,8 @@ jobs:
             echo "Processing stream/backup-files"
             cd stream/backup-files
             echo "$DOCKERHUB_PASS" | docker login -u "$DOCKERHUB_USERNAME" --password-stdin
-            docker build -t opencti/connector-backup-files:6.4.1 . --build-arg BASE_IMAGE=renizmy/opencti-base:6.4.1 && docker tag opencti/connector-backup-files:latest
+            docker build -t opencti/connector-backup-files:6.4.1 . --build-arg BASE_IMAGE=renizmy/opencti-base:6.4.1
+            docker tag opencti/connector-backup-files:6.4.1 opencti/connector-backup-files:latest
             docker push opencti/connector-backup-files:6.4.1
             docker push opencti/connector-backup-files:latest
 
@@ -1024,7 +1115,8 @@ jobs:
             echo "Processing stream/logrhythm"
             cd stream/logrhythm
             echo "$DOCKERHUB_PASS" | docker login -u "$DOCKERHUB_USERNAME" --password-stdin
-            docker build -t opencti/connector-logrhythm:6.4.1 . --build-arg BASE_IMAGE=renizmy/opencti-base:6.4.1 && docker tag opencti/connector-logrhythm:latest
+            docker build -t opencti/connector-logrhythm:6.4.1 . --build-arg BASE_IMAGE=renizmy/opencti-base:6.4.1
+            docker tag opencti/connector-logrhythm:6.4.1 opencti/connector-logrhythm:latest
             docker push opencti/connector-logrhythm:6.4.1
             docker push opencti/connector-logrhythm:latest
 
@@ -1035,7 +1127,8 @@ jobs:
             echo "Processing stream/taxii-post"
             cd stream/taxii-post
             echo "$DOCKERHUB_PASS" | docker login -u "$DOCKERHUB_USERNAME" --password-stdin
-            docker build -t opencti/connector-taxii-post:6.4.1 . --build-arg BASE_IMAGE=renizmy/opencti-base:6.4.1 && docker tag opencti/connector-taxii-post:latest
+            docker build -t opencti/connector-taxii-post:6.4.1 . --build-arg BASE_IMAGE=renizmy/opencti-base:6.4.1
+            docker tag opencti/connector-taxii-post:6.4.1 opencti/connector-taxii-post:latest
             docker push opencti/connector-taxii-post:6.4.1
             docker push opencti/connector-taxii-post:latest
 
@@ -1046,7 +1139,8 @@ jobs:
             echo "Processing stream/tanium"
             cd stream/tanium
             echo "$DOCKERHUB_PASS" | docker login -u "$DOCKERHUB_USERNAME" --password-stdin
-            docker build -t opencti/connector-tanium:6.4.1 . --build-arg BASE_IMAGE=renizmy/opencti-base:6.4.1 && docker tag opencti/connector-tanium:latest
+            docker build -t opencti/connector-tanium:6.4.1 . --build-arg BASE_IMAGE=renizmy/opencti-base:6.4.1
+            docker tag opencti/connector-tanium:6.4.1 opencti/connector-tanium:latest
             docker push opencti/connector-tanium:6.4.1
             docker push opencti/connector-tanium:latest
 
@@ -1057,7 +1151,8 @@ jobs:
             echo "Processing stream/chronicle"
             cd stream/chronicle
             echo "$DOCKERHUB_PASS" | docker login -u "$DOCKERHUB_USERNAME" --password-stdin
-            docker build -t opencti/connector-chronicle:6.4.1 . --build-arg BASE_IMAGE=renizmy/opencti-base:6.4.1 && docker tag opencti/connector-chronicle:latest
+            docker build -t opencti/connector-chronicle:6.4.1 . --build-arg BASE_IMAGE=renizmy/opencti-base:6.4.1
+            docker tag opencti/connector-chronicle:6.4.1 opencti/connector-chronicle:latest
             docker push opencti/connector-chronicle:6.4.1
             docker push opencti/connector-chronicle:latest
 
@@ -1068,7 +1163,8 @@ jobs:
             echo "Processing stream/jira"
             cd stream/jira
             echo "$DOCKERHUB_PASS" | docker login -u "$DOCKERHUB_USERNAME" --password-stdin
-            docker build -t opencti/connector-jira:6.4.1 . --build-arg BASE_IMAGE=renizmy/opencti-base:6.4.1 && docker tag opencti/connector-jira:latest
+            docker build -t opencti/connector-jira:6.4.1 . --build-arg BASE_IMAGE=renizmy/opencti-base:6.4.1
+            docker tag opencti/connector-jira:6.4.1 opencti/connector-jira:latest
             docker push opencti/connector-jira:6.4.1
             docker push opencti/connector-jira:latest
 
@@ -1079,7 +1175,8 @@ jobs:
             echo "Processing stream/elastic"
             cd stream/elastic
             echo "$DOCKERHUB_PASS" | docker login -u "$DOCKERHUB_USERNAME" --password-stdin
-            docker build -t opencti/connector-elastic:6.4.1 . --build-arg BASE_IMAGE=renizmy/opencti-base:6.4.1 && docker tag opencti/connector-elastic:latest
+            docker build -t opencti/connector-elastic:6.4.1 . --build-arg BASE_IMAGE=renizmy/opencti-base:6.4.1
+            docker tag opencti/connector-elastic:6.4.1 opencti/connector-elastic:latest
             docker push opencti/connector-elastic:6.4.1
             docker push opencti/connector-elastic:latest
 
@@ -1090,7 +1187,8 @@ jobs:
             echo "Processing stream/sentinel"
             cd stream/sentinel
             echo "$DOCKERHUB_PASS" | docker login -u "$DOCKERHUB_USERNAME" --password-stdin
-            docker build -t opencti/connector-sentinel:6.4.1 . --build-arg BASE_IMAGE=renizmy/opencti-base:6.4.1 && docker tag opencti/connector-sentinel:latest
+            docker build -t opencti/connector-sentinel:6.4.1 . --build-arg BASE_IMAGE=renizmy/opencti-base:6.4.1
+            docker tag opencti/connector-sentinel:6.4.1 opencti/connector-sentinel:latest
             docker push opencti/connector-sentinel:6.4.1
             docker push opencti/connector-sentinel:latest
 
@@ -1101,7 +1199,8 @@ jobs:
             echo "Processing stream/tanium-intel"
             cd stream/tanium-intel
             echo "$DOCKERHUB_PASS" | docker login -u "$DOCKERHUB_USERNAME" --password-stdin
-            docker build -t opencti/connector-tanium-intel:6.4.1 . --build-arg BASE_IMAGE=renizmy/opencti-base:6.4.1 && docker tag opencti/connector-tanium-intel:latest
+            docker build -t opencti/connector-tanium-intel:6.4.1 . --build-arg BASE_IMAGE=renizmy/opencti-base:6.4.1
+            docker tag opencti/connector-tanium-intel:6.4.1 opencti/connector-tanium-intel:latest
             docker push opencti/connector-tanium-intel:6.4.1
             docker push opencti/connector-tanium-intel:latest
 
@@ -1120,7 +1219,8 @@ jobs:
             echo "Processing internal-export-file/export-ttps-file-navigator"
             cd internal-export-file/export-ttps-file-navigator
             echo "$DOCKERHUB_PASS" | docker login -u "$DOCKERHUB_USERNAME" --password-stdin
-            docker build -t opencti/connector-export-ttps-file-navigator:6.4.1 . --build-arg BASE_IMAGE=renizmy/opencti-base:6.4.1 && docker tag opencti/connector-export-ttps-file-navigator:latest
+            docker build -t opencti/connector-export-ttps-file-navigator:6.4.1 . --build-arg BASE_IMAGE=renizmy/opencti-base:6.4.1
+            docker tag opencti/connector-export-ttps-file-navigator:6.4.1 opencti/connector-export-ttps-file-navigator:latest
             docker push opencti/connector-export-ttps-file-navigator:6.4.1
             docker push opencti/connector-export-ttps-file-navigator:latest
 
@@ -1131,7 +1231,8 @@ jobs:
             echo "Processing internal-export-file/export-report-pdf"
             cd internal-export-file/export-report-pdf
             echo "$DOCKERHUB_PASS" | docker login -u "$DOCKERHUB_USERNAME" --password-stdin
-            docker build -t opencti/connector-export-report-pdf:6.4.1 . --build-arg BASE_IMAGE=renizmy/opencti-base:6.4.1 && docker tag opencti/connector-export-report-pdf:latest
+            docker build -t opencti/connector-export-report-pdf:6.4.1 . --build-arg BASE_IMAGE=renizmy/opencti-base:6.4.1
+            docker tag opencti/connector-export-report-pdf:6.4.1 opencti/connector-export-report-pdf:latest
             docker push opencti/connector-export-report-pdf:6.4.1
             docker push opencti/connector-export-report-pdf:latest
 
@@ -1142,7 +1243,8 @@ jobs:
             echo "Processing internal-export-file/export-file-txt"
             cd internal-export-file/export-file-txt
             echo "$DOCKERHUB_PASS" | docker login -u "$DOCKERHUB_USERNAME" --password-stdin
-            docker build -t opencti/connector-export-file-txt:6.4.1 . --build-arg BASE_IMAGE=renizmy/opencti-base:6.4.1 && docker tag opencti/connector-export-file-txt:latest
+            docker build -t opencti/connector-export-file-txt:6.4.1 . --build-arg BASE_IMAGE=renizmy/opencti-base:6.4.1
+            docker tag opencti/connector-export-file-txt:6.4.1 opencti/connector-export-file-txt:latest
             docker push opencti/connector-export-file-txt:6.4.1
             docker push opencti/connector-export-file-txt:latest
 
@@ -1153,7 +1255,8 @@ jobs:
             echo "Processing internal-export-file/export-file-csv"
             cd internal-export-file/export-file-csv
             echo "$DOCKERHUB_PASS" | docker login -u "$DOCKERHUB_USERNAME" --password-stdin
-            docker build -t opencti/connector-export-file-csv:6.4.1 . --build-arg BASE_IMAGE=renizmy/opencti-base:6.4.1 && docker tag opencti/connector-export-file-csv:latest
+            docker build -t opencti/connector-export-file-csv:6.4.1 . --build-arg BASE_IMAGE=renizmy/opencti-base:6.4.1
+            docker tag opencti/connector-export-file-csv:6.4.1 opencti/connector-export-file-csv:latest
             docker push opencti/connector-export-file-csv:6.4.1
             docker push opencti/connector-export-file-csv:latest
 
@@ -1164,7 +1267,8 @@ jobs:
             echo "Processing internal-export-file/export-file-stix"
             cd internal-export-file/export-file-stix
             echo "$DOCKERHUB_PASS" | docker login -u "$DOCKERHUB_USERNAME" --password-stdin
-            docker build -t opencti/connector-export-file-stix:6.4.1 . --build-arg BASE_IMAGE=renizmy/opencti-base:6.4.1 && docker tag opencti/connector-export-file-stix:latest
+            docker build -t opencti/connector-export-file-stix:6.4.1 . --build-arg BASE_IMAGE=renizmy/opencti-base:6.4.1
+            docker tag opencti/connector-export-file-stix:6.4.1 opencti/connector-export-file-stix:latest
             docker push opencti/connector-export-file-stix:6.4.1
             docker push opencti/connector-export-file-stix:latest
 
@@ -1183,7 +1287,8 @@ jobs:
             echo "Processing internal-import-file/import-file-stix"
             cd internal-import-file/import-file-stix
             echo "$DOCKERHUB_PASS" | docker login -u "$DOCKERHUB_USERNAME" --password-stdin
-            docker build -t opencti/connector-import-file-stix:6.4.1 . --build-arg BASE_IMAGE=renizmy/opencti-base:6.4.1 && docker tag opencti/connector-import-file-stix:latest
+            docker build -t opencti/connector-import-file-stix:6.4.1 . --build-arg BASE_IMAGE=renizmy/opencti-base:6.4.1
+            docker tag opencti/connector-import-file-stix:6.4.1 opencti/connector-import-file-stix:latest
             docker push opencti/connector-import-file-stix:6.4.1
             docker push opencti/connector-import-file-stix:latest
 
@@ -1194,7 +1299,8 @@ jobs:
             echo "Processing internal-import-file/import-file-misp"
             cd internal-import-file/import-file-misp
             echo "$DOCKERHUB_PASS" | docker login -u "$DOCKERHUB_USERNAME" --password-stdin
-            docker build -t opencti/connector-import-file-misp:6.4.1 . --build-arg BASE_IMAGE=renizmy/opencti-base:6.4.1 && docker tag opencti/connector-import-file-misp:latest
+            docker build -t opencti/connector-import-file-misp:6.4.1 . --build-arg BASE_IMAGE=renizmy/opencti-base:6.4.1
+            docker tag opencti/connector-import-file-misp:6.4.1 opencti/connector-import-file-misp:latest
             docker push opencti/connector-import-file-misp:6.4.1
             docker push opencti/connector-import-file-misp:latest
 
@@ -1205,7 +1311,8 @@ jobs:
             echo "Processing internal-import-file/import-document"
             cd internal-import-file/import-document
             echo "$DOCKERHUB_PASS" | docker login -u "$DOCKERHUB_USERNAME" --password-stdin
-            docker build -t opencti/connector-import-document:6.4.1 . --build-arg BASE_IMAGE=renizmy/opencti-base:6.4.1 && docker tag opencti/connector-import-document:latest
+            docker build -t opencti/connector-import-document:6.4.1 . --build-arg BASE_IMAGE=renizmy/opencti-base:6.4.1
+            docker tag opencti/connector-import-document:6.4.1 opencti/connector-import-document:latest
             docker push opencti/connector-import-document:6.4.1
             docker push opencti/connector-import-document:latest
 
