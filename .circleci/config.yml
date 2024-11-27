@@ -2,13 +2,13 @@ version: 2.1
 
 jobs:
 
-  build_external-import:
+  
+  build_external-import_comlaude:
     docker:
       - image: cimg/base:stable-20.04
     steps:
       - checkout
       - setup_remote_docker
-      
       - run:
           name: Build external-import/comlaude
           command: |
@@ -19,8 +19,13 @@ jobs:
             docker tag renizmy/connector-comlaude:6.4.1 renizmy/connector-comlaude:latest
             docker push renizmy/connector-comlaude:6.4.1
             docker push renizmy/connector-comlaude:latest
-
       
+  build_external-import_shadowserver:
+    docker:
+      - image: cimg/base:stable-20.04
+    steps:
+      - checkout
+      - setup_remote_docker
       - run:
           name: Build external-import/shadowserver
           command: |
@@ -31,8 +36,13 @@ jobs:
             docker tag renizmy/connector-shadowserver:6.4.1 renizmy/connector-shadowserver:latest
             docker push renizmy/connector-shadowserver:6.4.1
             docker push renizmy/connector-shadowserver:latest
-
       
+  build_external-import_tweetfeed:
+    docker:
+      - image: cimg/base:stable-20.04
+    steps:
+      - checkout
+      - setup_remote_docker
       - run:
           name: Build external-import/tweetfeed
           command: |
@@ -43,8 +53,13 @@ jobs:
             docker tag renizmy/connector-tweetfeed:6.4.1 renizmy/connector-tweetfeed:latest
             docker push renizmy/connector-tweetfeed:6.4.1
             docker push renizmy/connector-tweetfeed:latest
-
       
+  build_external-import_lastinfosec:
+    docker:
+      - image: cimg/base:stable-20.04
+    steps:
+      - checkout
+      - setup_remote_docker
       - run:
           name: Build external-import/lastinfosec
           command: |
@@ -55,8 +70,13 @@ jobs:
             docker tag renizmy/connector-lastinfosec:6.4.1 renizmy/connector-lastinfosec:latest
             docker push renizmy/connector-lastinfosec:6.4.1
             docker push renizmy/connector-lastinfosec:latest
-
       
+  build_external-import_sentinelone-threats:
+    docker:
+      - image: cimg/base:stable-20.04
+    steps:
+      - checkout
+      - setup_remote_docker
       - run:
           name: Build external-import/sentinelone-threats
           command: |
@@ -67,8 +87,13 @@ jobs:
             docker tag renizmy/connector-sentinelone-threats:6.4.1 renizmy/connector-sentinelone-threats:latest
             docker push renizmy/connector-sentinelone-threats:6.4.1
             docker push renizmy/connector-sentinelone-threats:latest
-
       
+  build_external-import_citalid:
+    docker:
+      - image: cimg/base:stable-20.04
+    steps:
+      - checkout
+      - setup_remote_docker
       - run:
           name: Build external-import/citalid
           command: |
@@ -79,8 +104,13 @@ jobs:
             docker tag renizmy/connector-citalid:6.4.1 renizmy/connector-citalid:latest
             docker push renizmy/connector-citalid:6.4.1
             docker push renizmy/connector-citalid:latest
-
       
+  build_external-import_malcore:
+    docker:
+      - image: cimg/base:stable-20.04
+    steps:
+      - checkout
+      - setup_remote_docker
       - run:
           name: Build external-import/malcore
           command: |
@@ -91,8 +121,13 @@ jobs:
             docker tag renizmy/connector-malcore:6.4.1 renizmy/connector-malcore:latest
             docker push renizmy/connector-malcore:6.4.1
             docker push renizmy/connector-malcore:latest
-
       
+  build_external-import_rst-report-hub:
+    docker:
+      - image: cimg/base:stable-20.04
+    steps:
+      - checkout
+      - setup_remote_docker
       - run:
           name: Build external-import/rst-report-hub
           command: |
@@ -103,8 +138,13 @@ jobs:
             docker tag renizmy/connector-rst-report-hub:6.4.1 renizmy/connector-rst-report-hub:latest
             docker push renizmy/connector-rst-report-hub:6.4.1
             docker push renizmy/connector-rst-report-hub:latest
-
       
+  build_external-import_malpedia:
+    docker:
+      - image: cimg/base:stable-20.04
+    steps:
+      - checkout
+      - setup_remote_docker
       - run:
           name: Build external-import/malpedia
           command: |
@@ -115,8 +155,13 @@ jobs:
             docker tag renizmy/connector-malpedia:6.4.1 renizmy/connector-malpedia:latest
             docker push renizmy/connector-malpedia:6.4.1
             docker push renizmy/connector-malpedia:latest
-
       
+  build_external-import_cyber-campaign-collection:
+    docker:
+      - image: cimg/base:stable-20.04
+    steps:
+      - checkout
+      - setup_remote_docker
       - run:
           name: Build external-import/cyber-campaign-collection
           command: |
@@ -127,8 +172,13 @@ jobs:
             docker tag renizmy/connector-cyber-campaign-collection:6.4.1 renizmy/connector-cyber-campaign-collection:latest
             docker push renizmy/connector-cyber-campaign-collection:6.4.1
             docker push renizmy/connector-cyber-campaign-collection:latest
-
       
+  build_external-import_abuse-ssl:
+    docker:
+      - image: cimg/base:stable-20.04
+    steps:
+      - checkout
+      - setup_remote_docker
       - run:
           name: Build external-import/abuse-ssl
           command: |
@@ -139,8 +189,13 @@ jobs:
             docker tag renizmy/connector-abuse-ssl:6.4.1 renizmy/connector-abuse-ssl:latest
             docker push renizmy/connector-abuse-ssl:6.4.1
             docker push renizmy/connector-abuse-ssl:latest
-
       
+  build_external-import_urlhaus-recent-payloads:
+    docker:
+      - image: cimg/base:stable-20.04
+    steps:
+      - checkout
+      - setup_remote_docker
       - run:
           name: Build external-import/urlhaus-recent-payloads
           command: |
@@ -151,8 +206,13 @@ jobs:
             docker tag renizmy/connector-urlhaus-recent-payloads:6.4.1 renizmy/connector-urlhaus-recent-payloads:latest
             docker push renizmy/connector-urlhaus-recent-payloads:6.4.1
             docker push renizmy/connector-urlhaus-recent-payloads:latest
-
       
+  build_external-import_crits:
+    docker:
+      - image: cimg/base:stable-20.04
+    steps:
+      - checkout
+      - setup_remote_docker
       - run:
           name: Build external-import/crits
           command: |
@@ -163,8 +223,13 @@ jobs:
             docker tag renizmy/connector-crits:6.4.1 renizmy/connector-crits:latest
             docker push renizmy/connector-crits:6.4.1
             docker push renizmy/connector-crits:latest
-
       
+  build_external-import_sentinel-incidents:
+    docker:
+      - image: cimg/base:stable-20.04
+    steps:
+      - checkout
+      - setup_remote_docker
       - run:
           name: Build external-import/sentinel-incidents
           command: |
@@ -175,8 +240,13 @@ jobs:
             docker tag renizmy/connector-sentinel-incidents:6.4.1 renizmy/connector-sentinel-incidents:latest
             docker push renizmy/connector-sentinel-incidents:6.4.1
             docker push renizmy/connector-sentinel-incidents:latest
-
       
+  build_external-import_urlhaus:
+    docker:
+      - image: cimg/base:stable-20.04
+    steps:
+      - checkout
+      - setup_remote_docker
       - run:
           name: Build external-import/urlhaus
           command: |
@@ -187,8 +257,13 @@ jobs:
             docker tag renizmy/connector-urlhaus:6.4.1 renizmy/connector-urlhaus:latest
             docker push renizmy/connector-urlhaus:6.4.1
             docker push renizmy/connector-urlhaus:latest
-
       
+  build_external-import_mwdb:
+    docker:
+      - image: cimg/base:stable-20.04
+    steps:
+      - checkout
+      - setup_remote_docker
       - run:
           name: Build external-import/mwdb
           command: |
@@ -199,8 +274,13 @@ jobs:
             docker tag renizmy/connector-mwdb:6.4.1 renizmy/connector-mwdb:latest
             docker push renizmy/connector-mwdb:6.4.1
             docker push renizmy/connector-mwdb:latest
-
       
+  build_external-import_cve:
+    docker:
+      - image: cimg/base:stable-20.04
+    steps:
+      - checkout
+      - setup_remote_docker
       - run:
           name: Build external-import/cve
           command: |
@@ -211,8 +291,13 @@ jobs:
             docker tag renizmy/connector-cve:6.4.1 renizmy/connector-cve:latest
             docker push renizmy/connector-cve:6.4.1
             docker push renizmy/connector-cve:latest
-
       
+  build_external-import_malwarebazaar-recent-additions:
+    docker:
+      - image: cimg/base:stable-20.04
+    steps:
+      - checkout
+      - setup_remote_docker
       - run:
           name: Build external-import/malwarebazaar-recent-additions
           command: |
@@ -223,8 +308,13 @@ jobs:
             docker tag renizmy/connector-malwarebazaar-recent-additions:6.4.1 renizmy/connector-malwarebazaar-recent-additions:latest
             docker push renizmy/connector-malwarebazaar-recent-additions:6.4.1
             docker push renizmy/connector-malwarebazaar-recent-additions:latest
-
       
+  build_external-import_mandiant:
+    docker:
+      - image: cimg/base:stable-20.04
+    steps:
+      - checkout
+      - setup_remote_docker
       - run:
           name: Build external-import/mandiant
           command: |
@@ -235,8 +325,13 @@ jobs:
             docker tag renizmy/connector-mandiant:6.4.1 renizmy/connector-mandiant:latest
             docker push renizmy/connector-mandiant:6.4.1
             docker push renizmy/connector-mandiant:latest
-
       
+  build_external-import_cybersixgill:
+    docker:
+      - image: cimg/base:stable-20.04
+    steps:
+      - checkout
+      - setup_remote_docker
       - run:
           name: Build external-import/cybersixgill
           command: |
@@ -247,8 +342,13 @@ jobs:
             docker tag renizmy/connector-cybersixgill:6.4.1 renizmy/connector-cybersixgill:latest
             docker push renizmy/connector-cybersixgill:6.4.1
             docker push renizmy/connector-cybersixgill:latest
-
       
+  build_external-import_phishunt:
+    docker:
+      - image: cimg/base:stable-20.04
+    steps:
+      - checkout
+      - setup_remote_docker
       - run:
           name: Build external-import/phishunt
           command: |
@@ -259,8 +359,13 @@ jobs:
             docker tag renizmy/connector-phishunt:6.4.1 renizmy/connector-phishunt:latest
             docker push renizmy/connector-phishunt:6.4.1
             docker push renizmy/connector-phishunt:latest
-
       
+  build_external-import_disarm-framework:
+    docker:
+      - image: cimg/base:stable-20.04
+    steps:
+      - checkout
+      - setup_remote_docker
       - run:
           name: Build external-import/disarm-framework
           command: |
@@ -271,8 +376,13 @@ jobs:
             docker tag renizmy/connector-disarm-framework:6.4.1 renizmy/connector-disarm-framework:latest
             docker push renizmy/connector-disarm-framework:6.4.1
             docker push renizmy/connector-disarm-framework:latest
-
       
+  build_external-import_opencsam:
+    docker:
+      - image: cimg/base:stable-20.04
+    steps:
+      - checkout
+      - setup_remote_docker
       - run:
           name: Build external-import/opencsam
           command: |
@@ -283,8 +393,13 @@ jobs:
             docker tag renizmy/connector-opencsam:6.4.1 renizmy/connector-opencsam:latest
             docker push renizmy/connector-opencsam:6.4.1
             docker push renizmy/connector-opencsam:latest
-
       
+  build_external-import_crowdstrike:
+    docker:
+      - image: cimg/base:stable-20.04
+    steps:
+      - checkout
+      - setup_remote_docker
       - run:
           name: Build external-import/crowdstrike
           command: |
@@ -295,8 +410,13 @@ jobs:
             docker tag renizmy/connector-crowdstrike:6.4.1 renizmy/connector-crowdstrike:latest
             docker push renizmy/connector-crowdstrike:6.4.1
             docker push renizmy/connector-crowdstrike:latest
-
       
+  build_external-import_cisa-known-exploited-vulnerabilities:
+    docker:
+      - image: cimg/base:stable-20.04
+    steps:
+      - checkout
+      - setup_remote_docker
       - run:
           name: Build external-import/cisa-known-exploited-vulnerabilities
           command: |
@@ -307,8 +427,13 @@ jobs:
             docker tag renizmy/connector-cisa-known-exploited-vulnerabilities:6.4.1 renizmy/connector-cisa-known-exploited-vulnerabilities:latest
             docker push renizmy/connector-cisa-known-exploited-vulnerabilities:6.4.1
             docker push renizmy/connector-cisa-known-exploited-vulnerabilities:latest
-
       
+  build_external-import_opencti:
+    docker:
+      - image: cimg/base:stable-20.04
+    steps:
+      - checkout
+      - setup_remote_docker
       - run:
           name: Build external-import/opencti
           command: |
@@ -319,8 +444,13 @@ jobs:
             docker tag renizmy/connector-opencti:6.4.1 renizmy/connector-opencti:latest
             docker push renizmy/connector-opencti:6.4.1
             docker push renizmy/connector-opencti:latest
-
       
+  build_external-import_cluster25:
+    docker:
+      - image: cimg/base:stable-20.04
+    steps:
+      - checkout
+      - setup_remote_docker
       - run:
           name: Build external-import/cluster25
           command: |
@@ -331,8 +461,13 @@ jobs:
             docker tag renizmy/connector-cluster25:6.4.1 renizmy/connector-cluster25:latest
             docker push renizmy/connector-cluster25:6.4.1
             docker push renizmy/connector-cluster25:latest
-
       
+  build_external-import_maltiverse:
+    docker:
+      - image: cimg/base:stable-20.04
+    steps:
+      - checkout
+      - setup_remote_docker
       - run:
           name: Build external-import/maltiverse
           command: |
@@ -343,8 +478,13 @@ jobs:
             docker tag renizmy/connector-maltiverse:6.4.1 renizmy/connector-maltiverse:latest
             docker push renizmy/connector-maltiverse:6.4.1
             docker push renizmy/connector-maltiverse:latest
-
       
+  build_external-import_threatfox:
+    docker:
+      - image: cimg/base:stable-20.04
+    steps:
+      - checkout
+      - setup_remote_docker
       - run:
           name: Build external-import/threatfox
           command: |
@@ -355,8 +495,13 @@ jobs:
             docker tag renizmy/connector-threatfox:6.4.1 renizmy/connector-threatfox:latest
             docker push renizmy/connector-threatfox:6.4.1
             docker push renizmy/connector-threatfox:latest
-
       
+  build_external-import_taxii2:
+    docker:
+      - image: cimg/base:stable-20.04
+    steps:
+      - checkout
+      - setup_remote_docker
       - run:
           name: Build external-import/taxii2
           command: |
@@ -367,8 +512,13 @@ jobs:
             docker tag renizmy/connector-taxii2:6.4.1 renizmy/connector-taxii2:latest
             docker push renizmy/connector-taxii2:6.4.1
             docker push renizmy/connector-taxii2:latest
-
       
+  build_external-import_thehive:
+    docker:
+      - image: cimg/base:stable-20.04
+    steps:
+      - checkout
+      - setup_remote_docker
       - run:
           name: Build external-import/thehive
           command: |
@@ -379,8 +529,13 @@ jobs:
             docker tag renizmy/connector-thehive:6.4.1 renizmy/connector-thehive:latest
             docker push renizmy/connector-thehive:6.4.1
             docker push renizmy/connector-thehive:latest
-
       
+  build_external-import_google-drive:
+    docker:
+      - image: cimg/base:stable-20.04
+    steps:
+      - checkout
+      - setup_remote_docker
       - run:
           name: Build external-import/google-drive
           command: |
@@ -391,8 +546,13 @@ jobs:
             docker tag renizmy/connector-google-drive:6.4.1 renizmy/connector-google-drive:latest
             docker push renizmy/connector-google-drive:6.4.1
             docker push renizmy/connector-google-drive:latest
-
       
+  build_external-import_cisco-sma:
+    docker:
+      - image: cimg/base:stable-20.04
+    steps:
+      - checkout
+      - setup_remote_docker
       - run:
           name: Build external-import/cisco-sma
           command: |
@@ -403,8 +563,13 @@ jobs:
             docker tag renizmy/connector-cisco-sma:6.4.1 renizmy/connector-cisco-sma:latest
             docker push renizmy/connector-cisco-sma:6.4.1
             docker push renizmy/connector-cisco-sma:latest
-
       
+  build_external-import_valhalla:
+    docker:
+      - image: cimg/base:stable-20.04
+    steps:
+      - checkout
+      - setup_remote_docker
       - run:
           name: Build external-import/valhalla
           command: |
@@ -415,8 +580,13 @@ jobs:
             docker tag renizmy/connector-valhalla:6.4.1 renizmy/connector-valhalla:latest
             docker push renizmy/connector-valhalla:6.4.1
             docker push renizmy/connector-valhalla:latest
-
       
+  build_external-import_kaspersky:
+    docker:
+      - image: cimg/base:stable-20.04
+    steps:
+      - checkout
+      - setup_remote_docker
       - run:
           name: Build external-import/kaspersky
           command: |
@@ -427,8 +597,13 @@ jobs:
             docker tag renizmy/connector-kaspersky:6.4.1 renizmy/connector-kaspersky:latest
             docker push renizmy/connector-kaspersky:6.4.1
             docker push renizmy/connector-kaspersky:latest
-
       
+  build_external-import_obstracts:
+    docker:
+      - image: cimg/base:stable-20.04
+    steps:
+      - checkout
+      - setup_remote_docker
       - run:
           name: Build external-import/obstracts
           command: |
@@ -439,8 +614,13 @@ jobs:
             docker tag renizmy/connector-obstracts:6.4.1 renizmy/connector-obstracts:latest
             docker push renizmy/connector-obstracts:6.4.1
             docker push renizmy/connector-obstracts:latest
-
       
+  build_external-import_red-flag-domains:
+    docker:
+      - image: cimg/base:stable-20.04
+    steps:
+      - checkout
+      - setup_remote_docker
       - run:
           name: Build external-import/red-flag-domains
           command: |
@@ -451,8 +631,13 @@ jobs:
             docker tag renizmy/connector-red-flag-domains:6.4.1 renizmy/connector-red-flag-domains:latest
             docker push renizmy/connector-red-flag-domains:6.4.1
             docker push renizmy/connector-red-flag-domains:latest
-
       
+  build_external-import_stopforumspam:
+    docker:
+      - image: cimg/base:stable-20.04
+    steps:
+      - checkout
+      - setup_remote_docker
       - run:
           name: Build external-import/stopforumspam
           command: |
@@ -463,8 +648,13 @@ jobs:
             docker tag renizmy/connector-stopforumspam:6.4.1 renizmy/connector-stopforumspam:latest
             docker push renizmy/connector-stopforumspam:6.4.1
             docker push renizmy/connector-stopforumspam:latest
-
       
+  build_external-import_flashpoint:
+    docker:
+      - image: cimg/base:stable-20.04
+    steps:
+      - checkout
+      - setup_remote_docker
       - run:
           name: Build external-import/flashpoint
           command: |
@@ -475,8 +665,13 @@ jobs:
             docker tag renizmy/connector-flashpoint:6.4.1 renizmy/connector-flashpoint:latest
             docker push renizmy/connector-flashpoint:6.4.1
             docker push renizmy/connector-flashpoint:latest
-
       
+  build_external-import_mitre-atlas:
+    docker:
+      - image: cimg/base:stable-20.04
+    steps:
+      - checkout
+      - setup_remote_docker
       - run:
           name: Build external-import/mitre-atlas
           command: |
@@ -487,8 +682,13 @@ jobs:
             docker tag renizmy/connector-mitre-atlas:6.4.1 renizmy/connector-mitre-atlas:latest
             docker push renizmy/connector-mitre-atlas:6.4.1
             docker push renizmy/connector-mitre-atlas:latest
-
       
+  build_external-import_chapsvision:
+    docker:
+      - image: cimg/base:stable-20.04
+    steps:
+      - checkout
+      - setup_remote_docker
       - run:
           name: Build external-import/chapsvision
           command: |
@@ -499,8 +699,13 @@ jobs:
             docker tag renizmy/connector-chapsvision:6.4.1 renizmy/connector-chapsvision:latest
             docker push renizmy/connector-chapsvision:6.4.1
             docker push renizmy/connector-chapsvision:latest
-
       
+  build_external-import_fortinet-ti:
+    docker:
+      - image: cimg/base:stable-20.04
+    steps:
+      - checkout
+      - setup_remote_docker
       - run:
           name: Build external-import/fortinet-ti
           command: |
@@ -511,8 +716,13 @@ jobs:
             docker tag renizmy/connector-fortinet-ti:6.4.1 renizmy/connector-fortinet-ti:latest
             docker push renizmy/connector-fortinet-ti:6.4.1
             docker push renizmy/connector-fortinet-ti:latest
-
       
+  build_external-import_tanium-incidents:
+    docker:
+      - image: cimg/base:stable-20.04
+    steps:
+      - checkout
+      - setup_remote_docker
       - run:
           name: Build external-import/tanium-incidents
           command: |
@@ -523,8 +733,13 @@ jobs:
             docker tag renizmy/connector-tanium-incidents:6.4.1 renizmy/connector-tanium-incidents:latest
             docker push renizmy/connector-tanium-incidents:6.4.1
             docker push renizmy/connector-tanium-incidents:latest
-
       
+  build_external-import_tenable-vuln-management:
+    docker:
+      - image: cimg/base:stable-20.04
+    steps:
+      - checkout
+      - setup_remote_docker
       - run:
           name: Build external-import/tenable-vuln-management
           command: |
@@ -535,8 +750,13 @@ jobs:
             docker tag renizmy/connector-tenable-vuln-management:6.4.1 renizmy/connector-tenable-vuln-management:latest
             docker push renizmy/connector-tenable-vuln-management:6.4.1
             docker push renizmy/connector-tenable-vuln-management:latest
-
       
+  build_external-import_intelfinder:
+    docker:
+      - image: cimg/base:stable-20.04
+    steps:
+      - checkout
+      - setup_remote_docker
       - run:
           name: Build external-import/intelfinder
           command: |
@@ -547,8 +767,13 @@ jobs:
             docker tag renizmy/connector-intelfinder:6.4.1 renizmy/connector-intelfinder:latest
             docker push renizmy/connector-intelfinder:6.4.1
             docker push renizmy/connector-intelfinder:latest
-
       
+  build_external-import_intel471:
+    docker:
+      - image: cimg/base:stable-20.04
+    steps:
+      - checkout
+      - setup_remote_docker
       - run:
           name: Build external-import/intel471
           command: |
@@ -559,8 +784,13 @@ jobs:
             docker tag renizmy/connector-intel471:6.4.1 renizmy/connector-intel471:latest
             docker push renizmy/connector-intel471:6.4.1
             docker push renizmy/connector-intel471:latest
-
       
+  build_external-import_misp:
+    docker:
+      - image: cimg/base:stable-20.04
+    steps:
+      - checkout
+      - setup_remote_docker
       - run:
           name: Build external-import/misp
           command: |
@@ -571,8 +801,13 @@ jobs:
             docker tag renizmy/connector-misp:6.4.1 renizmy/connector-misp:latest
             docker push renizmy/connector-misp:6.4.1
             docker push renizmy/connector-misp:latest
-
       
+  build_external-import_misp-feed:
+    docker:
+      - image: cimg/base:stable-20.04
+    steps:
+      - checkout
+      - setup_remote_docker
       - run:
           name: Build external-import/misp-feed
           command: |
@@ -583,8 +818,13 @@ jobs:
             docker tag renizmy/connector-misp-feed:6.4.1 renizmy/connector-misp-feed:latest
             docker push renizmy/connector-misp-feed:6.4.1
             docker push renizmy/connector-misp-feed:latest
-
       
+  build_external-import_eset:
+    docker:
+      - image: cimg/base:stable-20.04
+    steps:
+      - checkout
+      - setup_remote_docker
       - run:
           name: Build external-import/eset
           command: |
@@ -595,8 +835,13 @@ jobs:
             docker tag renizmy/connector-eset:6.4.1 renizmy/connector-eset:latest
             docker push renizmy/connector-eset:6.4.1
             docker push renizmy/connector-eset:latest
-
       
+  build_external-import_greynoise-feed:
+    docker:
+      - image: cimg/base:stable-20.04
+    steps:
+      - checkout
+      - setup_remote_docker
       - run:
           name: Build external-import/greynoise-feed
           command: |
@@ -607,8 +852,13 @@ jobs:
             docker tag renizmy/connector-greynoise-feed:6.4.1 renizmy/connector-greynoise-feed:latest
             docker push renizmy/connector-greynoise-feed:6.4.1
             docker push renizmy/connector-greynoise-feed:latest
-
       
+  build_external-import_recorded-future:
+    docker:
+      - image: cimg/base:stable-20.04
+    steps:
+      - checkout
+      - setup_remote_docker
       - run:
           name: Build external-import/recorded-future
           command: |
@@ -619,8 +869,13 @@ jobs:
             docker tag renizmy/connector-recorded-future:6.4.1 renizmy/connector-recorded-future:latest
             docker push renizmy/connector-recorded-future:6.4.1
             docker push renizmy/connector-recorded-future:latest
-
       
+  build_external-import_riskiq:
+    docker:
+      - image: cimg/base:stable-20.04
+    steps:
+      - checkout
+      - setup_remote_docker
       - run:
           name: Build external-import/riskiq
           command: |
@@ -631,8 +886,13 @@ jobs:
             docker tag renizmy/connector-riskiq:6.4.1 renizmy/connector-riskiq:latest
             docker push renizmy/connector-riskiq:6.4.1
             docker push renizmy/connector-riskiq:latest
-
       
+  build_external-import_group-ib:
+    docker:
+      - image: cimg/base:stable-20.04
+    steps:
+      - checkout
+      - setup_remote_docker
       - run:
           name: Build external-import/group-ib
           command: |
@@ -643,8 +903,13 @@ jobs:
             docker tag renizmy/connector-group-ib:6.4.1 renizmy/connector-group-ib:latest
             docker push renizmy/connector-group-ib:6.4.1
             docker push renizmy/connector-group-ib:latest
-
       
+  build_external-import_harfanglab-incidents:
+    docker:
+      - image: cimg/base:stable-20.04
+    steps:
+      - checkout
+      - setup_remote_docker
       - run:
           name: Build external-import/harfanglab-incidents
           command: |
@@ -655,8 +920,13 @@ jobs:
             docker tag renizmy/connector-harfanglab-incidents:6.4.1 renizmy/connector-harfanglab-incidents:latest
             docker push renizmy/connector-harfanglab-incidents:6.4.1
             docker push renizmy/connector-harfanglab-incidents:latest
-
       
+  build_external-import_silobreaker:
+    docker:
+      - image: cimg/base:stable-20.04
+    steps:
+      - checkout
+      - setup_remote_docker
       - run:
           name: Build external-import/silobreaker
           command: |
@@ -667,8 +937,13 @@ jobs:
             docker tag renizmy/connector-silobreaker:6.4.1 renizmy/connector-silobreaker:latest
             docker push renizmy/connector-silobreaker:6.4.1
             docker push renizmy/connector-silobreaker:latest
-
       
+  build_external-import_alienvault:
+    docker:
+      - image: cimg/base:stable-20.04
+    steps:
+      - checkout
+      - setup_remote_docker
       - run:
           name: Build external-import/alienvault
           command: |
@@ -679,8 +954,13 @@ jobs:
             docker tag renizmy/connector-alienvault:6.4.1 renizmy/connector-alienvault:latest
             docker push renizmy/connector-alienvault:6.4.1
             docker push renizmy/connector-alienvault:latest
-
       
+  build_external-import_zerofox:
+    docker:
+      - image: cimg/base:stable-20.04
+    steps:
+      - checkout
+      - setup_remote_docker
       - run:
           name: Build external-import/zerofox
           command: |
@@ -691,8 +971,13 @@ jobs:
             docker tag renizmy/connector-zerofox:6.4.1 renizmy/connector-zerofox:latest
             docker push renizmy/connector-zerofox:6.4.1
             docker push renizmy/connector-zerofox:latest
-
       
+  build_external-import_cuckoo:
+    docker:
+      - image: cimg/base:stable-20.04
+    steps:
+      - checkout
+      - setup_remote_docker
       - run:
           name: Build external-import/cuckoo
           command: |
@@ -703,8 +988,13 @@ jobs:
             docker tag renizmy/connector-cuckoo:6.4.1 renizmy/connector-cuckoo:latest
             docker push renizmy/connector-cuckoo:6.4.1
             docker push renizmy/connector-cuckoo:latest
-
       
+  build_external-import_cpe:
+    docker:
+      - image: cimg/base:stable-20.04
+    steps:
+      - checkout
+      - setup_remote_docker
       - run:
           name: Build external-import/cpe
           command: |
@@ -715,8 +1005,13 @@ jobs:
             docker tag renizmy/connector-cpe:6.4.1 renizmy/connector-cpe:latest
             docker push renizmy/connector-cpe:6.4.1
             docker push renizmy/connector-cpe:latest
-
       
+  build_external-import_restore-files:
+    docker:
+      - image: cimg/base:stable-20.04
+    steps:
+      - checkout
+      - setup_remote_docker
       - run:
           name: Build external-import/restore-files
           command: |
@@ -727,8 +1022,13 @@ jobs:
             docker tag renizmy/connector-restore-files:6.4.1 renizmy/connector-restore-files:latest
             docker push renizmy/connector-restore-files:6.4.1
             docker push renizmy/connector-restore-files:latest
-
       
+  build_external-import_stixify:
+    docker:
+      - image: cimg/base:stable-20.04
+    steps:
+      - checkout
+      - setup_remote_docker
       - run:
           name: Build external-import/stixify
           command: |
@@ -739,8 +1039,13 @@ jobs:
             docker tag renizmy/connector-stixify:6.4.1 renizmy/connector-stixify:latest
             docker push renizmy/connector-stixify:6.4.1
             docker push renizmy/connector-stixify:latest
-
       
+  build_external-import_orange-cyberdefense:
+    docker:
+      - image: cimg/base:stable-20.04
+    steps:
+      - checkout
+      - setup_remote_docker
       - run:
           name: Build external-import/orange-cyberdefense
           command: |
@@ -751,8 +1056,13 @@ jobs:
             docker tag renizmy/connector-orange-cyberdefense:6.4.1 renizmy/connector-orange-cyberdefense:latest
             docker push renizmy/connector-orange-cyberdefense:6.4.1
             docker push renizmy/connector-orange-cyberdefense:latest
-
       
+  build_external-import_abuseipdb-ipblacklist:
+    docker:
+      - image: cimg/base:stable-20.04
+    steps:
+      - checkout
+      - setup_remote_docker
       - run:
           name: Build external-import/abuseipdb-ipblacklist
           command: |
@@ -763,8 +1073,13 @@ jobs:
             docker tag renizmy/connector-abuseipdb-ipblacklist:6.4.1 renizmy/connector-abuseipdb-ipblacklist:latest
             docker push renizmy/connector-abuseipdb-ipblacklist:6.4.1
             docker push renizmy/connector-abuseipdb-ipblacklist:latest
-
       
+  build_external-import_sekoia:
+    docker:
+      - image: cimg/base:stable-20.04
+    steps:
+      - checkout
+      - setup_remote_docker
       - run:
           name: Build external-import/sekoia
           command: |
@@ -775,8 +1090,13 @@ jobs:
             docker tag renizmy/connector-sekoia:6.4.1 renizmy/connector-sekoia:latest
             docker push renizmy/connector-sekoia:6.4.1
             docker push renizmy/connector-sekoia:latest
-
       
+  build_external-import_vxvault:
+    docker:
+      - image: cimg/base:stable-20.04
+    steps:
+      - checkout
+      - setup_remote_docker
       - run:
           name: Build external-import/vxvault
           command: |
@@ -787,8 +1107,13 @@ jobs:
             docker tag renizmy/connector-vxvault:6.4.1 renizmy/connector-vxvault:latest
             docker push renizmy/connector-vxvault:6.4.1
             docker push renizmy/connector-vxvault:latest
-
       
+  build_external-import_mitre:
+    docker:
+      - image: cimg/base:stable-20.04
+    steps:
+      - checkout
+      - setup_remote_docker
       - run:
           name: Build external-import/mitre
           command: |
@@ -799,8 +1124,13 @@ jobs:
             docker tag renizmy/connector-mitre:6.4.1 renizmy/connector-mitre:latest
             docker push renizmy/connector-mitre:6.4.1
             docker push renizmy/connector-mitre:latest
-
       
+  build_external-import_crtsh:
+    docker:
+      - image: cimg/base:stable-20.04
+    steps:
+      - checkout
+      - setup_remote_docker
       - run:
           name: Build external-import/crtsh
           command: |
@@ -811,8 +1141,13 @@ jobs:
             docker tag renizmy/connector-crtsh:6.4.1 renizmy/connector-crtsh:latest
             docker push renizmy/connector-crtsh:6.4.1
             docker push renizmy/connector-crtsh:latest
-
       
+  build_external-import_virustotal-livehunt-notifications:
+    docker:
+      - image: cimg/base:stable-20.04
+    steps:
+      - checkout
+      - setup_remote_docker
       - run:
           name: Build external-import/virustotal-livehunt-notifications
           command: |
@@ -823,8 +1158,13 @@ jobs:
             docker tag renizmy/connector-virustotal-livehunt-notifications:6.4.1 renizmy/connector-virustotal-livehunt-notifications:latest
             docker push renizmy/connector-virustotal-livehunt-notifications:6.4.1
             docker push renizmy/connector-virustotal-livehunt-notifications:latest
-
       
+  build_external-import_infoblox:
+    docker:
+      - image: cimg/base:stable-20.04
+    steps:
+      - checkout
+      - setup_remote_docker
       - run:
           name: Build external-import/infoblox
           command: |
@@ -835,8 +1175,13 @@ jobs:
             docker tag renizmy/connector-infoblox:6.4.1 renizmy/connector-infoblox:latest
             docker push renizmy/connector-infoblox:6.4.1
             docker push renizmy/connector-infoblox:latest
-
       
+  build_external-import_cofense:
+    docker:
+      - image: cimg/base:stable-20.04
+    steps:
+      - checkout
+      - setup_remote_docker
       - run:
           name: Build external-import/cofense
           command: |
@@ -847,8 +1192,13 @@ jobs:
             docker tag renizmy/connector-cofense:6.4.1 renizmy/connector-cofense:latest
             docker push renizmy/connector-cofense:6.4.1
             docker push renizmy/connector-cofense:latest
-
       
+  build_external-import_rst-threat-feed:
+    docker:
+      - image: cimg/base:stable-20.04
+    steps:
+      - checkout
+      - setup_remote_docker
       - run:
           name: Build external-import/rst-threat-feed
           command: |
@@ -859,8 +1209,13 @@ jobs:
             docker tag renizmy/connector-rst-threat-feed:6.4.1 renizmy/connector-rst-threat-feed:latest
             docker push renizmy/connector-rst-threat-feed:6.4.1
             docker push renizmy/connector-rst-threat-feed:latest
-
       
+  build_external-import_siemrules:
+    docker:
+      - image: cimg/base:stable-20.04
+    steps:
+      - checkout
+      - setup_remote_docker
       - run:
           name: Build external-import/siemrules
           command: |
@@ -871,8 +1226,13 @@ jobs:
             docker tag renizmy/connector-siemrules:6.4.1 renizmy/connector-siemrules:latest
             docker push renizmy/connector-siemrules:6.4.1
             docker push renizmy/connector-siemrules:latest
-
       
+  build_external-import_cape:
+    docker:
+      - image: cimg/base:stable-20.04
+    steps:
+      - checkout
+      - setup_remote_docker
       - run:
           name: Build external-import/cape
           command: |
@@ -883,8 +1243,13 @@ jobs:
             docker tag renizmy/connector-cape:6.4.1 renizmy/connector-cape:latest
             docker push renizmy/connector-cape:6.4.1
             docker push renizmy/connector-cape:latest
-
       
+  build_external-import_ironnet:
+    docker:
+      - image: cimg/base:stable-20.04
+    steps:
+      - checkout
+      - setup_remote_docker
       - run:
           name: Build external-import/ironnet
           command: |
@@ -895,8 +1260,13 @@ jobs:
             docker tag renizmy/connector-ironnet:6.4.1 renizmy/connector-ironnet:latest
             docker push renizmy/connector-ironnet:6.4.1
             docker push renizmy/connector-ironnet:latest
-
       
+  build_external-import_urlscan:
+    docker:
+      - image: cimg/base:stable-20.04
+    steps:
+      - checkout
+      - setup_remote_docker
       - run:
           name: Build external-import/urlscan
           command: |
@@ -907,8 +1277,13 @@ jobs:
             docker tag renizmy/connector-urlscan:6.4.1 renizmy/connector-urlscan:latest
             docker push renizmy/connector-urlscan:6.4.1
             docker push renizmy/connector-urlscan:latest
-
       
+  build_external-import_anyrun-feed:
+    docker:
+      - image: cimg/base:stable-20.04
+    steps:
+      - checkout
+      - setup_remote_docker
       - run:
           name: Build external-import/anyrun-feed
           command: |
@@ -919,8 +1294,13 @@ jobs:
             docker tag renizmy/connector-anyrun-feed:6.4.1 renizmy/connector-anyrun-feed:latest
             docker push renizmy/connector-anyrun-feed:6.4.1
             docker push renizmy/connector-anyrun-feed:latest
-
       
+  build_external-import_ransomwarelive:
+    docker:
+      - image: cimg/base:stable-20.04
+    steps:
+      - checkout
+      - setup_remote_docker
       - run:
           name: Build external-import/ransomwarelive
           command: |
@@ -931,8 +1311,13 @@ jobs:
             docker tag renizmy/connector-ransomwarelive:6.4.1 renizmy/connector-ransomwarelive:latest
             docker push renizmy/connector-ransomwarelive:6.4.1
             docker push renizmy/connector-ransomwarelive:latest
-
       
+  build_external-import_feedly:
+    docker:
+      - image: cimg/base:stable-20.04
+    steps:
+      - checkout
+      - setup_remote_docker
       - run:
           name: Build external-import/feedly
           command: |
@@ -943,8 +1328,13 @@ jobs:
             docker tag renizmy/connector-feedly:6.4.1 renizmy/connector-feedly:latest
             docker push renizmy/connector-feedly:6.4.1
             docker push renizmy/connector-feedly:latest
-
       
+  build_external-import_socprime:
+    docker:
+      - image: cimg/base:stable-20.04
+    steps:
+      - checkout
+      - setup_remote_docker
       - run:
           name: Build external-import/socprime
           command: |
@@ -955,8 +1345,13 @@ jobs:
             docker tag renizmy/connector-socprime:6.4.1 renizmy/connector-socprime:latest
             docker push renizmy/connector-socprime:6.4.1
             docker push renizmy/connector-socprime:latest
-
       
+  build_external-import_diode-import:
+    docker:
+      - image: cimg/base:stable-20.04
+    steps:
+      - checkout
+      - setup_remote_docker
       - run:
           name: Build external-import/diode-import
           command: |
@@ -967,8 +1362,13 @@ jobs:
             docker tag renizmy/connector-diode-import:6.4.1 renizmy/connector-diode-import:latest
             docker push renizmy/connector-diode-import:6.4.1
             docker push renizmy/connector-diode-import:latest
-
       
+  build_external-import_threatmatch:
+    docker:
+      - image: cimg/base:stable-20.04
+    steps:
+      - checkout
+      - setup_remote_docker
       - run:
           name: Build external-import/threatmatch
           command: |
@@ -979,8 +1379,13 @@ jobs:
             docker tag renizmy/connector-threatmatch:6.4.1 renizmy/connector-threatmatch:latest
             docker push renizmy/connector-threatmatch:6.4.1
             docker push renizmy/connector-threatmatch:latest
-
       
+  build_external-import_vulmatch:
+    docker:
+      - image: cimg/base:stable-20.04
+    steps:
+      - checkout
+      - setup_remote_docker
       - run:
           name: Build external-import/vulmatch
           command: |
@@ -991,16 +1396,15 @@ jobs:
             docker tag renizmy/connector-vulmatch:6.4.1 renizmy/connector-vulmatch:latest
             docker push renizmy/connector-vulmatch:6.4.1
             docker push renizmy/connector-vulmatch:latest
-
       
 
-  build_stream:
+  
+  build_stream_harfanglab-intel:
     docker:
       - image: cimg/base:stable-20.04
     steps:
       - checkout
       - setup_remote_docker
-      
       - run:
           name: Build stream/harfanglab-intel
           command: |
@@ -1011,8 +1415,13 @@ jobs:
             docker tag renizmy/connector-harfanglab-intel:6.4.1 renizmy/connector-harfanglab-intel:latest
             docker push renizmy/connector-harfanglab-intel:6.4.1
             docker push renizmy/connector-harfanglab-intel:latest
-
       
+  build_stream_crowdstrike-endpoint-security:
+    docker:
+      - image: cimg/base:stable-20.04
+    steps:
+      - checkout
+      - setup_remote_docker
       - run:
           name: Build stream/crowdstrike-endpoint-security
           command: |
@@ -1023,8 +1432,13 @@ jobs:
             docker tag renizmy/connector-crowdstrike-endpoint-security:6.4.1 renizmy/connector-crowdstrike-endpoint-security:latest
             docker push renizmy/connector-crowdstrike-endpoint-security:6.4.1
             docker push renizmy/connector-crowdstrike-endpoint-security:latest
-
       
+  build_stream_webhook:
+    docker:
+      - image: cimg/base:stable-20.04
+    steps:
+      - checkout
+      - setup_remote_docker
       - run:
           name: Build stream/webhook
           command: |
@@ -1035,8 +1449,13 @@ jobs:
             docker tag renizmy/connector-webhook:6.4.1 renizmy/connector-webhook:latest
             docker push renizmy/connector-webhook:6.4.1
             docker push renizmy/connector-webhook:latest
-
       
+  build_stream_splunk:
+    docker:
+      - image: cimg/base:stable-20.04
+    steps:
+      - checkout
+      - setup_remote_docker
       - run:
           name: Build stream/splunk
           command: |
@@ -1047,8 +1466,13 @@ jobs:
             docker tag renizmy/connector-splunk:6.4.1 renizmy/connector-splunk:latest
             docker push renizmy/connector-splunk:6.4.1
             docker push renizmy/connector-splunk:latest
-
       
+  build_stream_sentinel-intel:
+    docker:
+      - image: cimg/base:stable-20.04
+    steps:
+      - checkout
+      - setup_remote_docker
       - run:
           name: Build stream/sentinel-intel
           command: |
@@ -1059,8 +1483,13 @@ jobs:
             docker tag renizmy/connector-sentinel-intel:6.4.1 renizmy/connector-sentinel-intel:latest
             docker push renizmy/connector-sentinel-intel:6.4.1
             docker push renizmy/connector-sentinel-intel:latest
-
       
+  build_stream_qradar:
+    docker:
+      - image: cimg/base:stable-20.04
+    steps:
+      - checkout
+      - setup_remote_docker
       - run:
           name: Build stream/qradar
           command: |
@@ -1071,8 +1500,13 @@ jobs:
             docker tag renizmy/connector-qradar:6.4.1 renizmy/connector-qradar:latest
             docker push renizmy/connector-qradar:6.4.1
             docker push renizmy/connector-qradar:latest
-
       
+  build_stream_harfanglab:
+    docker:
+      - image: cimg/base:stable-20.04
+    steps:
+      - checkout
+      - setup_remote_docker
       - run:
           name: Build stream/harfanglab
           command: |
@@ -1083,8 +1517,13 @@ jobs:
             docker tag renizmy/connector-harfanglab:6.4.1 renizmy/connector-harfanglab:latest
             docker push renizmy/connector-harfanglab:6.4.1
             docker push renizmy/connector-harfanglab:latest
-
       
+  build_stream_virustotal-livehunt-rules:
+    docker:
+      - image: cimg/base:stable-20.04
+    steps:
+      - checkout
+      - setup_remote_docker
       - run:
           name: Build stream/virustotal-livehunt-rules
           command: |
@@ -1095,8 +1534,13 @@ jobs:
             docker tag renizmy/connector-virustotal-livehunt-rules:6.4.1 renizmy/connector-virustotal-livehunt-rules:latest
             docker push renizmy/connector-virustotal-livehunt-rules:6.4.1
             docker push renizmy/connector-virustotal-livehunt-rules:latest
-
       
+  build_stream_backup-files:
+    docker:
+      - image: cimg/base:stable-20.04
+    steps:
+      - checkout
+      - setup_remote_docker
       - run:
           name: Build stream/backup-files
           command: |
@@ -1107,8 +1551,13 @@ jobs:
             docker tag renizmy/connector-backup-files:6.4.1 renizmy/connector-backup-files:latest
             docker push renizmy/connector-backup-files:6.4.1
             docker push renizmy/connector-backup-files:latest
-
       
+  build_stream_logrhythm:
+    docker:
+      - image: cimg/base:stable-20.04
+    steps:
+      - checkout
+      - setup_remote_docker
       - run:
           name: Build stream/logrhythm
           command: |
@@ -1119,8 +1568,13 @@ jobs:
             docker tag renizmy/connector-logrhythm:6.4.1 renizmy/connector-logrhythm:latest
             docker push renizmy/connector-logrhythm:6.4.1
             docker push renizmy/connector-logrhythm:latest
-
       
+  build_stream_taxii-post:
+    docker:
+      - image: cimg/base:stable-20.04
+    steps:
+      - checkout
+      - setup_remote_docker
       - run:
           name: Build stream/taxii-post
           command: |
@@ -1131,8 +1585,13 @@ jobs:
             docker tag renizmy/connector-taxii-post:6.4.1 renizmy/connector-taxii-post:latest
             docker push renizmy/connector-taxii-post:6.4.1
             docker push renizmy/connector-taxii-post:latest
-
       
+  build_stream_tanium:
+    docker:
+      - image: cimg/base:stable-20.04
+    steps:
+      - checkout
+      - setup_remote_docker
       - run:
           name: Build stream/tanium
           command: |
@@ -1143,8 +1602,13 @@ jobs:
             docker tag renizmy/connector-tanium:6.4.1 renizmy/connector-tanium:latest
             docker push renizmy/connector-tanium:6.4.1
             docker push renizmy/connector-tanium:latest
-
       
+  build_stream_chronicle:
+    docker:
+      - image: cimg/base:stable-20.04
+    steps:
+      - checkout
+      - setup_remote_docker
       - run:
           name: Build stream/chronicle
           command: |
@@ -1155,8 +1619,13 @@ jobs:
             docker tag renizmy/connector-chronicle:6.4.1 renizmy/connector-chronicle:latest
             docker push renizmy/connector-chronicle:6.4.1
             docker push renizmy/connector-chronicle:latest
-
       
+  build_stream_jira:
+    docker:
+      - image: cimg/base:stable-20.04
+    steps:
+      - checkout
+      - setup_remote_docker
       - run:
           name: Build stream/jira
           command: |
@@ -1167,8 +1636,13 @@ jobs:
             docker tag renizmy/connector-jira:6.4.1 renizmy/connector-jira:latest
             docker push renizmy/connector-jira:6.4.1
             docker push renizmy/connector-jira:latest
-
       
+  build_stream_elastic:
+    docker:
+      - image: cimg/base:stable-20.04
+    steps:
+      - checkout
+      - setup_remote_docker
       - run:
           name: Build stream/elastic
           command: |
@@ -1179,8 +1653,13 @@ jobs:
             docker tag renizmy/connector-elastic:6.4.1 renizmy/connector-elastic:latest
             docker push renizmy/connector-elastic:6.4.1
             docker push renizmy/connector-elastic:latest
-
       
+  build_stream_sentinel:
+    docker:
+      - image: cimg/base:stable-20.04
+    steps:
+      - checkout
+      - setup_remote_docker
       - run:
           name: Build stream/sentinel
           command: |
@@ -1191,8 +1670,13 @@ jobs:
             docker tag renizmy/connector-sentinel:6.4.1 renizmy/connector-sentinel:latest
             docker push renizmy/connector-sentinel:6.4.1
             docker push renizmy/connector-sentinel:latest
-
       
+  build_stream_tanium-intel:
+    docker:
+      - image: cimg/base:stable-20.04
+    steps:
+      - checkout
+      - setup_remote_docker
       - run:
           name: Build stream/tanium-intel
           command: |
@@ -1203,16 +1687,15 @@ jobs:
             docker tag renizmy/connector-tanium-intel:6.4.1 renizmy/connector-tanium-intel:latest
             docker push renizmy/connector-tanium-intel:6.4.1
             docker push renizmy/connector-tanium-intel:latest
-
       
 
-  build_internal-export-file:
+  
+  build_internal-export-file_export-ttps-file-navigator:
     docker:
       - image: cimg/base:stable-20.04
     steps:
       - checkout
       - setup_remote_docker
-      
       - run:
           name: Build internal-export-file/export-ttps-file-navigator
           command: |
@@ -1223,8 +1706,13 @@ jobs:
             docker tag renizmy/connector-export-ttps-file-navigator:6.4.1 renizmy/connector-export-ttps-file-navigator:latest
             docker push renizmy/connector-export-ttps-file-navigator:6.4.1
             docker push renizmy/connector-export-ttps-file-navigator:latest
-
       
+  build_internal-export-file_export-report-pdf:
+    docker:
+      - image: cimg/base:stable-20.04
+    steps:
+      - checkout
+      - setup_remote_docker
       - run:
           name: Build internal-export-file/export-report-pdf
           command: |
@@ -1235,8 +1723,13 @@ jobs:
             docker tag renizmy/connector-export-report-pdf:6.4.1 renizmy/connector-export-report-pdf:latest
             docker push renizmy/connector-export-report-pdf:6.4.1
             docker push renizmy/connector-export-report-pdf:latest
-
       
+  build_internal-export-file_export-file-txt:
+    docker:
+      - image: cimg/base:stable-20.04
+    steps:
+      - checkout
+      - setup_remote_docker
       - run:
           name: Build internal-export-file/export-file-txt
           command: |
@@ -1247,8 +1740,13 @@ jobs:
             docker tag renizmy/connector-export-file-txt:6.4.1 renizmy/connector-export-file-txt:latest
             docker push renizmy/connector-export-file-txt:6.4.1
             docker push renizmy/connector-export-file-txt:latest
-
       
+  build_internal-export-file_export-file-csv:
+    docker:
+      - image: cimg/base:stable-20.04
+    steps:
+      - checkout
+      - setup_remote_docker
       - run:
           name: Build internal-export-file/export-file-csv
           command: |
@@ -1259,8 +1757,13 @@ jobs:
             docker tag renizmy/connector-export-file-csv:6.4.1 renizmy/connector-export-file-csv:latest
             docker push renizmy/connector-export-file-csv:6.4.1
             docker push renizmy/connector-export-file-csv:latest
-
       
+  build_internal-export-file_export-file-stix:
+    docker:
+      - image: cimg/base:stable-20.04
+    steps:
+      - checkout
+      - setup_remote_docker
       - run:
           name: Build internal-export-file/export-file-stix
           command: |
@@ -1271,16 +1774,15 @@ jobs:
             docker tag renizmy/connector-export-file-stix:6.4.1 renizmy/connector-export-file-stix:latest
             docker push renizmy/connector-export-file-stix:6.4.1
             docker push renizmy/connector-export-file-stix:latest
-
       
 
-  build_internal-import-file:
+  
+  build_internal-import-file_import-file-stix:
     docker:
       - image: cimg/base:stable-20.04
     steps:
       - checkout
       - setup_remote_docker
-      
       - run:
           name: Build internal-import-file/import-file-stix
           command: |
@@ -1291,8 +1793,13 @@ jobs:
             docker tag renizmy/connector-import-file-stix:6.4.1 renizmy/connector-import-file-stix:latest
             docker push renizmy/connector-import-file-stix:6.4.1
             docker push renizmy/connector-import-file-stix:latest
-
       
+  build_internal-import-file_import-file-misp:
+    docker:
+      - image: cimg/base:stable-20.04
+    steps:
+      - checkout
+      - setup_remote_docker
       - run:
           name: Build internal-import-file/import-file-misp
           command: |
@@ -1303,8 +1810,13 @@ jobs:
             docker tag renizmy/connector-import-file-misp:6.4.1 renizmy/connector-import-file-misp:latest
             docker push renizmy/connector-import-file-misp:6.4.1
             docker push renizmy/connector-import-file-misp:latest
-
       
+  build_internal-import-file_import-document:
+    docker:
+      - image: cimg/base:stable-20.04
+    steps:
+      - checkout
+      - setup_remote_docker
       - run:
           name: Build internal-import-file/import-document
           command: |
@@ -1315,7 +1827,6 @@ jobs:
             docker tag renizmy/connector-import-document:6.4.1 renizmy/connector-import-document:latest
             docker push renizmy/connector-import-document:6.4.1
             docker push renizmy/connector-import-document:latest
-
       
 
 
@@ -1324,11 +1835,11 @@ workflows:
   build_all:
     jobs:
     
-      - build_external-import
+      - build_external-import_
     
-      - build_stream
+      - build_stream_
     
-      - build_internal-export-file
+      - build_internal-export-file_
     
-      - build_internal-import-file
+      - build_internal-import-file_
     
