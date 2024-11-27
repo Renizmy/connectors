@@ -1,5 +1,6 @@
 # The base image.
-FROM python:3.12-alpine as base
+ARG BASE_IMAGE="python:3.12-alpine"
+FROM ${BASE_IMAGE} as base
 
 
 # The Builder.

@@ -1,4 +1,7 @@
 FROM python:3.12-bookworm
+
+ARG BASE_IMAGE="python:3.12-bookworm"
+FROM ${BASE_IMAGE}
 # Browser builds for Firefox and WebKit are built for the glibc library. Alpine Linux and other distributions that are based on the musl standard library are not supported.
 # https://playwright.dev/python/docs/docker#alpine
 ENV CONNECTOR_TYPE=INTERNAL_ENRICHMENT

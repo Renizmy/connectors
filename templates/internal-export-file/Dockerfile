@@ -1,4 +1,5 @@
-FROM python:3.12-alpine
+ARG BASE_IMAGE="python:3.12-alpine"
+FROM ${BASE_IMAGE}
 ENV CONNECTOR_TYPE=INTERNAL_EXPORT_FILE
 
 # Copy the connector
