@@ -13,6 +13,7 @@ jobs:
           command: |
             echo "Processing external-import/comlaude"
             cd external-import/comlaude
+            echo "$DOCKERHUB_USERNAME"
             echo "$DOCKERHUB_PASS" | docker login -u "$DOCKERHUB_USERNAME" --password-stdin
             docker build -t opencti/connector-comlaude:6.4.1 . --build-arg BASE_IMAGE=renizmy/opencti-base:6.4.1 && docker tag opencti/connector-comlaude:latest
             docker push opencti/connector-comlaude:6.4.1
