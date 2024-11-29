@@ -3441,223 +3441,223 @@ workflows:
     jobs:
 
   
-      - build_external-import_comlaude
+      - build_external-import_comlaude_multi
       
-      - build_external-import_shadowserver
+      - build_external-import_shadowserver_multi
       
-      - build_external-import_tweetfeed
+      - build_external-import_tweetfeed_multi
       
-      - build_external-import_lastinfosec
+      - build_external-import_lastinfosec_multi
       
-      - build_external-import_sentinelone-threats
+      - build_external-import_sentinelone-threats_multi
       
-      - build_external-import_citalid
+      - build_external-import_citalid_multi
       
-      - build_external-import_malcore
+      - build_external-import_malcore_multi
       
-      - build_external-import_rst-report-hub
+      - build_external-import_rst-report-hub_multi
       
-      - build_external-import_malpedia
+      - build_external-import_malpedia_multi
       
-      - build_external-import_cyber-campaign-collection
+      - build_external-import_cyber-campaign-collection_multi
       
-      - build_external-import_abuse-ssl
+      - build_external-import_abuse-ssl_multi
       
-      - build_external-import_urlhaus-recent-payloads
+      - build_external-import_urlhaus-recent-payloads_multi
       
-      - build_external-import_crits
+      - build_external-import_crits_multi
       
-      - build_external-import_sentinel-incidents
+      - build_external-import_sentinel-incidents_multi
       
-      - build_external-import_urlhaus
+      - build_external-import_urlhaus_multi
       
-      - build_external-import_mwdb
+      - build_external-import_mwdb_multi
       
-      - build_external-import_cve
+      - build_external-import_cve_multi
       
-      - build_external-import_malwarebazaar-recent-additions
+      - build_external-import_malwarebazaar-recent-additions_multi
       
-      - build_external-import_mandiant
+      - build_external-import_mandiant_multi
       
-      - build_external-import_cybersixgill
+      - build_external-import_cybersixgill_multi
       
-      - build_external-import_phishunt
+      - build_external-import_phishunt_multi
       
-      - build_external-import_disarm-framework
+      - build_external-import_disarm-framework_multi
       
-      - build_external-import_opencsam
+      - build_external-import_opencsam_multi
       
-      - build_external-import_crowdstrike
+      - build_external-import_crowdstrike_multi
       
-      - build_external-import_cisa-known-exploited-vulnerabilities
+      - build_external-import_cisa-known-exploited-vulnerabilities_multi
       
-      - build_external-import_opencti
+      - build_external-import_opencti_multi
       
-      - build_external-import_cluster25
+      - build_external-import_cluster25_multi
       
-      - build_external-import_maltiverse
+      - build_external-import_maltiverse_multi
       
-      - build_external-import_threatfox
+      - build_external-import_threatfox_multi
       
-      - build_external-import_taxii2
+      - build_external-import_taxii2_multi
       
-      - build_external-import_thehive
+      - build_external-import_thehive_multi
       
-      - build_external-import_google-drive
+      - build_external-import_google-drive_multi
       
-      - build_external-import_cisco-sma
+      - build_external-import_cisco-sma_multi
       
-      - build_external-import_valhalla
+      - build_external-import_valhalla_multi
       
-      - build_external-import_kaspersky
+      - build_external-import_kaspersky_multi
       
-      - build_external-import_obstracts
+      - build_external-import_obstracts_multi
       
-      - build_external-import_red-flag-domains
+      - build_external-import_red-flag-domains_multi
       
-      - build_external-import_stopforumspam
+      - build_external-import_stopforumspam_multi
       
-      - build_external-import_flashpoint
+      - build_external-import_flashpoint_multi
       
-      - build_external-import_mitre-atlas
+      - build_external-import_mitre-atlas_multi
       
-      - build_external-import_chapsvision
+      - build_external-import_chapsvision_multi
       
-      - build_external-import_fortinet-ti
+      - build_external-import_fortinet-ti_multi
       
-      - build_external-import_tanium-incidents
+      - build_external-import_tanium-incidents_multi
       
-      - build_external-import_tenable-vuln-management
+      - build_external-import_tenable-vuln-management_multi
       
-      - build_external-import_intelfinder
+      - build_external-import_intelfinder_multi
       
-      - build_external-import_intel471
+      - build_external-import_intel471_multi
       
-      - build_external-import_misp
+      - build_external-import_misp_multi
       
-      - build_external-import_misp-feed
+      - build_external-import_misp-feed_multi
       
-      - build_external-import_eset
+      - build_external-import_eset_multi
       
-      - build_external-import_greynoise-feed
+      - build_external-import_greynoise-feed_multi
       
-      - build_external-import_recorded-future
+      - build_external-import_recorded-future_multi
       
-      - build_external-import_riskiq
+      - build_external-import_riskiq_multi
       
-      - build_external-import_group-ib
+      - build_external-import_group-ib_multi
       
-      - build_external-import_harfanglab-incidents
+      - build_external-import_harfanglab-incidents_multi
       
-      - build_external-import_silobreaker
+      - build_external-import_silobreaker_multi
       
-      - build_external-import_alienvault
+      - build_external-import_alienvault_multi
       
-      - build_external-import_zerofox
+      - build_external-import_zerofox_multi
       
-      - build_external-import_cuckoo
+      - build_external-import_cuckoo_multi
       
-      - build_external-import_cpe
+      - build_external-import_cpe_multi
       
-      - build_external-import_restore-files
+      - build_external-import_restore-files_multi
       
-      - build_external-import_stixify
+      - build_external-import_stixify_multi
       
-      - build_external-import_orange-cyberdefense
+      - build_external-import_orange-cyberdefense_multi
       
-      - build_external-import_abuseipdb-ipblacklist
+      - build_external-import_abuseipdb-ipblacklist_multi
       
-      - build_external-import_sekoia
+      - build_external-import_sekoia_multi
       
-      - build_external-import_vxvault
+      - build_external-import_vxvault_multi
       
-      - build_external-import_mitre
+      - build_external-import_mitre_multi
       
-      - build_external-import_crtsh
+      - build_external-import_crtsh_multi
       
-      - build_external-import_virustotal-livehunt-notifications
+      - build_external-import_virustotal-livehunt-notifications_multi
       
-      - build_external-import_infoblox
+      - build_external-import_infoblox_multi
       
-      - build_external-import_cofense
+      - build_external-import_cofense_multi
       
-      - build_external-import_rst-threat-feed
+      - build_external-import_rst-threat-feed_multi
       
-      - build_external-import_siemrules
+      - build_external-import_siemrules_multi
       
-      - build_external-import_cape
+      - build_external-import_cape_multi
       
-      - build_external-import_ironnet
+      - build_external-import_ironnet_multi
       
-      - build_external-import_urlscan
+      - build_external-import_urlscan_multi
       
-      - build_external-import_anyrun-feed
+      - build_external-import_anyrun-feed_multi
       
-      - build_external-import_ransomwarelive
+      - build_external-import_ransomwarelive_multi
       
-      - build_external-import_feedly
+      - build_external-import_feedly_multi
       
-      - build_external-import_socprime
+      - build_external-import_socprime_multi
       
-      - build_external-import_diode-import
+      - build_external-import_diode-import_multi
       
-      - build_external-import_threatmatch
+      - build_external-import_threatmatch_multi
       
-      - build_external-import_vulmatch
+      - build_external-import_vulmatch_multi
       
 
   
-      - build_stream_harfanglab-intel
+      - build_stream_harfanglab-intel_multi
       
-      - build_stream_crowdstrike-endpoint-security
+      - build_stream_crowdstrike-endpoint-security_multi
       
-      - build_stream_webhook
+      - build_stream_webhook_multi
       
-      - build_stream_splunk
+      - build_stream_splunk_multi
       
-      - build_stream_sentinel-intel
+      - build_stream_sentinel-intel_multi
       
-      - build_stream_qradar
+      - build_stream_qradar_multi
       
-      - build_stream_harfanglab
+      - build_stream_harfanglab_multi
       
-      - build_stream_virustotal-livehunt-rules
+      - build_stream_virustotal-livehunt-rules_multi
       
-      - build_stream_backup-files
+      - build_stream_backup-files_multi
       
-      - build_stream_logrhythm
+      - build_stream_logrhythm_multi
       
-      - build_stream_taxii-post
+      - build_stream_taxii-post_multi
       
-      - build_stream_tanium
+      - build_stream_tanium_multi
       
-      - build_stream_chronicle
+      - build_stream_chronicle_multi
       
-      - build_stream_jira
+      - build_stream_jira_multi
       
-      - build_stream_elastic
+      - build_stream_elastic_multi
       
-      - build_stream_sentinel
+      - build_stream_sentinel_multi
       
-      - build_stream_tanium-intel
-      
-
-  
-      - build_internal-export-file_export-ttps-file-navigator
-      
-      - build_internal-export-file_export-report-pdf
-      
-      - build_internal-export-file_export-file-txt
-      
-      - build_internal-export-file_export-file-csv
-      
-      - build_internal-export-file_export-file-stix
+      - build_stream_tanium-intel_multi
       
 
   
-      - build_internal-import-file_import-file-stix
+      - build_internal-export-file_export-ttps-file-navigator_multi
       
-      - build_internal-import-file_import-file-misp
+      - build_internal-export-file_export-report-pdf_multi
       
-      - build_internal-import-file_import-document
+      - build_internal-export-file_export-file-txt_multi
+      
+      - build_internal-export-file_export-file-csv_multi
+      
+      - build_internal-export-file_export-file-stix_multi
+      
+
+  
+      - build_internal-import-file_import-file-stix_multi
+      
+      - build_internal-import-file_import-file-misp_multi
+      
+      - build_internal-import-file_import-document_multi
       
