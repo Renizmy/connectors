@@ -3,1827 +3,3432 @@ version: 2.1
 jobs:
 
   
-  build_external-import_comlaude:
+  build_external-import_comlaude_multi:
     docker:
       - image: cimg/base:stable-20.04
     steps:
       - checkout
       - setup_remote_docker
+
       - run:
-          name: Build external-import/comlaudea
+          name: Install Docker Buildx
+          command: |
+            mkdir -p ~/.docker/cli-plugins/
+            curl -L https://github.com/docker/buildx/releases/download/v0.11.0/buildx-v0.11.0.linux-amd64 \
+              -o ~/.docker/cli-plugins/docker-buildx
+            chmod +x ~/.docker/cli-plugins/docker-buildx
+
+      - run:
+          name: Set up Buildx Builder
+          command: |
+            docker buildx create --name multiarch --use
+            docker buildx inspect --bootstrap
+
+      - run:
+          name: Build external-import/comlaude_multi
           command: |
             echo "Processing external-import/comlaude"
             cd external-import/comlaude
             echo "$DOCKERHUB_PASS" | docker login -u "$DOCKERHUB_USERNAME" --password-stdin
-            docker build -t renizmy/connector-comlaude:6.4.0 . --build-arg BASE_IMAGE=renizmy/opencti-base:6.4.0
+            docker buildx build --platform linux/amd64,linux/arm64 -t renizmy/connector-comlaude:6.4.0 . --build-arg BASE_IMAGE=renizmy/opencti-base:6.4.0
             docker tag renizmy/connector-comlaude:6.4.0 renizmy/connector-comlaude:latest
             docker push renizmy/connector-comlaude:6.4.0
             docker push renizmy/connector-comlaude:latest
       
-  build_external-import_shadowserver:
+  build_external-import_shadowserver_multi:
     docker:
       - image: cimg/base:stable-20.04
     steps:
       - checkout
       - setup_remote_docker
+
       - run:
-          name: Build external-import/shadowservera
+          name: Install Docker Buildx
+          command: |
+            mkdir -p ~/.docker/cli-plugins/
+            curl -L https://github.com/docker/buildx/releases/download/v0.11.0/buildx-v0.11.0.linux-amd64 \
+              -o ~/.docker/cli-plugins/docker-buildx
+            chmod +x ~/.docker/cli-plugins/docker-buildx
+
+      - run:
+          name: Set up Buildx Builder
+          command: |
+            docker buildx create --name multiarch --use
+            docker buildx inspect --bootstrap
+
+      - run:
+          name: Build external-import/shadowserver_multi
           command: |
             echo "Processing external-import/shadowserver"
             cd external-import/shadowserver
             echo "$DOCKERHUB_PASS" | docker login -u "$DOCKERHUB_USERNAME" --password-stdin
-            docker build -t renizmy/connector-shadowserver:6.4.0 . --build-arg BASE_IMAGE=renizmy/opencti-base:6.4.0
+            docker buildx build --platform linux/amd64,linux/arm64 -t renizmy/connector-shadowserver:6.4.0 . --build-arg BASE_IMAGE=renizmy/opencti-base:6.4.0
             docker tag renizmy/connector-shadowserver:6.4.0 renizmy/connector-shadowserver:latest
             docker push renizmy/connector-shadowserver:6.4.0
             docker push renizmy/connector-shadowserver:latest
       
-  build_external-import_tweetfeed:
+  build_external-import_tweetfeed_multi:
     docker:
       - image: cimg/base:stable-20.04
     steps:
       - checkout
       - setup_remote_docker
+
       - run:
-          name: Build external-import/tweetfeeda
+          name: Install Docker Buildx
+          command: |
+            mkdir -p ~/.docker/cli-plugins/
+            curl -L https://github.com/docker/buildx/releases/download/v0.11.0/buildx-v0.11.0.linux-amd64 \
+              -o ~/.docker/cli-plugins/docker-buildx
+            chmod +x ~/.docker/cli-plugins/docker-buildx
+
+      - run:
+          name: Set up Buildx Builder
+          command: |
+            docker buildx create --name multiarch --use
+            docker buildx inspect --bootstrap
+
+      - run:
+          name: Build external-import/tweetfeed_multi
           command: |
             echo "Processing external-import/tweetfeed"
             cd external-import/tweetfeed
             echo "$DOCKERHUB_PASS" | docker login -u "$DOCKERHUB_USERNAME" --password-stdin
-            docker build -t renizmy/connector-tweetfeed:6.4.0 . --build-arg BASE_IMAGE=renizmy/opencti-base:6.4.0
+            docker buildx build --platform linux/amd64,linux/arm64 -t renizmy/connector-tweetfeed:6.4.0 . --build-arg BASE_IMAGE=renizmy/opencti-base:6.4.0
             docker tag renizmy/connector-tweetfeed:6.4.0 renizmy/connector-tweetfeed:latest
             docker push renizmy/connector-tweetfeed:6.4.0
             docker push renizmy/connector-tweetfeed:latest
       
-  build_external-import_lastinfosec:
+  build_external-import_lastinfosec_multi:
     docker:
       - image: cimg/base:stable-20.04
     steps:
       - checkout
       - setup_remote_docker
+
       - run:
-          name: Build external-import/lastinfoseca
+          name: Install Docker Buildx
+          command: |
+            mkdir -p ~/.docker/cli-plugins/
+            curl -L https://github.com/docker/buildx/releases/download/v0.11.0/buildx-v0.11.0.linux-amd64 \
+              -o ~/.docker/cli-plugins/docker-buildx
+            chmod +x ~/.docker/cli-plugins/docker-buildx
+
+      - run:
+          name: Set up Buildx Builder
+          command: |
+            docker buildx create --name multiarch --use
+            docker buildx inspect --bootstrap
+
+      - run:
+          name: Build external-import/lastinfosec_multi
           command: |
             echo "Processing external-import/lastinfosec"
             cd external-import/lastinfosec
             echo "$DOCKERHUB_PASS" | docker login -u "$DOCKERHUB_USERNAME" --password-stdin
-            docker build -t renizmy/connector-lastinfosec:6.4.0 . --build-arg BASE_IMAGE=renizmy/opencti-base:6.4.0
+            docker buildx build --platform linux/amd64,linux/arm64 -t renizmy/connector-lastinfosec:6.4.0 . --build-arg BASE_IMAGE=renizmy/opencti-base:6.4.0
             docker tag renizmy/connector-lastinfosec:6.4.0 renizmy/connector-lastinfosec:latest
             docker push renizmy/connector-lastinfosec:6.4.0
             docker push renizmy/connector-lastinfosec:latest
       
-  build_external-import_sentinelone-threats:
+  build_external-import_sentinelone-threats_multi:
     docker:
       - image: cimg/base:stable-20.04
     steps:
       - checkout
       - setup_remote_docker
+
       - run:
-          name: Build external-import/sentinelone-threatsa
+          name: Install Docker Buildx
+          command: |
+            mkdir -p ~/.docker/cli-plugins/
+            curl -L https://github.com/docker/buildx/releases/download/v0.11.0/buildx-v0.11.0.linux-amd64 \
+              -o ~/.docker/cli-plugins/docker-buildx
+            chmod +x ~/.docker/cli-plugins/docker-buildx
+
+      - run:
+          name: Set up Buildx Builder
+          command: |
+            docker buildx create --name multiarch --use
+            docker buildx inspect --bootstrap
+
+      - run:
+          name: Build external-import/sentinelone-threats_multi
           command: |
             echo "Processing external-import/sentinelone-threats"
             cd external-import/sentinelone-threats
             echo "$DOCKERHUB_PASS" | docker login -u "$DOCKERHUB_USERNAME" --password-stdin
-            docker build -t renizmy/connector-sentinelone-threats:6.4.0 . --build-arg BASE_IMAGE=renizmy/opencti-base:6.4.0
+            docker buildx build --platform linux/amd64,linux/arm64 -t renizmy/connector-sentinelone-threats:6.4.0 . --build-arg BASE_IMAGE=renizmy/opencti-base:6.4.0
             docker tag renizmy/connector-sentinelone-threats:6.4.0 renizmy/connector-sentinelone-threats:latest
             docker push renizmy/connector-sentinelone-threats:6.4.0
             docker push renizmy/connector-sentinelone-threats:latest
       
-  build_external-import_citalid:
+  build_external-import_citalid_multi:
     docker:
       - image: cimg/base:stable-20.04
     steps:
       - checkout
       - setup_remote_docker
+
       - run:
-          name: Build external-import/citalida
+          name: Install Docker Buildx
+          command: |
+            mkdir -p ~/.docker/cli-plugins/
+            curl -L https://github.com/docker/buildx/releases/download/v0.11.0/buildx-v0.11.0.linux-amd64 \
+              -o ~/.docker/cli-plugins/docker-buildx
+            chmod +x ~/.docker/cli-plugins/docker-buildx
+
+      - run:
+          name: Set up Buildx Builder
+          command: |
+            docker buildx create --name multiarch --use
+            docker buildx inspect --bootstrap
+
+      - run:
+          name: Build external-import/citalid_multi
           command: |
             echo "Processing external-import/citalid"
             cd external-import/citalid
             echo "$DOCKERHUB_PASS" | docker login -u "$DOCKERHUB_USERNAME" --password-stdin
-            docker build -t renizmy/connector-citalid:6.4.0 . --build-arg BASE_IMAGE=renizmy/opencti-base:6.4.0
+            docker buildx build --platform linux/amd64,linux/arm64 -t renizmy/connector-citalid:6.4.0 . --build-arg BASE_IMAGE=renizmy/opencti-base:6.4.0
             docker tag renizmy/connector-citalid:6.4.0 renizmy/connector-citalid:latest
             docker push renizmy/connector-citalid:6.4.0
             docker push renizmy/connector-citalid:latest
       
-  build_external-import_malcore:
+  build_external-import_malcore_multi:
     docker:
       - image: cimg/base:stable-20.04
     steps:
       - checkout
       - setup_remote_docker
+
       - run:
-          name: Build external-import/malcorea
+          name: Install Docker Buildx
+          command: |
+            mkdir -p ~/.docker/cli-plugins/
+            curl -L https://github.com/docker/buildx/releases/download/v0.11.0/buildx-v0.11.0.linux-amd64 \
+              -o ~/.docker/cli-plugins/docker-buildx
+            chmod +x ~/.docker/cli-plugins/docker-buildx
+
+      - run:
+          name: Set up Buildx Builder
+          command: |
+            docker buildx create --name multiarch --use
+            docker buildx inspect --bootstrap
+
+      - run:
+          name: Build external-import/malcore_multi
           command: |
             echo "Processing external-import/malcore"
             cd external-import/malcore
             echo "$DOCKERHUB_PASS" | docker login -u "$DOCKERHUB_USERNAME" --password-stdin
-            docker build -t renizmy/connector-malcore:6.4.0 . --build-arg BASE_IMAGE=renizmy/opencti-base:6.4.0
+            docker buildx build --platform linux/amd64,linux/arm64 -t renizmy/connector-malcore:6.4.0 . --build-arg BASE_IMAGE=renizmy/opencti-base:6.4.0
             docker tag renizmy/connector-malcore:6.4.0 renizmy/connector-malcore:latest
             docker push renizmy/connector-malcore:6.4.0
             docker push renizmy/connector-malcore:latest
       
-  build_external-import_rst-report-hub:
+  build_external-import_rst-report-hub_multi:
     docker:
       - image: cimg/base:stable-20.04
     steps:
       - checkout
       - setup_remote_docker
+
       - run:
-          name: Build external-import/rst-report-huba
+          name: Install Docker Buildx
+          command: |
+            mkdir -p ~/.docker/cli-plugins/
+            curl -L https://github.com/docker/buildx/releases/download/v0.11.0/buildx-v0.11.0.linux-amd64 \
+              -o ~/.docker/cli-plugins/docker-buildx
+            chmod +x ~/.docker/cli-plugins/docker-buildx
+
+      - run:
+          name: Set up Buildx Builder
+          command: |
+            docker buildx create --name multiarch --use
+            docker buildx inspect --bootstrap
+
+      - run:
+          name: Build external-import/rst-report-hub_multi
           command: |
             echo "Processing external-import/rst-report-hub"
             cd external-import/rst-report-hub
             echo "$DOCKERHUB_PASS" | docker login -u "$DOCKERHUB_USERNAME" --password-stdin
-            docker build -t renizmy/connector-rst-report-hub:6.4.0 . --build-arg BASE_IMAGE=renizmy/opencti-base:6.4.0
+            docker buildx build --platform linux/amd64,linux/arm64 -t renizmy/connector-rst-report-hub:6.4.0 . --build-arg BASE_IMAGE=renizmy/opencti-base:6.4.0
             docker tag renizmy/connector-rst-report-hub:6.4.0 renizmy/connector-rst-report-hub:latest
             docker push renizmy/connector-rst-report-hub:6.4.0
             docker push renizmy/connector-rst-report-hub:latest
       
-  build_external-import_malpedia:
+  build_external-import_malpedia_multi:
     docker:
       - image: cimg/base:stable-20.04
     steps:
       - checkout
       - setup_remote_docker
+
       - run:
-          name: Build external-import/malpediaa
+          name: Install Docker Buildx
+          command: |
+            mkdir -p ~/.docker/cli-plugins/
+            curl -L https://github.com/docker/buildx/releases/download/v0.11.0/buildx-v0.11.0.linux-amd64 \
+              -o ~/.docker/cli-plugins/docker-buildx
+            chmod +x ~/.docker/cli-plugins/docker-buildx
+
+      - run:
+          name: Set up Buildx Builder
+          command: |
+            docker buildx create --name multiarch --use
+            docker buildx inspect --bootstrap
+
+      - run:
+          name: Build external-import/malpedia_multi
           command: |
             echo "Processing external-import/malpedia"
             cd external-import/malpedia
             echo "$DOCKERHUB_PASS" | docker login -u "$DOCKERHUB_USERNAME" --password-stdin
-            docker build -t renizmy/connector-malpedia:6.4.0 . --build-arg BASE_IMAGE=renizmy/opencti-base:6.4.0
+            docker buildx build --platform linux/amd64,linux/arm64 -t renizmy/connector-malpedia:6.4.0 . --build-arg BASE_IMAGE=renizmy/opencti-base:6.4.0
             docker tag renizmy/connector-malpedia:6.4.0 renizmy/connector-malpedia:latest
             docker push renizmy/connector-malpedia:6.4.0
             docker push renizmy/connector-malpedia:latest
       
-  build_external-import_cyber-campaign-collection:
+  build_external-import_cyber-campaign-collection_multi:
     docker:
       - image: cimg/base:stable-20.04
     steps:
       - checkout
       - setup_remote_docker
+
       - run:
-          name: Build external-import/cyber-campaign-collectiona
+          name: Install Docker Buildx
+          command: |
+            mkdir -p ~/.docker/cli-plugins/
+            curl -L https://github.com/docker/buildx/releases/download/v0.11.0/buildx-v0.11.0.linux-amd64 \
+              -o ~/.docker/cli-plugins/docker-buildx
+            chmod +x ~/.docker/cli-plugins/docker-buildx
+
+      - run:
+          name: Set up Buildx Builder
+          command: |
+            docker buildx create --name multiarch --use
+            docker buildx inspect --bootstrap
+
+      - run:
+          name: Build external-import/cyber-campaign-collection_multi
           command: |
             echo "Processing external-import/cyber-campaign-collection"
             cd external-import/cyber-campaign-collection
             echo "$DOCKERHUB_PASS" | docker login -u "$DOCKERHUB_USERNAME" --password-stdin
-            docker build -t renizmy/connector-cyber-campaign-collection:6.4.0 . --build-arg BASE_IMAGE=renizmy/opencti-base:6.4.0
+            docker buildx build --platform linux/amd64,linux/arm64 -t renizmy/connector-cyber-campaign-collection:6.4.0 . --build-arg BASE_IMAGE=renizmy/opencti-base:6.4.0
             docker tag renizmy/connector-cyber-campaign-collection:6.4.0 renizmy/connector-cyber-campaign-collection:latest
             docker push renizmy/connector-cyber-campaign-collection:6.4.0
             docker push renizmy/connector-cyber-campaign-collection:latest
       
-  build_external-import_abuse-ssl:
+  build_external-import_abuse-ssl_multi:
     docker:
       - image: cimg/base:stable-20.04
     steps:
       - checkout
       - setup_remote_docker
+
       - run:
-          name: Build external-import/abuse-ssla
+          name: Install Docker Buildx
+          command: |
+            mkdir -p ~/.docker/cli-plugins/
+            curl -L https://github.com/docker/buildx/releases/download/v0.11.0/buildx-v0.11.0.linux-amd64 \
+              -o ~/.docker/cli-plugins/docker-buildx
+            chmod +x ~/.docker/cli-plugins/docker-buildx
+
+      - run:
+          name: Set up Buildx Builder
+          command: |
+            docker buildx create --name multiarch --use
+            docker buildx inspect --bootstrap
+
+      - run:
+          name: Build external-import/abuse-ssl_multi
           command: |
             echo "Processing external-import/abuse-ssl"
             cd external-import/abuse-ssl
             echo "$DOCKERHUB_PASS" | docker login -u "$DOCKERHUB_USERNAME" --password-stdin
-            docker build -t renizmy/connector-abuse-ssl:6.4.0 . --build-arg BASE_IMAGE=renizmy/opencti-base:6.4.0
+            docker buildx build --platform linux/amd64,linux/arm64 -t renizmy/connector-abuse-ssl:6.4.0 . --build-arg BASE_IMAGE=renizmy/opencti-base:6.4.0
             docker tag renizmy/connector-abuse-ssl:6.4.0 renizmy/connector-abuse-ssl:latest
             docker push renizmy/connector-abuse-ssl:6.4.0
             docker push renizmy/connector-abuse-ssl:latest
       
-  build_external-import_urlhaus-recent-payloads:
+  build_external-import_urlhaus-recent-payloads_multi:
     docker:
       - image: cimg/base:stable-20.04
     steps:
       - checkout
       - setup_remote_docker
+
       - run:
-          name: Build external-import/urlhaus-recent-payloadsa
+          name: Install Docker Buildx
+          command: |
+            mkdir -p ~/.docker/cli-plugins/
+            curl -L https://github.com/docker/buildx/releases/download/v0.11.0/buildx-v0.11.0.linux-amd64 \
+              -o ~/.docker/cli-plugins/docker-buildx
+            chmod +x ~/.docker/cli-plugins/docker-buildx
+
+      - run:
+          name: Set up Buildx Builder
+          command: |
+            docker buildx create --name multiarch --use
+            docker buildx inspect --bootstrap
+
+      - run:
+          name: Build external-import/urlhaus-recent-payloads_multi
           command: |
             echo "Processing external-import/urlhaus-recent-payloads"
             cd external-import/urlhaus-recent-payloads
             echo "$DOCKERHUB_PASS" | docker login -u "$DOCKERHUB_USERNAME" --password-stdin
-            docker build -t renizmy/connector-urlhaus-recent-payloads:6.4.0 . --build-arg BASE_IMAGE=renizmy/opencti-base:6.4.0
+            docker buildx build --platform linux/amd64,linux/arm64 -t renizmy/connector-urlhaus-recent-payloads:6.4.0 . --build-arg BASE_IMAGE=renizmy/opencti-base:6.4.0
             docker tag renizmy/connector-urlhaus-recent-payloads:6.4.0 renizmy/connector-urlhaus-recent-payloads:latest
             docker push renizmy/connector-urlhaus-recent-payloads:6.4.0
             docker push renizmy/connector-urlhaus-recent-payloads:latest
       
-  build_external-import_crits:
+  build_external-import_crits_multi:
     docker:
       - image: cimg/base:stable-20.04
     steps:
       - checkout
       - setup_remote_docker
+
       - run:
-          name: Build external-import/critsa
+          name: Install Docker Buildx
+          command: |
+            mkdir -p ~/.docker/cli-plugins/
+            curl -L https://github.com/docker/buildx/releases/download/v0.11.0/buildx-v0.11.0.linux-amd64 \
+              -o ~/.docker/cli-plugins/docker-buildx
+            chmod +x ~/.docker/cli-plugins/docker-buildx
+
+      - run:
+          name: Set up Buildx Builder
+          command: |
+            docker buildx create --name multiarch --use
+            docker buildx inspect --bootstrap
+
+      - run:
+          name: Build external-import/crits_multi
           command: |
             echo "Processing external-import/crits"
             cd external-import/crits
             echo "$DOCKERHUB_PASS" | docker login -u "$DOCKERHUB_USERNAME" --password-stdin
-            docker build -t renizmy/connector-crits:6.4.0 . --build-arg BASE_IMAGE=renizmy/opencti-base:6.4.0
+            docker buildx build --platform linux/amd64,linux/arm64 -t renizmy/connector-crits:6.4.0 . --build-arg BASE_IMAGE=renizmy/opencti-base:6.4.0
             docker tag renizmy/connector-crits:6.4.0 renizmy/connector-crits:latest
             docker push renizmy/connector-crits:6.4.0
             docker push renizmy/connector-crits:latest
       
-  build_external-import_sentinel-incidents:
+  build_external-import_sentinel-incidents_multi:
     docker:
       - image: cimg/base:stable-20.04
     steps:
       - checkout
       - setup_remote_docker
+
       - run:
-          name: Build external-import/sentinel-incidentsa
+          name: Install Docker Buildx
+          command: |
+            mkdir -p ~/.docker/cli-plugins/
+            curl -L https://github.com/docker/buildx/releases/download/v0.11.0/buildx-v0.11.0.linux-amd64 \
+              -o ~/.docker/cli-plugins/docker-buildx
+            chmod +x ~/.docker/cli-plugins/docker-buildx
+
+      - run:
+          name: Set up Buildx Builder
+          command: |
+            docker buildx create --name multiarch --use
+            docker buildx inspect --bootstrap
+
+      - run:
+          name: Build external-import/sentinel-incidents_multi
           command: |
             echo "Processing external-import/sentinel-incidents"
             cd external-import/sentinel-incidents
             echo "$DOCKERHUB_PASS" | docker login -u "$DOCKERHUB_USERNAME" --password-stdin
-            docker build -t renizmy/connector-sentinel-incidents:6.4.0 . --build-arg BASE_IMAGE=renizmy/opencti-base:6.4.0
+            docker buildx build --platform linux/amd64,linux/arm64 -t renizmy/connector-sentinel-incidents:6.4.0 . --build-arg BASE_IMAGE=renizmy/opencti-base:6.4.0
             docker tag renizmy/connector-sentinel-incidents:6.4.0 renizmy/connector-sentinel-incidents:latest
             docker push renizmy/connector-sentinel-incidents:6.4.0
             docker push renizmy/connector-sentinel-incidents:latest
       
-  build_external-import_urlhaus:
+  build_external-import_urlhaus_multi:
     docker:
       - image: cimg/base:stable-20.04
     steps:
       - checkout
       - setup_remote_docker
+
       - run:
-          name: Build external-import/urlhausa
+          name: Install Docker Buildx
+          command: |
+            mkdir -p ~/.docker/cli-plugins/
+            curl -L https://github.com/docker/buildx/releases/download/v0.11.0/buildx-v0.11.0.linux-amd64 \
+              -o ~/.docker/cli-plugins/docker-buildx
+            chmod +x ~/.docker/cli-plugins/docker-buildx
+
+      - run:
+          name: Set up Buildx Builder
+          command: |
+            docker buildx create --name multiarch --use
+            docker buildx inspect --bootstrap
+
+      - run:
+          name: Build external-import/urlhaus_multi
           command: |
             echo "Processing external-import/urlhaus"
             cd external-import/urlhaus
             echo "$DOCKERHUB_PASS" | docker login -u "$DOCKERHUB_USERNAME" --password-stdin
-            docker build -t renizmy/connector-urlhaus:6.4.0 . --build-arg BASE_IMAGE=renizmy/opencti-base:6.4.0
+            docker buildx build --platform linux/amd64,linux/arm64 -t renizmy/connector-urlhaus:6.4.0 . --build-arg BASE_IMAGE=renizmy/opencti-base:6.4.0
             docker tag renizmy/connector-urlhaus:6.4.0 renizmy/connector-urlhaus:latest
             docker push renizmy/connector-urlhaus:6.4.0
             docker push renizmy/connector-urlhaus:latest
       
-  build_external-import_mwdb:
+  build_external-import_mwdb_multi:
     docker:
       - image: cimg/base:stable-20.04
     steps:
       - checkout
       - setup_remote_docker
+
       - run:
-          name: Build external-import/mwdba
+          name: Install Docker Buildx
+          command: |
+            mkdir -p ~/.docker/cli-plugins/
+            curl -L https://github.com/docker/buildx/releases/download/v0.11.0/buildx-v0.11.0.linux-amd64 \
+              -o ~/.docker/cli-plugins/docker-buildx
+            chmod +x ~/.docker/cli-plugins/docker-buildx
+
+      - run:
+          name: Set up Buildx Builder
+          command: |
+            docker buildx create --name multiarch --use
+            docker buildx inspect --bootstrap
+
+      - run:
+          name: Build external-import/mwdb_multi
           command: |
             echo "Processing external-import/mwdb"
             cd external-import/mwdb
             echo "$DOCKERHUB_PASS" | docker login -u "$DOCKERHUB_USERNAME" --password-stdin
-            docker build -t renizmy/connector-mwdb:6.4.0 . --build-arg BASE_IMAGE=renizmy/opencti-base:6.4.0
+            docker buildx build --platform linux/amd64,linux/arm64 -t renizmy/connector-mwdb:6.4.0 . --build-arg BASE_IMAGE=renizmy/opencti-base:6.4.0
             docker tag renizmy/connector-mwdb:6.4.0 renizmy/connector-mwdb:latest
             docker push renizmy/connector-mwdb:6.4.0
             docker push renizmy/connector-mwdb:latest
       
-  build_external-import_cve:
+  build_external-import_cve_multi:
     docker:
       - image: cimg/base:stable-20.04
     steps:
       - checkout
       - setup_remote_docker
+
       - run:
-          name: Build external-import/cvea
+          name: Install Docker Buildx
+          command: |
+            mkdir -p ~/.docker/cli-plugins/
+            curl -L https://github.com/docker/buildx/releases/download/v0.11.0/buildx-v0.11.0.linux-amd64 \
+              -o ~/.docker/cli-plugins/docker-buildx
+            chmod +x ~/.docker/cli-plugins/docker-buildx
+
+      - run:
+          name: Set up Buildx Builder
+          command: |
+            docker buildx create --name multiarch --use
+            docker buildx inspect --bootstrap
+
+      - run:
+          name: Build external-import/cve_multi
           command: |
             echo "Processing external-import/cve"
             cd external-import/cve
             echo "$DOCKERHUB_PASS" | docker login -u "$DOCKERHUB_USERNAME" --password-stdin
-            docker build -t renizmy/connector-cve:6.4.0 . --build-arg BASE_IMAGE=renizmy/opencti-base:6.4.0
+            docker buildx build --platform linux/amd64,linux/arm64 -t renizmy/connector-cve:6.4.0 . --build-arg BASE_IMAGE=renizmy/opencti-base:6.4.0
             docker tag renizmy/connector-cve:6.4.0 renizmy/connector-cve:latest
             docker push renizmy/connector-cve:6.4.0
             docker push renizmy/connector-cve:latest
       
-  build_external-import_malwarebazaar-recent-additions:
+  build_external-import_malwarebazaar-recent-additions_multi:
     docker:
       - image: cimg/base:stable-20.04
     steps:
       - checkout
       - setup_remote_docker
+
       - run:
-          name: Build external-import/malwarebazaar-recent-additionsa
+          name: Install Docker Buildx
+          command: |
+            mkdir -p ~/.docker/cli-plugins/
+            curl -L https://github.com/docker/buildx/releases/download/v0.11.0/buildx-v0.11.0.linux-amd64 \
+              -o ~/.docker/cli-plugins/docker-buildx
+            chmod +x ~/.docker/cli-plugins/docker-buildx
+
+      - run:
+          name: Set up Buildx Builder
+          command: |
+            docker buildx create --name multiarch --use
+            docker buildx inspect --bootstrap
+
+      - run:
+          name: Build external-import/malwarebazaar-recent-additions_multi
           command: |
             echo "Processing external-import/malwarebazaar-recent-additions"
             cd external-import/malwarebazaar-recent-additions
             echo "$DOCKERHUB_PASS" | docker login -u "$DOCKERHUB_USERNAME" --password-stdin
-            docker build -t renizmy/connector-malwarebazaar-recent-additions:6.4.0 . --build-arg BASE_IMAGE=renizmy/opencti-base:6.4.0
+            docker buildx build --platform linux/amd64,linux/arm64 -t renizmy/connector-malwarebazaar-recent-additions:6.4.0 . --build-arg BASE_IMAGE=renizmy/opencti-base:6.4.0
             docker tag renizmy/connector-malwarebazaar-recent-additions:6.4.0 renizmy/connector-malwarebazaar-recent-additions:latest
             docker push renizmy/connector-malwarebazaar-recent-additions:6.4.0
             docker push renizmy/connector-malwarebazaar-recent-additions:latest
       
-  build_external-import_mandiant:
+  build_external-import_mandiant_multi:
     docker:
       - image: cimg/base:stable-20.04
     steps:
       - checkout
       - setup_remote_docker
+
       - run:
-          name: Build external-import/mandianta
+          name: Install Docker Buildx
+          command: |
+            mkdir -p ~/.docker/cli-plugins/
+            curl -L https://github.com/docker/buildx/releases/download/v0.11.0/buildx-v0.11.0.linux-amd64 \
+              -o ~/.docker/cli-plugins/docker-buildx
+            chmod +x ~/.docker/cli-plugins/docker-buildx
+
+      - run:
+          name: Set up Buildx Builder
+          command: |
+            docker buildx create --name multiarch --use
+            docker buildx inspect --bootstrap
+
+      - run:
+          name: Build external-import/mandiant_multi
           command: |
             echo "Processing external-import/mandiant"
             cd external-import/mandiant
             echo "$DOCKERHUB_PASS" | docker login -u "$DOCKERHUB_USERNAME" --password-stdin
-            docker build -t renizmy/connector-mandiant:6.4.0 . --build-arg BASE_IMAGE=renizmy/opencti-base:6.4.0
+            docker buildx build --platform linux/amd64,linux/arm64 -t renizmy/connector-mandiant:6.4.0 . --build-arg BASE_IMAGE=renizmy/opencti-base:6.4.0
             docker tag renizmy/connector-mandiant:6.4.0 renizmy/connector-mandiant:latest
             docker push renizmy/connector-mandiant:6.4.0
             docker push renizmy/connector-mandiant:latest
       
-  build_external-import_cybersixgill:
+  build_external-import_cybersixgill_multi:
     docker:
       - image: cimg/base:stable-20.04
     steps:
       - checkout
       - setup_remote_docker
+
       - run:
-          name: Build external-import/cybersixgilla
+          name: Install Docker Buildx
+          command: |
+            mkdir -p ~/.docker/cli-plugins/
+            curl -L https://github.com/docker/buildx/releases/download/v0.11.0/buildx-v0.11.0.linux-amd64 \
+              -o ~/.docker/cli-plugins/docker-buildx
+            chmod +x ~/.docker/cli-plugins/docker-buildx
+
+      - run:
+          name: Set up Buildx Builder
+          command: |
+            docker buildx create --name multiarch --use
+            docker buildx inspect --bootstrap
+
+      - run:
+          name: Build external-import/cybersixgill_multi
           command: |
             echo "Processing external-import/cybersixgill"
             cd external-import/cybersixgill
             echo "$DOCKERHUB_PASS" | docker login -u "$DOCKERHUB_USERNAME" --password-stdin
-            docker build -t renizmy/connector-cybersixgill:6.4.0 . --build-arg BASE_IMAGE=renizmy/opencti-base:6.4.0
+            docker buildx build --platform linux/amd64,linux/arm64 -t renizmy/connector-cybersixgill:6.4.0 . --build-arg BASE_IMAGE=renizmy/opencti-base:6.4.0
             docker tag renizmy/connector-cybersixgill:6.4.0 renizmy/connector-cybersixgill:latest
             docker push renizmy/connector-cybersixgill:6.4.0
             docker push renizmy/connector-cybersixgill:latest
       
-  build_external-import_phishunt:
+  build_external-import_phishunt_multi:
     docker:
       - image: cimg/base:stable-20.04
     steps:
       - checkout
       - setup_remote_docker
+
       - run:
-          name: Build external-import/phishunta
+          name: Install Docker Buildx
+          command: |
+            mkdir -p ~/.docker/cli-plugins/
+            curl -L https://github.com/docker/buildx/releases/download/v0.11.0/buildx-v0.11.0.linux-amd64 \
+              -o ~/.docker/cli-plugins/docker-buildx
+            chmod +x ~/.docker/cli-plugins/docker-buildx
+
+      - run:
+          name: Set up Buildx Builder
+          command: |
+            docker buildx create --name multiarch --use
+            docker buildx inspect --bootstrap
+
+      - run:
+          name: Build external-import/phishunt_multi
           command: |
             echo "Processing external-import/phishunt"
             cd external-import/phishunt
             echo "$DOCKERHUB_PASS" | docker login -u "$DOCKERHUB_USERNAME" --password-stdin
-            docker build -t renizmy/connector-phishunt:6.4.0 . --build-arg BASE_IMAGE=renizmy/opencti-base:6.4.0
+            docker buildx build --platform linux/amd64,linux/arm64 -t renizmy/connector-phishunt:6.4.0 . --build-arg BASE_IMAGE=renizmy/opencti-base:6.4.0
             docker tag renizmy/connector-phishunt:6.4.0 renizmy/connector-phishunt:latest
             docker push renizmy/connector-phishunt:6.4.0
             docker push renizmy/connector-phishunt:latest
       
-  build_external-import_disarm-framework:
+  build_external-import_disarm-framework_multi:
     docker:
       - image: cimg/base:stable-20.04
     steps:
       - checkout
       - setup_remote_docker
+
       - run:
-          name: Build external-import/disarm-frameworka
+          name: Install Docker Buildx
+          command: |
+            mkdir -p ~/.docker/cli-plugins/
+            curl -L https://github.com/docker/buildx/releases/download/v0.11.0/buildx-v0.11.0.linux-amd64 \
+              -o ~/.docker/cli-plugins/docker-buildx
+            chmod +x ~/.docker/cli-plugins/docker-buildx
+
+      - run:
+          name: Set up Buildx Builder
+          command: |
+            docker buildx create --name multiarch --use
+            docker buildx inspect --bootstrap
+
+      - run:
+          name: Build external-import/disarm-framework_multi
           command: |
             echo "Processing external-import/disarm-framework"
             cd external-import/disarm-framework
             echo "$DOCKERHUB_PASS" | docker login -u "$DOCKERHUB_USERNAME" --password-stdin
-            docker build -t renizmy/connector-disarm-framework:6.4.0 . --build-arg BASE_IMAGE=renizmy/opencti-base:6.4.0
+            docker buildx build --platform linux/amd64,linux/arm64 -t renizmy/connector-disarm-framework:6.4.0 . --build-arg BASE_IMAGE=renizmy/opencti-base:6.4.0
             docker tag renizmy/connector-disarm-framework:6.4.0 renizmy/connector-disarm-framework:latest
             docker push renizmy/connector-disarm-framework:6.4.0
             docker push renizmy/connector-disarm-framework:latest
       
-  build_external-import_opencsam:
+  build_external-import_opencsam_multi:
     docker:
       - image: cimg/base:stable-20.04
     steps:
       - checkout
       - setup_remote_docker
+
       - run:
-          name: Build external-import/opencsama
+          name: Install Docker Buildx
+          command: |
+            mkdir -p ~/.docker/cli-plugins/
+            curl -L https://github.com/docker/buildx/releases/download/v0.11.0/buildx-v0.11.0.linux-amd64 \
+              -o ~/.docker/cli-plugins/docker-buildx
+            chmod +x ~/.docker/cli-plugins/docker-buildx
+
+      - run:
+          name: Set up Buildx Builder
+          command: |
+            docker buildx create --name multiarch --use
+            docker buildx inspect --bootstrap
+
+      - run:
+          name: Build external-import/opencsam_multi
           command: |
             echo "Processing external-import/opencsam"
             cd external-import/opencsam
             echo "$DOCKERHUB_PASS" | docker login -u "$DOCKERHUB_USERNAME" --password-stdin
-            docker build -t renizmy/connector-opencsam:6.4.0 . --build-arg BASE_IMAGE=renizmy/opencti-base:6.4.0
+            docker buildx build --platform linux/amd64,linux/arm64 -t renizmy/connector-opencsam:6.4.0 . --build-arg BASE_IMAGE=renizmy/opencti-base:6.4.0
             docker tag renizmy/connector-opencsam:6.4.0 renizmy/connector-opencsam:latest
             docker push renizmy/connector-opencsam:6.4.0
             docker push renizmy/connector-opencsam:latest
       
-  build_external-import_crowdstrike:
+  build_external-import_crowdstrike_multi:
     docker:
       - image: cimg/base:stable-20.04
     steps:
       - checkout
       - setup_remote_docker
+
       - run:
-          name: Build external-import/crowdstrikea
+          name: Install Docker Buildx
+          command: |
+            mkdir -p ~/.docker/cli-plugins/
+            curl -L https://github.com/docker/buildx/releases/download/v0.11.0/buildx-v0.11.0.linux-amd64 \
+              -o ~/.docker/cli-plugins/docker-buildx
+            chmod +x ~/.docker/cli-plugins/docker-buildx
+
+      - run:
+          name: Set up Buildx Builder
+          command: |
+            docker buildx create --name multiarch --use
+            docker buildx inspect --bootstrap
+
+      - run:
+          name: Build external-import/crowdstrike_multi
           command: |
             echo "Processing external-import/crowdstrike"
             cd external-import/crowdstrike
             echo "$DOCKERHUB_PASS" | docker login -u "$DOCKERHUB_USERNAME" --password-stdin
-            docker build -t renizmy/connector-crowdstrike:6.4.0 . --build-arg BASE_IMAGE=renizmy/opencti-base:6.4.0
+            docker buildx build --platform linux/amd64,linux/arm64 -t renizmy/connector-crowdstrike:6.4.0 . --build-arg BASE_IMAGE=renizmy/opencti-base:6.4.0
             docker tag renizmy/connector-crowdstrike:6.4.0 renizmy/connector-crowdstrike:latest
             docker push renizmy/connector-crowdstrike:6.4.0
             docker push renizmy/connector-crowdstrike:latest
       
-  build_external-import_cisa-known-exploited-vulnerabilities:
+  build_external-import_cisa-known-exploited-vulnerabilities_multi:
     docker:
       - image: cimg/base:stable-20.04
     steps:
       - checkout
       - setup_remote_docker
+
       - run:
-          name: Build external-import/cisa-known-exploited-vulnerabilitiesa
+          name: Install Docker Buildx
+          command: |
+            mkdir -p ~/.docker/cli-plugins/
+            curl -L https://github.com/docker/buildx/releases/download/v0.11.0/buildx-v0.11.0.linux-amd64 \
+              -o ~/.docker/cli-plugins/docker-buildx
+            chmod +x ~/.docker/cli-plugins/docker-buildx
+
+      - run:
+          name: Set up Buildx Builder
+          command: |
+            docker buildx create --name multiarch --use
+            docker buildx inspect --bootstrap
+
+      - run:
+          name: Build external-import/cisa-known-exploited-vulnerabilities_multi
           command: |
             echo "Processing external-import/cisa-known-exploited-vulnerabilities"
             cd external-import/cisa-known-exploited-vulnerabilities
             echo "$DOCKERHUB_PASS" | docker login -u "$DOCKERHUB_USERNAME" --password-stdin
-            docker build -t renizmy/connector-cisa-known-exploited-vulnerabilities:6.4.0 . --build-arg BASE_IMAGE=renizmy/opencti-base:6.4.0
+            docker buildx build --platform linux/amd64,linux/arm64 -t renizmy/connector-cisa-known-exploited-vulnerabilities:6.4.0 . --build-arg BASE_IMAGE=renizmy/opencti-base:6.4.0
             docker tag renizmy/connector-cisa-known-exploited-vulnerabilities:6.4.0 renizmy/connector-cisa-known-exploited-vulnerabilities:latest
             docker push renizmy/connector-cisa-known-exploited-vulnerabilities:6.4.0
             docker push renizmy/connector-cisa-known-exploited-vulnerabilities:latest
       
-  build_external-import_opencti:
+  build_external-import_opencti_multi:
     docker:
       - image: cimg/base:stable-20.04
     steps:
       - checkout
       - setup_remote_docker
+
       - run:
-          name: Build external-import/openctia
+          name: Install Docker Buildx
+          command: |
+            mkdir -p ~/.docker/cli-plugins/
+            curl -L https://github.com/docker/buildx/releases/download/v0.11.0/buildx-v0.11.0.linux-amd64 \
+              -o ~/.docker/cli-plugins/docker-buildx
+            chmod +x ~/.docker/cli-plugins/docker-buildx
+
+      - run:
+          name: Set up Buildx Builder
+          command: |
+            docker buildx create --name multiarch --use
+            docker buildx inspect --bootstrap
+
+      - run:
+          name: Build external-import/opencti_multi
           command: |
             echo "Processing external-import/opencti"
             cd external-import/opencti
             echo "$DOCKERHUB_PASS" | docker login -u "$DOCKERHUB_USERNAME" --password-stdin
-            docker build -t renizmy/connector-opencti:6.4.0 . --build-arg BASE_IMAGE=renizmy/opencti-base:6.4.0
+            docker buildx build --platform linux/amd64,linux/arm64 -t renizmy/connector-opencti:6.4.0 . --build-arg BASE_IMAGE=renizmy/opencti-base:6.4.0
             docker tag renizmy/connector-opencti:6.4.0 renizmy/connector-opencti:latest
             docker push renizmy/connector-opencti:6.4.0
             docker push renizmy/connector-opencti:latest
       
-  build_external-import_cluster25:
+  build_external-import_cluster25_multi:
     docker:
       - image: cimg/base:stable-20.04
     steps:
       - checkout
       - setup_remote_docker
+
       - run:
-          name: Build external-import/cluster25a
+          name: Install Docker Buildx
+          command: |
+            mkdir -p ~/.docker/cli-plugins/
+            curl -L https://github.com/docker/buildx/releases/download/v0.11.0/buildx-v0.11.0.linux-amd64 \
+              -o ~/.docker/cli-plugins/docker-buildx
+            chmod +x ~/.docker/cli-plugins/docker-buildx
+
+      - run:
+          name: Set up Buildx Builder
+          command: |
+            docker buildx create --name multiarch --use
+            docker buildx inspect --bootstrap
+
+      - run:
+          name: Build external-import/cluster25_multi
           command: |
             echo "Processing external-import/cluster25"
             cd external-import/cluster25
             echo "$DOCKERHUB_PASS" | docker login -u "$DOCKERHUB_USERNAME" --password-stdin
-            docker build -t renizmy/connector-cluster25:6.4.0 . --build-arg BASE_IMAGE=renizmy/opencti-base:6.4.0
+            docker buildx build --platform linux/amd64,linux/arm64 -t renizmy/connector-cluster25:6.4.0 . --build-arg BASE_IMAGE=renizmy/opencti-base:6.4.0
             docker tag renizmy/connector-cluster25:6.4.0 renizmy/connector-cluster25:latest
             docker push renizmy/connector-cluster25:6.4.0
             docker push renizmy/connector-cluster25:latest
       
-  build_external-import_maltiverse:
+  build_external-import_maltiverse_multi:
     docker:
       - image: cimg/base:stable-20.04
     steps:
       - checkout
       - setup_remote_docker
+
       - run:
-          name: Build external-import/maltiversea
+          name: Install Docker Buildx
+          command: |
+            mkdir -p ~/.docker/cli-plugins/
+            curl -L https://github.com/docker/buildx/releases/download/v0.11.0/buildx-v0.11.0.linux-amd64 \
+              -o ~/.docker/cli-plugins/docker-buildx
+            chmod +x ~/.docker/cli-plugins/docker-buildx
+
+      - run:
+          name: Set up Buildx Builder
+          command: |
+            docker buildx create --name multiarch --use
+            docker buildx inspect --bootstrap
+
+      - run:
+          name: Build external-import/maltiverse_multi
           command: |
             echo "Processing external-import/maltiverse"
             cd external-import/maltiverse
             echo "$DOCKERHUB_PASS" | docker login -u "$DOCKERHUB_USERNAME" --password-stdin
-            docker build -t renizmy/connector-maltiverse:6.4.0 . --build-arg BASE_IMAGE=renizmy/opencti-base:6.4.0
+            docker buildx build --platform linux/amd64,linux/arm64 -t renizmy/connector-maltiverse:6.4.0 . --build-arg BASE_IMAGE=renizmy/opencti-base:6.4.0
             docker tag renizmy/connector-maltiverse:6.4.0 renizmy/connector-maltiverse:latest
             docker push renizmy/connector-maltiverse:6.4.0
             docker push renizmy/connector-maltiverse:latest
       
-  build_external-import_threatfox:
+  build_external-import_threatfox_multi:
     docker:
       - image: cimg/base:stable-20.04
     steps:
       - checkout
       - setup_remote_docker
+
       - run:
-          name: Build external-import/threatfoxa
+          name: Install Docker Buildx
+          command: |
+            mkdir -p ~/.docker/cli-plugins/
+            curl -L https://github.com/docker/buildx/releases/download/v0.11.0/buildx-v0.11.0.linux-amd64 \
+              -o ~/.docker/cli-plugins/docker-buildx
+            chmod +x ~/.docker/cli-plugins/docker-buildx
+
+      - run:
+          name: Set up Buildx Builder
+          command: |
+            docker buildx create --name multiarch --use
+            docker buildx inspect --bootstrap
+
+      - run:
+          name: Build external-import/threatfox_multi
           command: |
             echo "Processing external-import/threatfox"
             cd external-import/threatfox
             echo "$DOCKERHUB_PASS" | docker login -u "$DOCKERHUB_USERNAME" --password-stdin
-            docker build -t renizmy/connector-threatfox:6.4.0 . --build-arg BASE_IMAGE=renizmy/opencti-base:6.4.0
+            docker buildx build --platform linux/amd64,linux/arm64 -t renizmy/connector-threatfox:6.4.0 . --build-arg BASE_IMAGE=renizmy/opencti-base:6.4.0
             docker tag renizmy/connector-threatfox:6.4.0 renizmy/connector-threatfox:latest
             docker push renizmy/connector-threatfox:6.4.0
             docker push renizmy/connector-threatfox:latest
       
-  build_external-import_taxii2:
+  build_external-import_taxii2_multi:
     docker:
       - image: cimg/base:stable-20.04
     steps:
       - checkout
       - setup_remote_docker
+
       - run:
-          name: Build external-import/taxii2a
+          name: Install Docker Buildx
+          command: |
+            mkdir -p ~/.docker/cli-plugins/
+            curl -L https://github.com/docker/buildx/releases/download/v0.11.0/buildx-v0.11.0.linux-amd64 \
+              -o ~/.docker/cli-plugins/docker-buildx
+            chmod +x ~/.docker/cli-plugins/docker-buildx
+
+      - run:
+          name: Set up Buildx Builder
+          command: |
+            docker buildx create --name multiarch --use
+            docker buildx inspect --bootstrap
+
+      - run:
+          name: Build external-import/taxii2_multi
           command: |
             echo "Processing external-import/taxii2"
             cd external-import/taxii2
             echo "$DOCKERHUB_PASS" | docker login -u "$DOCKERHUB_USERNAME" --password-stdin
-            docker build -t renizmy/connector-taxii2:6.4.0 . --build-arg BASE_IMAGE=renizmy/opencti-base:6.4.0
+            docker buildx build --platform linux/amd64,linux/arm64 -t renizmy/connector-taxii2:6.4.0 . --build-arg BASE_IMAGE=renizmy/opencti-base:6.4.0
             docker tag renizmy/connector-taxii2:6.4.0 renizmy/connector-taxii2:latest
             docker push renizmy/connector-taxii2:6.4.0
             docker push renizmy/connector-taxii2:latest
       
-  build_external-import_thehive:
+  build_external-import_thehive_multi:
     docker:
       - image: cimg/base:stable-20.04
     steps:
       - checkout
       - setup_remote_docker
+
       - run:
-          name: Build external-import/thehivea
+          name: Install Docker Buildx
+          command: |
+            mkdir -p ~/.docker/cli-plugins/
+            curl -L https://github.com/docker/buildx/releases/download/v0.11.0/buildx-v0.11.0.linux-amd64 \
+              -o ~/.docker/cli-plugins/docker-buildx
+            chmod +x ~/.docker/cli-plugins/docker-buildx
+
+      - run:
+          name: Set up Buildx Builder
+          command: |
+            docker buildx create --name multiarch --use
+            docker buildx inspect --bootstrap
+
+      - run:
+          name: Build external-import/thehive_multi
           command: |
             echo "Processing external-import/thehive"
             cd external-import/thehive
             echo "$DOCKERHUB_PASS" | docker login -u "$DOCKERHUB_USERNAME" --password-stdin
-            docker build -t renizmy/connector-thehive:6.4.0 . --build-arg BASE_IMAGE=renizmy/opencti-base:6.4.0
+            docker buildx build --platform linux/amd64,linux/arm64 -t renizmy/connector-thehive:6.4.0 . --build-arg BASE_IMAGE=renizmy/opencti-base:6.4.0
             docker tag renizmy/connector-thehive:6.4.0 renizmy/connector-thehive:latest
             docker push renizmy/connector-thehive:6.4.0
             docker push renizmy/connector-thehive:latest
       
-  build_external-import_google-drive:
+  build_external-import_google-drive_multi:
     docker:
       - image: cimg/base:stable-20.04
     steps:
       - checkout
       - setup_remote_docker
+
       - run:
-          name: Build external-import/google-drivea
+          name: Install Docker Buildx
+          command: |
+            mkdir -p ~/.docker/cli-plugins/
+            curl -L https://github.com/docker/buildx/releases/download/v0.11.0/buildx-v0.11.0.linux-amd64 \
+              -o ~/.docker/cli-plugins/docker-buildx
+            chmod +x ~/.docker/cli-plugins/docker-buildx
+
+      - run:
+          name: Set up Buildx Builder
+          command: |
+            docker buildx create --name multiarch --use
+            docker buildx inspect --bootstrap
+
+      - run:
+          name: Build external-import/google-drive_multi
           command: |
             echo "Processing external-import/google-drive"
             cd external-import/google-drive
             echo "$DOCKERHUB_PASS" | docker login -u "$DOCKERHUB_USERNAME" --password-stdin
-            docker build -t renizmy/connector-google-drive:6.4.0 . --build-arg BASE_IMAGE=renizmy/opencti-base:6.4.0
+            docker buildx build --platform linux/amd64,linux/arm64 -t renizmy/connector-google-drive:6.4.0 . --build-arg BASE_IMAGE=renizmy/opencti-base:6.4.0
             docker tag renizmy/connector-google-drive:6.4.0 renizmy/connector-google-drive:latest
             docker push renizmy/connector-google-drive:6.4.0
             docker push renizmy/connector-google-drive:latest
       
-  build_external-import_cisco-sma:
+  build_external-import_cisco-sma_multi:
     docker:
       - image: cimg/base:stable-20.04
     steps:
       - checkout
       - setup_remote_docker
+
       - run:
-          name: Build external-import/cisco-smaa
+          name: Install Docker Buildx
+          command: |
+            mkdir -p ~/.docker/cli-plugins/
+            curl -L https://github.com/docker/buildx/releases/download/v0.11.0/buildx-v0.11.0.linux-amd64 \
+              -o ~/.docker/cli-plugins/docker-buildx
+            chmod +x ~/.docker/cli-plugins/docker-buildx
+
+      - run:
+          name: Set up Buildx Builder
+          command: |
+            docker buildx create --name multiarch --use
+            docker buildx inspect --bootstrap
+
+      - run:
+          name: Build external-import/cisco-sma_multi
           command: |
             echo "Processing external-import/cisco-sma"
             cd external-import/cisco-sma
             echo "$DOCKERHUB_PASS" | docker login -u "$DOCKERHUB_USERNAME" --password-stdin
-            docker build -t renizmy/connector-cisco-sma:6.4.0 . --build-arg BASE_IMAGE=renizmy/opencti-base:6.4.0
+            docker buildx build --platform linux/amd64,linux/arm64 -t renizmy/connector-cisco-sma:6.4.0 . --build-arg BASE_IMAGE=renizmy/opencti-base:6.4.0
             docker tag renizmy/connector-cisco-sma:6.4.0 renizmy/connector-cisco-sma:latest
             docker push renizmy/connector-cisco-sma:6.4.0
             docker push renizmy/connector-cisco-sma:latest
       
-  build_external-import_valhalla:
+  build_external-import_valhalla_multi:
     docker:
       - image: cimg/base:stable-20.04
     steps:
       - checkout
       - setup_remote_docker
+
       - run:
-          name: Build external-import/valhallaa
+          name: Install Docker Buildx
+          command: |
+            mkdir -p ~/.docker/cli-plugins/
+            curl -L https://github.com/docker/buildx/releases/download/v0.11.0/buildx-v0.11.0.linux-amd64 \
+              -o ~/.docker/cli-plugins/docker-buildx
+            chmod +x ~/.docker/cli-plugins/docker-buildx
+
+      - run:
+          name: Set up Buildx Builder
+          command: |
+            docker buildx create --name multiarch --use
+            docker buildx inspect --bootstrap
+
+      - run:
+          name: Build external-import/valhalla_multi
           command: |
             echo "Processing external-import/valhalla"
             cd external-import/valhalla
             echo "$DOCKERHUB_PASS" | docker login -u "$DOCKERHUB_USERNAME" --password-stdin
-            docker build -t renizmy/connector-valhalla:6.4.0 . --build-arg BASE_IMAGE=renizmy/opencti-base:6.4.0
+            docker buildx build --platform linux/amd64,linux/arm64 -t renizmy/connector-valhalla:6.4.0 . --build-arg BASE_IMAGE=renizmy/opencti-base:6.4.0
             docker tag renizmy/connector-valhalla:6.4.0 renizmy/connector-valhalla:latest
             docker push renizmy/connector-valhalla:6.4.0
             docker push renizmy/connector-valhalla:latest
       
-  build_external-import_kaspersky:
+  build_external-import_kaspersky_multi:
     docker:
       - image: cimg/base:stable-20.04
     steps:
       - checkout
       - setup_remote_docker
+
       - run:
-          name: Build external-import/kasperskya
+          name: Install Docker Buildx
+          command: |
+            mkdir -p ~/.docker/cli-plugins/
+            curl -L https://github.com/docker/buildx/releases/download/v0.11.0/buildx-v0.11.0.linux-amd64 \
+              -o ~/.docker/cli-plugins/docker-buildx
+            chmod +x ~/.docker/cli-plugins/docker-buildx
+
+      - run:
+          name: Set up Buildx Builder
+          command: |
+            docker buildx create --name multiarch --use
+            docker buildx inspect --bootstrap
+
+      - run:
+          name: Build external-import/kaspersky_multi
           command: |
             echo "Processing external-import/kaspersky"
             cd external-import/kaspersky
             echo "$DOCKERHUB_PASS" | docker login -u "$DOCKERHUB_USERNAME" --password-stdin
-            docker build -t renizmy/connector-kaspersky:6.4.0 . --build-arg BASE_IMAGE=renizmy/opencti-base:6.4.0
+            docker buildx build --platform linux/amd64,linux/arm64 -t renizmy/connector-kaspersky:6.4.0 . --build-arg BASE_IMAGE=renizmy/opencti-base:6.4.0
             docker tag renizmy/connector-kaspersky:6.4.0 renizmy/connector-kaspersky:latest
             docker push renizmy/connector-kaspersky:6.4.0
             docker push renizmy/connector-kaspersky:latest
       
-  build_external-import_obstracts:
+  build_external-import_obstracts_multi:
     docker:
       - image: cimg/base:stable-20.04
     steps:
       - checkout
       - setup_remote_docker
+
       - run:
-          name: Build external-import/obstractsa
+          name: Install Docker Buildx
+          command: |
+            mkdir -p ~/.docker/cli-plugins/
+            curl -L https://github.com/docker/buildx/releases/download/v0.11.0/buildx-v0.11.0.linux-amd64 \
+              -o ~/.docker/cli-plugins/docker-buildx
+            chmod +x ~/.docker/cli-plugins/docker-buildx
+
+      - run:
+          name: Set up Buildx Builder
+          command: |
+            docker buildx create --name multiarch --use
+            docker buildx inspect --bootstrap
+
+      - run:
+          name: Build external-import/obstracts_multi
           command: |
             echo "Processing external-import/obstracts"
             cd external-import/obstracts
             echo "$DOCKERHUB_PASS" | docker login -u "$DOCKERHUB_USERNAME" --password-stdin
-            docker build -t renizmy/connector-obstracts:6.4.0 . --build-arg BASE_IMAGE=renizmy/opencti-base:6.4.0
+            docker buildx build --platform linux/amd64,linux/arm64 -t renizmy/connector-obstracts:6.4.0 . --build-arg BASE_IMAGE=renizmy/opencti-base:6.4.0
             docker tag renizmy/connector-obstracts:6.4.0 renizmy/connector-obstracts:latest
             docker push renizmy/connector-obstracts:6.4.0
             docker push renizmy/connector-obstracts:latest
       
-  build_external-import_red-flag-domains:
+  build_external-import_red-flag-domains_multi:
     docker:
       - image: cimg/base:stable-20.04
     steps:
       - checkout
       - setup_remote_docker
+
       - run:
-          name: Build external-import/red-flag-domainsa
+          name: Install Docker Buildx
+          command: |
+            mkdir -p ~/.docker/cli-plugins/
+            curl -L https://github.com/docker/buildx/releases/download/v0.11.0/buildx-v0.11.0.linux-amd64 \
+              -o ~/.docker/cli-plugins/docker-buildx
+            chmod +x ~/.docker/cli-plugins/docker-buildx
+
+      - run:
+          name: Set up Buildx Builder
+          command: |
+            docker buildx create --name multiarch --use
+            docker buildx inspect --bootstrap
+
+      - run:
+          name: Build external-import/red-flag-domains_multi
           command: |
             echo "Processing external-import/red-flag-domains"
             cd external-import/red-flag-domains
             echo "$DOCKERHUB_PASS" | docker login -u "$DOCKERHUB_USERNAME" --password-stdin
-            docker build -t renizmy/connector-red-flag-domains:6.4.0 . --build-arg BASE_IMAGE=renizmy/opencti-base:6.4.0
+            docker buildx build --platform linux/amd64,linux/arm64 -t renizmy/connector-red-flag-domains:6.4.0 . --build-arg BASE_IMAGE=renizmy/opencti-base:6.4.0
             docker tag renizmy/connector-red-flag-domains:6.4.0 renizmy/connector-red-flag-domains:latest
             docker push renizmy/connector-red-flag-domains:6.4.0
             docker push renizmy/connector-red-flag-domains:latest
       
-  build_external-import_stopforumspam:
+  build_external-import_stopforumspam_multi:
     docker:
       - image: cimg/base:stable-20.04
     steps:
       - checkout
       - setup_remote_docker
+
       - run:
-          name: Build external-import/stopforumspama
+          name: Install Docker Buildx
+          command: |
+            mkdir -p ~/.docker/cli-plugins/
+            curl -L https://github.com/docker/buildx/releases/download/v0.11.0/buildx-v0.11.0.linux-amd64 \
+              -o ~/.docker/cli-plugins/docker-buildx
+            chmod +x ~/.docker/cli-plugins/docker-buildx
+
+      - run:
+          name: Set up Buildx Builder
+          command: |
+            docker buildx create --name multiarch --use
+            docker buildx inspect --bootstrap
+
+      - run:
+          name: Build external-import/stopforumspam_multi
           command: |
             echo "Processing external-import/stopforumspam"
             cd external-import/stopforumspam
             echo "$DOCKERHUB_PASS" | docker login -u "$DOCKERHUB_USERNAME" --password-stdin
-            docker build -t renizmy/connector-stopforumspam:6.4.0 . --build-arg BASE_IMAGE=renizmy/opencti-base:6.4.0
+            docker buildx build --platform linux/amd64,linux/arm64 -t renizmy/connector-stopforumspam:6.4.0 . --build-arg BASE_IMAGE=renizmy/opencti-base:6.4.0
             docker tag renizmy/connector-stopforumspam:6.4.0 renizmy/connector-stopforumspam:latest
             docker push renizmy/connector-stopforumspam:6.4.0
             docker push renizmy/connector-stopforumspam:latest
       
-  build_external-import_flashpoint:
+  build_external-import_flashpoint_multi:
     docker:
       - image: cimg/base:stable-20.04
     steps:
       - checkout
       - setup_remote_docker
+
       - run:
-          name: Build external-import/flashpointa
+          name: Install Docker Buildx
+          command: |
+            mkdir -p ~/.docker/cli-plugins/
+            curl -L https://github.com/docker/buildx/releases/download/v0.11.0/buildx-v0.11.0.linux-amd64 \
+              -o ~/.docker/cli-plugins/docker-buildx
+            chmod +x ~/.docker/cli-plugins/docker-buildx
+
+      - run:
+          name: Set up Buildx Builder
+          command: |
+            docker buildx create --name multiarch --use
+            docker buildx inspect --bootstrap
+
+      - run:
+          name: Build external-import/flashpoint_multi
           command: |
             echo "Processing external-import/flashpoint"
             cd external-import/flashpoint
             echo "$DOCKERHUB_PASS" | docker login -u "$DOCKERHUB_USERNAME" --password-stdin
-            docker build -t renizmy/connector-flashpoint:6.4.0 . --build-arg BASE_IMAGE=renizmy/opencti-base:6.4.0
+            docker buildx build --platform linux/amd64,linux/arm64 -t renizmy/connector-flashpoint:6.4.0 . --build-arg BASE_IMAGE=renizmy/opencti-base:6.4.0
             docker tag renizmy/connector-flashpoint:6.4.0 renizmy/connector-flashpoint:latest
             docker push renizmy/connector-flashpoint:6.4.0
             docker push renizmy/connector-flashpoint:latest
       
-  build_external-import_mitre-atlas:
+  build_external-import_mitre-atlas_multi:
     docker:
       - image: cimg/base:stable-20.04
     steps:
       - checkout
       - setup_remote_docker
+
       - run:
-          name: Build external-import/mitre-atlasa
+          name: Install Docker Buildx
+          command: |
+            mkdir -p ~/.docker/cli-plugins/
+            curl -L https://github.com/docker/buildx/releases/download/v0.11.0/buildx-v0.11.0.linux-amd64 \
+              -o ~/.docker/cli-plugins/docker-buildx
+            chmod +x ~/.docker/cli-plugins/docker-buildx
+
+      - run:
+          name: Set up Buildx Builder
+          command: |
+            docker buildx create --name multiarch --use
+            docker buildx inspect --bootstrap
+
+      - run:
+          name: Build external-import/mitre-atlas_multi
           command: |
             echo "Processing external-import/mitre-atlas"
             cd external-import/mitre-atlas
             echo "$DOCKERHUB_PASS" | docker login -u "$DOCKERHUB_USERNAME" --password-stdin
-            docker build -t renizmy/connector-mitre-atlas:6.4.0 . --build-arg BASE_IMAGE=renizmy/opencti-base:6.4.0
+            docker buildx build --platform linux/amd64,linux/arm64 -t renizmy/connector-mitre-atlas:6.4.0 . --build-arg BASE_IMAGE=renizmy/opencti-base:6.4.0
             docker tag renizmy/connector-mitre-atlas:6.4.0 renizmy/connector-mitre-atlas:latest
             docker push renizmy/connector-mitre-atlas:6.4.0
             docker push renizmy/connector-mitre-atlas:latest
       
-  build_external-import_chapsvision:
+  build_external-import_chapsvision_multi:
     docker:
       - image: cimg/base:stable-20.04
     steps:
       - checkout
       - setup_remote_docker
+
       - run:
-          name: Build external-import/chapsvisiona
+          name: Install Docker Buildx
+          command: |
+            mkdir -p ~/.docker/cli-plugins/
+            curl -L https://github.com/docker/buildx/releases/download/v0.11.0/buildx-v0.11.0.linux-amd64 \
+              -o ~/.docker/cli-plugins/docker-buildx
+            chmod +x ~/.docker/cli-plugins/docker-buildx
+
+      - run:
+          name: Set up Buildx Builder
+          command: |
+            docker buildx create --name multiarch --use
+            docker buildx inspect --bootstrap
+
+      - run:
+          name: Build external-import/chapsvision_multi
           command: |
             echo "Processing external-import/chapsvision"
             cd external-import/chapsvision
             echo "$DOCKERHUB_PASS" | docker login -u "$DOCKERHUB_USERNAME" --password-stdin
-            docker build -t renizmy/connector-chapsvision:6.4.0 . --build-arg BASE_IMAGE=renizmy/opencti-base:6.4.0
+            docker buildx build --platform linux/amd64,linux/arm64 -t renizmy/connector-chapsvision:6.4.0 . --build-arg BASE_IMAGE=renizmy/opencti-base:6.4.0
             docker tag renizmy/connector-chapsvision:6.4.0 renizmy/connector-chapsvision:latest
             docker push renizmy/connector-chapsvision:6.4.0
             docker push renizmy/connector-chapsvision:latest
       
-  build_external-import_fortinet-ti:
+  build_external-import_fortinet-ti_multi:
     docker:
       - image: cimg/base:stable-20.04
     steps:
       - checkout
       - setup_remote_docker
+
       - run:
-          name: Build external-import/fortinet-tia
+          name: Install Docker Buildx
+          command: |
+            mkdir -p ~/.docker/cli-plugins/
+            curl -L https://github.com/docker/buildx/releases/download/v0.11.0/buildx-v0.11.0.linux-amd64 \
+              -o ~/.docker/cli-plugins/docker-buildx
+            chmod +x ~/.docker/cli-plugins/docker-buildx
+
+      - run:
+          name: Set up Buildx Builder
+          command: |
+            docker buildx create --name multiarch --use
+            docker buildx inspect --bootstrap
+
+      - run:
+          name: Build external-import/fortinet-ti_multi
           command: |
             echo "Processing external-import/fortinet-ti"
             cd external-import/fortinet-ti
             echo "$DOCKERHUB_PASS" | docker login -u "$DOCKERHUB_USERNAME" --password-stdin
-            docker build -t renizmy/connector-fortinet-ti:6.4.0 . --build-arg BASE_IMAGE=renizmy/opencti-base:6.4.0
+            docker buildx build --platform linux/amd64,linux/arm64 -t renizmy/connector-fortinet-ti:6.4.0 . --build-arg BASE_IMAGE=renizmy/opencti-base:6.4.0
             docker tag renizmy/connector-fortinet-ti:6.4.0 renizmy/connector-fortinet-ti:latest
             docker push renizmy/connector-fortinet-ti:6.4.0
             docker push renizmy/connector-fortinet-ti:latest
       
-  build_external-import_tanium-incidents:
+  build_external-import_tanium-incidents_multi:
     docker:
       - image: cimg/base:stable-20.04
     steps:
       - checkout
       - setup_remote_docker
+
       - run:
-          name: Build external-import/tanium-incidentsa
+          name: Install Docker Buildx
+          command: |
+            mkdir -p ~/.docker/cli-plugins/
+            curl -L https://github.com/docker/buildx/releases/download/v0.11.0/buildx-v0.11.0.linux-amd64 \
+              -o ~/.docker/cli-plugins/docker-buildx
+            chmod +x ~/.docker/cli-plugins/docker-buildx
+
+      - run:
+          name: Set up Buildx Builder
+          command: |
+            docker buildx create --name multiarch --use
+            docker buildx inspect --bootstrap
+
+      - run:
+          name: Build external-import/tanium-incidents_multi
           command: |
             echo "Processing external-import/tanium-incidents"
             cd external-import/tanium-incidents
             echo "$DOCKERHUB_PASS" | docker login -u "$DOCKERHUB_USERNAME" --password-stdin
-            docker build -t renizmy/connector-tanium-incidents:6.4.0 . --build-arg BASE_IMAGE=renizmy/opencti-base:6.4.0
+            docker buildx build --platform linux/amd64,linux/arm64 -t renizmy/connector-tanium-incidents:6.4.0 . --build-arg BASE_IMAGE=renizmy/opencti-base:6.4.0
             docker tag renizmy/connector-tanium-incidents:6.4.0 renizmy/connector-tanium-incidents:latest
             docker push renizmy/connector-tanium-incidents:6.4.0
             docker push renizmy/connector-tanium-incidents:latest
       
-  build_external-import_tenable-vuln-management:
+  build_external-import_tenable-vuln-management_multi:
     docker:
       - image: cimg/base:stable-20.04
     steps:
       - checkout
       - setup_remote_docker
+
       - run:
-          name: Build external-import/tenable-vuln-managementa
+          name: Install Docker Buildx
+          command: |
+            mkdir -p ~/.docker/cli-plugins/
+            curl -L https://github.com/docker/buildx/releases/download/v0.11.0/buildx-v0.11.0.linux-amd64 \
+              -o ~/.docker/cli-plugins/docker-buildx
+            chmod +x ~/.docker/cli-plugins/docker-buildx
+
+      - run:
+          name: Set up Buildx Builder
+          command: |
+            docker buildx create --name multiarch --use
+            docker buildx inspect --bootstrap
+
+      - run:
+          name: Build external-import/tenable-vuln-management_multi
           command: |
             echo "Processing external-import/tenable-vuln-management"
             cd external-import/tenable-vuln-management
             echo "$DOCKERHUB_PASS" | docker login -u "$DOCKERHUB_USERNAME" --password-stdin
-            docker build -t renizmy/connector-tenable-vuln-management:6.4.0 . --build-arg BASE_IMAGE=renizmy/opencti-base:6.4.0
+            docker buildx build --platform linux/amd64,linux/arm64 -t renizmy/connector-tenable-vuln-management:6.4.0 . --build-arg BASE_IMAGE=renizmy/opencti-base:6.4.0
             docker tag renizmy/connector-tenable-vuln-management:6.4.0 renizmy/connector-tenable-vuln-management:latest
             docker push renizmy/connector-tenable-vuln-management:6.4.0
             docker push renizmy/connector-tenable-vuln-management:latest
       
-  build_external-import_intelfinder:
+  build_external-import_intelfinder_multi:
     docker:
       - image: cimg/base:stable-20.04
     steps:
       - checkout
       - setup_remote_docker
+
       - run:
-          name: Build external-import/intelfindera
+          name: Install Docker Buildx
+          command: |
+            mkdir -p ~/.docker/cli-plugins/
+            curl -L https://github.com/docker/buildx/releases/download/v0.11.0/buildx-v0.11.0.linux-amd64 \
+              -o ~/.docker/cli-plugins/docker-buildx
+            chmod +x ~/.docker/cli-plugins/docker-buildx
+
+      - run:
+          name: Set up Buildx Builder
+          command: |
+            docker buildx create --name multiarch --use
+            docker buildx inspect --bootstrap
+
+      - run:
+          name: Build external-import/intelfinder_multi
           command: |
             echo "Processing external-import/intelfinder"
             cd external-import/intelfinder
             echo "$DOCKERHUB_PASS" | docker login -u "$DOCKERHUB_USERNAME" --password-stdin
-            docker build -t renizmy/connector-intelfinder:6.4.0 . --build-arg BASE_IMAGE=renizmy/opencti-base:6.4.0
+            docker buildx build --platform linux/amd64,linux/arm64 -t renizmy/connector-intelfinder:6.4.0 . --build-arg BASE_IMAGE=renizmy/opencti-base:6.4.0
             docker tag renizmy/connector-intelfinder:6.4.0 renizmy/connector-intelfinder:latest
             docker push renizmy/connector-intelfinder:6.4.0
             docker push renizmy/connector-intelfinder:latest
       
-  build_external-import_intel471:
+  build_external-import_intel471_multi:
     docker:
       - image: cimg/base:stable-20.04
     steps:
       - checkout
       - setup_remote_docker
+
       - run:
-          name: Build external-import/intel471a
+          name: Install Docker Buildx
+          command: |
+            mkdir -p ~/.docker/cli-plugins/
+            curl -L https://github.com/docker/buildx/releases/download/v0.11.0/buildx-v0.11.0.linux-amd64 \
+              -o ~/.docker/cli-plugins/docker-buildx
+            chmod +x ~/.docker/cli-plugins/docker-buildx
+
+      - run:
+          name: Set up Buildx Builder
+          command: |
+            docker buildx create --name multiarch --use
+            docker buildx inspect --bootstrap
+
+      - run:
+          name: Build external-import/intel471_multi
           command: |
             echo "Processing external-import/intel471"
             cd external-import/intel471
             echo "$DOCKERHUB_PASS" | docker login -u "$DOCKERHUB_USERNAME" --password-stdin
-            docker build -t renizmy/connector-intel471:6.4.0 . --build-arg BASE_IMAGE=renizmy/opencti-base:6.4.0
+            docker buildx build --platform linux/amd64,linux/arm64 -t renizmy/connector-intel471:6.4.0 . --build-arg BASE_IMAGE=renizmy/opencti-base:6.4.0
             docker tag renizmy/connector-intel471:6.4.0 renizmy/connector-intel471:latest
             docker push renizmy/connector-intel471:6.4.0
             docker push renizmy/connector-intel471:latest
       
-  build_external-import_misp:
+  build_external-import_misp_multi:
     docker:
       - image: cimg/base:stable-20.04
     steps:
       - checkout
       - setup_remote_docker
+
       - run:
-          name: Build external-import/mispa
+          name: Install Docker Buildx
+          command: |
+            mkdir -p ~/.docker/cli-plugins/
+            curl -L https://github.com/docker/buildx/releases/download/v0.11.0/buildx-v0.11.0.linux-amd64 \
+              -o ~/.docker/cli-plugins/docker-buildx
+            chmod +x ~/.docker/cli-plugins/docker-buildx
+
+      - run:
+          name: Set up Buildx Builder
+          command: |
+            docker buildx create --name multiarch --use
+            docker buildx inspect --bootstrap
+
+      - run:
+          name: Build external-import/misp_multi
           command: |
             echo "Processing external-import/misp"
             cd external-import/misp
             echo "$DOCKERHUB_PASS" | docker login -u "$DOCKERHUB_USERNAME" --password-stdin
-            docker build -t renizmy/connector-misp:6.4.0 . --build-arg BASE_IMAGE=renizmy/opencti-base:6.4.0
+            docker buildx build --platform linux/amd64,linux/arm64 -t renizmy/connector-misp:6.4.0 . --build-arg BASE_IMAGE=renizmy/opencti-base:6.4.0
             docker tag renizmy/connector-misp:6.4.0 renizmy/connector-misp:latest
             docker push renizmy/connector-misp:6.4.0
             docker push renizmy/connector-misp:latest
       
-  build_external-import_misp-feed:
+  build_external-import_misp-feed_multi:
     docker:
       - image: cimg/base:stable-20.04
     steps:
       - checkout
       - setup_remote_docker
+
       - run:
-          name: Build external-import/misp-feeda
+          name: Install Docker Buildx
+          command: |
+            mkdir -p ~/.docker/cli-plugins/
+            curl -L https://github.com/docker/buildx/releases/download/v0.11.0/buildx-v0.11.0.linux-amd64 \
+              -o ~/.docker/cli-plugins/docker-buildx
+            chmod +x ~/.docker/cli-plugins/docker-buildx
+
+      - run:
+          name: Set up Buildx Builder
+          command: |
+            docker buildx create --name multiarch --use
+            docker buildx inspect --bootstrap
+
+      - run:
+          name: Build external-import/misp-feed_multi
           command: |
             echo "Processing external-import/misp-feed"
             cd external-import/misp-feed
             echo "$DOCKERHUB_PASS" | docker login -u "$DOCKERHUB_USERNAME" --password-stdin
-            docker build -t renizmy/connector-misp-feed:6.4.0 . --build-arg BASE_IMAGE=renizmy/opencti-base:6.4.0
+            docker buildx build --platform linux/amd64,linux/arm64 -t renizmy/connector-misp-feed:6.4.0 . --build-arg BASE_IMAGE=renizmy/opencti-base:6.4.0
             docker tag renizmy/connector-misp-feed:6.4.0 renizmy/connector-misp-feed:latest
             docker push renizmy/connector-misp-feed:6.4.0
             docker push renizmy/connector-misp-feed:latest
       
-  build_external-import_eset:
+  build_external-import_eset_multi:
     docker:
       - image: cimg/base:stable-20.04
     steps:
       - checkout
       - setup_remote_docker
+
       - run:
-          name: Build external-import/eseta
+          name: Install Docker Buildx
+          command: |
+            mkdir -p ~/.docker/cli-plugins/
+            curl -L https://github.com/docker/buildx/releases/download/v0.11.0/buildx-v0.11.0.linux-amd64 \
+              -o ~/.docker/cli-plugins/docker-buildx
+            chmod +x ~/.docker/cli-plugins/docker-buildx
+
+      - run:
+          name: Set up Buildx Builder
+          command: |
+            docker buildx create --name multiarch --use
+            docker buildx inspect --bootstrap
+
+      - run:
+          name: Build external-import/eset_multi
           command: |
             echo "Processing external-import/eset"
             cd external-import/eset
             echo "$DOCKERHUB_PASS" | docker login -u "$DOCKERHUB_USERNAME" --password-stdin
-            docker build -t renizmy/connector-eset:6.4.0 . --build-arg BASE_IMAGE=renizmy/opencti-base:6.4.0
+            docker buildx build --platform linux/amd64,linux/arm64 -t renizmy/connector-eset:6.4.0 . --build-arg BASE_IMAGE=renizmy/opencti-base:6.4.0
             docker tag renizmy/connector-eset:6.4.0 renizmy/connector-eset:latest
             docker push renizmy/connector-eset:6.4.0
             docker push renizmy/connector-eset:latest
       
-  build_external-import_greynoise-feed:
+  build_external-import_greynoise-feed_multi:
     docker:
       - image: cimg/base:stable-20.04
     steps:
       - checkout
       - setup_remote_docker
+
       - run:
-          name: Build external-import/greynoise-feeda
+          name: Install Docker Buildx
+          command: |
+            mkdir -p ~/.docker/cli-plugins/
+            curl -L https://github.com/docker/buildx/releases/download/v0.11.0/buildx-v0.11.0.linux-amd64 \
+              -o ~/.docker/cli-plugins/docker-buildx
+            chmod +x ~/.docker/cli-plugins/docker-buildx
+
+      - run:
+          name: Set up Buildx Builder
+          command: |
+            docker buildx create --name multiarch --use
+            docker buildx inspect --bootstrap
+
+      - run:
+          name: Build external-import/greynoise-feed_multi
           command: |
             echo "Processing external-import/greynoise-feed"
             cd external-import/greynoise-feed
             echo "$DOCKERHUB_PASS" | docker login -u "$DOCKERHUB_USERNAME" --password-stdin
-            docker build -t renizmy/connector-greynoise-feed:6.4.0 . --build-arg BASE_IMAGE=renizmy/opencti-base:6.4.0
+            docker buildx build --platform linux/amd64,linux/arm64 -t renizmy/connector-greynoise-feed:6.4.0 . --build-arg BASE_IMAGE=renizmy/opencti-base:6.4.0
             docker tag renizmy/connector-greynoise-feed:6.4.0 renizmy/connector-greynoise-feed:latest
             docker push renizmy/connector-greynoise-feed:6.4.0
             docker push renizmy/connector-greynoise-feed:latest
       
-  build_external-import_recorded-future:
+  build_external-import_recorded-future_multi:
     docker:
       - image: cimg/base:stable-20.04
     steps:
       - checkout
       - setup_remote_docker
+
       - run:
-          name: Build external-import/recorded-futurea
+          name: Install Docker Buildx
+          command: |
+            mkdir -p ~/.docker/cli-plugins/
+            curl -L https://github.com/docker/buildx/releases/download/v0.11.0/buildx-v0.11.0.linux-amd64 \
+              -o ~/.docker/cli-plugins/docker-buildx
+            chmod +x ~/.docker/cli-plugins/docker-buildx
+
+      - run:
+          name: Set up Buildx Builder
+          command: |
+            docker buildx create --name multiarch --use
+            docker buildx inspect --bootstrap
+
+      - run:
+          name: Build external-import/recorded-future_multi
           command: |
             echo "Processing external-import/recorded-future"
             cd external-import/recorded-future
             echo "$DOCKERHUB_PASS" | docker login -u "$DOCKERHUB_USERNAME" --password-stdin
-            docker build -t renizmy/connector-recorded-future:6.4.0 . --build-arg BASE_IMAGE=renizmy/opencti-base:6.4.0
+            docker buildx build --platform linux/amd64,linux/arm64 -t renizmy/connector-recorded-future:6.4.0 . --build-arg BASE_IMAGE=renizmy/opencti-base:6.4.0
             docker tag renizmy/connector-recorded-future:6.4.0 renizmy/connector-recorded-future:latest
             docker push renizmy/connector-recorded-future:6.4.0
             docker push renizmy/connector-recorded-future:latest
       
-  build_external-import_riskiq:
+  build_external-import_riskiq_multi:
     docker:
       - image: cimg/base:stable-20.04
     steps:
       - checkout
       - setup_remote_docker
+
       - run:
-          name: Build external-import/riskiqa
+          name: Install Docker Buildx
+          command: |
+            mkdir -p ~/.docker/cli-plugins/
+            curl -L https://github.com/docker/buildx/releases/download/v0.11.0/buildx-v0.11.0.linux-amd64 \
+              -o ~/.docker/cli-plugins/docker-buildx
+            chmod +x ~/.docker/cli-plugins/docker-buildx
+
+      - run:
+          name: Set up Buildx Builder
+          command: |
+            docker buildx create --name multiarch --use
+            docker buildx inspect --bootstrap
+
+      - run:
+          name: Build external-import/riskiq_multi
           command: |
             echo "Processing external-import/riskiq"
             cd external-import/riskiq
             echo "$DOCKERHUB_PASS" | docker login -u "$DOCKERHUB_USERNAME" --password-stdin
-            docker build -t renizmy/connector-riskiq:6.4.0 . --build-arg BASE_IMAGE=renizmy/opencti-base:6.4.0
+            docker buildx build --platform linux/amd64,linux/arm64 -t renizmy/connector-riskiq:6.4.0 . --build-arg BASE_IMAGE=renizmy/opencti-base:6.4.0
             docker tag renizmy/connector-riskiq:6.4.0 renizmy/connector-riskiq:latest
             docker push renizmy/connector-riskiq:6.4.0
             docker push renizmy/connector-riskiq:latest
       
-  build_external-import_group-ib:
+  build_external-import_group-ib_multi:
     docker:
       - image: cimg/base:stable-20.04
     steps:
       - checkout
       - setup_remote_docker
+
       - run:
-          name: Build external-import/group-iba
+          name: Install Docker Buildx
+          command: |
+            mkdir -p ~/.docker/cli-plugins/
+            curl -L https://github.com/docker/buildx/releases/download/v0.11.0/buildx-v0.11.0.linux-amd64 \
+              -o ~/.docker/cli-plugins/docker-buildx
+            chmod +x ~/.docker/cli-plugins/docker-buildx
+
+      - run:
+          name: Set up Buildx Builder
+          command: |
+            docker buildx create --name multiarch --use
+            docker buildx inspect --bootstrap
+
+      - run:
+          name: Build external-import/group-ib_multi
           command: |
             echo "Processing external-import/group-ib"
             cd external-import/group-ib
             echo "$DOCKERHUB_PASS" | docker login -u "$DOCKERHUB_USERNAME" --password-stdin
-            docker build -t renizmy/connector-group-ib:6.4.0 . --build-arg BASE_IMAGE=renizmy/opencti-base:6.4.0
+            docker buildx build --platform linux/amd64,linux/arm64 -t renizmy/connector-group-ib:6.4.0 . --build-arg BASE_IMAGE=renizmy/opencti-base:6.4.0
             docker tag renizmy/connector-group-ib:6.4.0 renizmy/connector-group-ib:latest
             docker push renizmy/connector-group-ib:6.4.0
             docker push renizmy/connector-group-ib:latest
       
-  build_external-import_harfanglab-incidents:
+  build_external-import_harfanglab-incidents_multi:
     docker:
       - image: cimg/base:stable-20.04
     steps:
       - checkout
       - setup_remote_docker
+
       - run:
-          name: Build external-import/harfanglab-incidentsa
+          name: Install Docker Buildx
+          command: |
+            mkdir -p ~/.docker/cli-plugins/
+            curl -L https://github.com/docker/buildx/releases/download/v0.11.0/buildx-v0.11.0.linux-amd64 \
+              -o ~/.docker/cli-plugins/docker-buildx
+            chmod +x ~/.docker/cli-plugins/docker-buildx
+
+      - run:
+          name: Set up Buildx Builder
+          command: |
+            docker buildx create --name multiarch --use
+            docker buildx inspect --bootstrap
+
+      - run:
+          name: Build external-import/harfanglab-incidents_multi
           command: |
             echo "Processing external-import/harfanglab-incidents"
             cd external-import/harfanglab-incidents
             echo "$DOCKERHUB_PASS" | docker login -u "$DOCKERHUB_USERNAME" --password-stdin
-            docker build -t renizmy/connector-harfanglab-incidents:6.4.0 . --build-arg BASE_IMAGE=renizmy/opencti-base:6.4.0-python3-11
+            docker buildx build --platform linux/amd64,linux/arm64 -t renizmy/connector-harfanglab-incidents:6.4.0 . --build-arg BASE_IMAGE=renizmy/opencti-base:6.4.0-python3-11
             docker tag renizmy/connector-harfanglab-incidents:6.4.0 renizmy/connector-harfanglab-incidents:latest
             docker push renizmy/connector-harfanglab-incidents:6.4.0
             docker push renizmy/connector-harfanglab-incidents:latest
       
-  build_external-import_silobreaker:
+  build_external-import_silobreaker_multi:
     docker:
       - image: cimg/base:stable-20.04
     steps:
       - checkout
       - setup_remote_docker
+
       - run:
-          name: Build external-import/silobreakera
+          name: Install Docker Buildx
+          command: |
+            mkdir -p ~/.docker/cli-plugins/
+            curl -L https://github.com/docker/buildx/releases/download/v0.11.0/buildx-v0.11.0.linux-amd64 \
+              -o ~/.docker/cli-plugins/docker-buildx
+            chmod +x ~/.docker/cli-plugins/docker-buildx
+
+      - run:
+          name: Set up Buildx Builder
+          command: |
+            docker buildx create --name multiarch --use
+            docker buildx inspect --bootstrap
+
+      - run:
+          name: Build external-import/silobreaker_multi
           command: |
             echo "Processing external-import/silobreaker"
             cd external-import/silobreaker
             echo "$DOCKERHUB_PASS" | docker login -u "$DOCKERHUB_USERNAME" --password-stdin
-            docker build -t renizmy/connector-silobreaker:6.4.0 . --build-arg BASE_IMAGE=renizmy/opencti-base:6.4.0
+            docker buildx build --platform linux/amd64,linux/arm64 -t renizmy/connector-silobreaker:6.4.0 . --build-arg BASE_IMAGE=renizmy/opencti-base:6.4.0
             docker tag renizmy/connector-silobreaker:6.4.0 renizmy/connector-silobreaker:latest
             docker push renizmy/connector-silobreaker:6.4.0
             docker push renizmy/connector-silobreaker:latest
       
-  build_external-import_alienvault:
+  build_external-import_alienvault_multi:
     docker:
       - image: cimg/base:stable-20.04
     steps:
       - checkout
       - setup_remote_docker
+
       - run:
-          name: Build external-import/alienvaulta
+          name: Install Docker Buildx
+          command: |
+            mkdir -p ~/.docker/cli-plugins/
+            curl -L https://github.com/docker/buildx/releases/download/v0.11.0/buildx-v0.11.0.linux-amd64 \
+              -o ~/.docker/cli-plugins/docker-buildx
+            chmod +x ~/.docker/cli-plugins/docker-buildx
+
+      - run:
+          name: Set up Buildx Builder
+          command: |
+            docker buildx create --name multiarch --use
+            docker buildx inspect --bootstrap
+
+      - run:
+          name: Build external-import/alienvault_multi
           command: |
             echo "Processing external-import/alienvault"
             cd external-import/alienvault
             echo "$DOCKERHUB_PASS" | docker login -u "$DOCKERHUB_USERNAME" --password-stdin
-            docker build -t renizmy/connector-alienvault:6.4.0 . --build-arg BASE_IMAGE=renizmy/opencti-base:6.4.0
+            docker buildx build --platform linux/amd64,linux/arm64 -t renizmy/connector-alienvault:6.4.0 . --build-arg BASE_IMAGE=renizmy/opencti-base:6.4.0
             docker tag renizmy/connector-alienvault:6.4.0 renizmy/connector-alienvault:latest
             docker push renizmy/connector-alienvault:6.4.0
             docker push renizmy/connector-alienvault:latest
       
-  build_external-import_zerofox:
+  build_external-import_zerofox_multi:
     docker:
       - image: cimg/base:stable-20.04
     steps:
       - checkout
       - setup_remote_docker
+
       - run:
-          name: Build external-import/zerofoxa
+          name: Install Docker Buildx
+          command: |
+            mkdir -p ~/.docker/cli-plugins/
+            curl -L https://github.com/docker/buildx/releases/download/v0.11.0/buildx-v0.11.0.linux-amd64 \
+              -o ~/.docker/cli-plugins/docker-buildx
+            chmod +x ~/.docker/cli-plugins/docker-buildx
+
+      - run:
+          name: Set up Buildx Builder
+          command: |
+            docker buildx create --name multiarch --use
+            docker buildx inspect --bootstrap
+
+      - run:
+          name: Build external-import/zerofox_multi
           command: |
             echo "Processing external-import/zerofox"
             cd external-import/zerofox
             echo "$DOCKERHUB_PASS" | docker login -u "$DOCKERHUB_USERNAME" --password-stdin
-            docker build -t renizmy/connector-zerofox:6.4.0 . --build-arg BASE_IMAGE=renizmy/opencti-base:6.4.0
+            docker buildx build --platform linux/amd64,linux/arm64 -t renizmy/connector-zerofox:6.4.0 . --build-arg BASE_IMAGE=renizmy/opencti-base:6.4.0
             docker tag renizmy/connector-zerofox:6.4.0 renizmy/connector-zerofox:latest
             docker push renizmy/connector-zerofox:6.4.0
             docker push renizmy/connector-zerofox:latest
       
-  build_external-import_cuckoo:
+  build_external-import_cuckoo_multi:
     docker:
       - image: cimg/base:stable-20.04
     steps:
       - checkout
       - setup_remote_docker
+
       - run:
-          name: Build external-import/cuckooa
+          name: Install Docker Buildx
+          command: |
+            mkdir -p ~/.docker/cli-plugins/
+            curl -L https://github.com/docker/buildx/releases/download/v0.11.0/buildx-v0.11.0.linux-amd64 \
+              -o ~/.docker/cli-plugins/docker-buildx
+            chmod +x ~/.docker/cli-plugins/docker-buildx
+
+      - run:
+          name: Set up Buildx Builder
+          command: |
+            docker buildx create --name multiarch --use
+            docker buildx inspect --bootstrap
+
+      - run:
+          name: Build external-import/cuckoo_multi
           command: |
             echo "Processing external-import/cuckoo"
             cd external-import/cuckoo
             echo "$DOCKERHUB_PASS" | docker login -u "$DOCKERHUB_USERNAME" --password-stdin
-            docker build -t renizmy/connector-cuckoo:6.4.0 . --build-arg BASE_IMAGE=renizmy/opencti-base:6.4.0
+            docker buildx build --platform linux/amd64,linux/arm64 -t renizmy/connector-cuckoo:6.4.0 . --build-arg BASE_IMAGE=renizmy/opencti-base:6.4.0
             docker tag renizmy/connector-cuckoo:6.4.0 renizmy/connector-cuckoo:latest
             docker push renizmy/connector-cuckoo:6.4.0
             docker push renizmy/connector-cuckoo:latest
       
-  build_external-import_cpe:
+  build_external-import_cpe_multi:
     docker:
       - image: cimg/base:stable-20.04
     steps:
       - checkout
       - setup_remote_docker
+
       - run:
-          name: Build external-import/cpea
+          name: Install Docker Buildx
+          command: |
+            mkdir -p ~/.docker/cli-plugins/
+            curl -L https://github.com/docker/buildx/releases/download/v0.11.0/buildx-v0.11.0.linux-amd64 \
+              -o ~/.docker/cli-plugins/docker-buildx
+            chmod +x ~/.docker/cli-plugins/docker-buildx
+
+      - run:
+          name: Set up Buildx Builder
+          command: |
+            docker buildx create --name multiarch --use
+            docker buildx inspect --bootstrap
+
+      - run:
+          name: Build external-import/cpe_multi
           command: |
             echo "Processing external-import/cpe"
             cd external-import/cpe
             echo "$DOCKERHUB_PASS" | docker login -u "$DOCKERHUB_USERNAME" --password-stdin
-            docker build -t renizmy/connector-cpe:6.4.0 . --build-arg BASE_IMAGE=renizmy/opencti-base:6.4.0
+            docker buildx build --platform linux/amd64,linux/arm64 -t renizmy/connector-cpe:6.4.0 . --build-arg BASE_IMAGE=renizmy/opencti-base:6.4.0
             docker tag renizmy/connector-cpe:6.4.0 renizmy/connector-cpe:latest
             docker push renizmy/connector-cpe:6.4.0
             docker push renizmy/connector-cpe:latest
       
-  build_external-import_restore-files:
+  build_external-import_restore-files_multi:
     docker:
       - image: cimg/base:stable-20.04
     steps:
       - checkout
       - setup_remote_docker
+
       - run:
-          name: Build external-import/restore-filesa
+          name: Install Docker Buildx
+          command: |
+            mkdir -p ~/.docker/cli-plugins/
+            curl -L https://github.com/docker/buildx/releases/download/v0.11.0/buildx-v0.11.0.linux-amd64 \
+              -o ~/.docker/cli-plugins/docker-buildx
+            chmod +x ~/.docker/cli-plugins/docker-buildx
+
+      - run:
+          name: Set up Buildx Builder
+          command: |
+            docker buildx create --name multiarch --use
+            docker buildx inspect --bootstrap
+
+      - run:
+          name: Build external-import/restore-files_multi
           command: |
             echo "Processing external-import/restore-files"
             cd external-import/restore-files
             echo "$DOCKERHUB_PASS" | docker login -u "$DOCKERHUB_USERNAME" --password-stdin
-            docker build -t renizmy/connector-restore-files:6.4.0 . --build-arg BASE_IMAGE=renizmy/opencti-base:6.4.0
+            docker buildx build --platform linux/amd64,linux/arm64 -t renizmy/connector-restore-files:6.4.0 . --build-arg BASE_IMAGE=renizmy/opencti-base:6.4.0
             docker tag renizmy/connector-restore-files:6.4.0 renizmy/connector-restore-files:latest
             docker push renizmy/connector-restore-files:6.4.0
             docker push renizmy/connector-restore-files:latest
       
-  build_external-import_stixify:
+  build_external-import_stixify_multi:
     docker:
       - image: cimg/base:stable-20.04
     steps:
       - checkout
       - setup_remote_docker
+
       - run:
-          name: Build external-import/stixifya
+          name: Install Docker Buildx
+          command: |
+            mkdir -p ~/.docker/cli-plugins/
+            curl -L https://github.com/docker/buildx/releases/download/v0.11.0/buildx-v0.11.0.linux-amd64 \
+              -o ~/.docker/cli-plugins/docker-buildx
+            chmod +x ~/.docker/cli-plugins/docker-buildx
+
+      - run:
+          name: Set up Buildx Builder
+          command: |
+            docker buildx create --name multiarch --use
+            docker buildx inspect --bootstrap
+
+      - run:
+          name: Build external-import/stixify_multi
           command: |
             echo "Processing external-import/stixify"
             cd external-import/stixify
             echo "$DOCKERHUB_PASS" | docker login -u "$DOCKERHUB_USERNAME" --password-stdin
-            docker build -t renizmy/connector-stixify:6.4.0 . --build-arg BASE_IMAGE=renizmy/opencti-base:6.4.0
+            docker buildx build --platform linux/amd64,linux/arm64 -t renizmy/connector-stixify:6.4.0 . --build-arg BASE_IMAGE=renizmy/opencti-base:6.4.0
             docker tag renizmy/connector-stixify:6.4.0 renizmy/connector-stixify:latest
             docker push renizmy/connector-stixify:6.4.0
             docker push renizmy/connector-stixify:latest
       
-  build_external-import_orange-cyberdefense:
+  build_external-import_orange-cyberdefense_multi:
     docker:
       - image: cimg/base:stable-20.04
     steps:
       - checkout
       - setup_remote_docker
+
       - run:
-          name: Build external-import/orange-cyberdefensea
+          name: Install Docker Buildx
+          command: |
+            mkdir -p ~/.docker/cli-plugins/
+            curl -L https://github.com/docker/buildx/releases/download/v0.11.0/buildx-v0.11.0.linux-amd64 \
+              -o ~/.docker/cli-plugins/docker-buildx
+            chmod +x ~/.docker/cli-plugins/docker-buildx
+
+      - run:
+          name: Set up Buildx Builder
+          command: |
+            docker buildx create --name multiarch --use
+            docker buildx inspect --bootstrap
+
+      - run:
+          name: Build external-import/orange-cyberdefense_multi
           command: |
             echo "Processing external-import/orange-cyberdefense"
             cd external-import/orange-cyberdefense
             echo "$DOCKERHUB_PASS" | docker login -u "$DOCKERHUB_USERNAME" --password-stdin
-            docker build -t renizmy/connector-orange-cyberdefense:6.4.0 . --build-arg BASE_IMAGE=renizmy/opencti-base:6.4.0
+            docker buildx build --platform linux/amd64,linux/arm64 -t renizmy/connector-orange-cyberdefense:6.4.0 . --build-arg BASE_IMAGE=renizmy/opencti-base:6.4.0
             docker tag renizmy/connector-orange-cyberdefense:6.4.0 renizmy/connector-orange-cyberdefense:latest
             docker push renizmy/connector-orange-cyberdefense:6.4.0
             docker push renizmy/connector-orange-cyberdefense:latest
       
-  build_external-import_abuseipdb-ipblacklist:
+  build_external-import_abuseipdb-ipblacklist_multi:
     docker:
       - image: cimg/base:stable-20.04
     steps:
       - checkout
       - setup_remote_docker
+
       - run:
-          name: Build external-import/abuseipdb-ipblacklista
+          name: Install Docker Buildx
+          command: |
+            mkdir -p ~/.docker/cli-plugins/
+            curl -L https://github.com/docker/buildx/releases/download/v0.11.0/buildx-v0.11.0.linux-amd64 \
+              -o ~/.docker/cli-plugins/docker-buildx
+            chmod +x ~/.docker/cli-plugins/docker-buildx
+
+      - run:
+          name: Set up Buildx Builder
+          command: |
+            docker buildx create --name multiarch --use
+            docker buildx inspect --bootstrap
+
+      - run:
+          name: Build external-import/abuseipdb-ipblacklist_multi
           command: |
             echo "Processing external-import/abuseipdb-ipblacklist"
             cd external-import/abuseipdb-ipblacklist
             echo "$DOCKERHUB_PASS" | docker login -u "$DOCKERHUB_USERNAME" --password-stdin
-            docker build -t renizmy/connector-abuseipdb-ipblacklist:6.4.0 . --build-arg BASE_IMAGE=renizmy/opencti-base:6.4.0
+            docker buildx build --platform linux/amd64,linux/arm64 -t renizmy/connector-abuseipdb-ipblacklist:6.4.0 . --build-arg BASE_IMAGE=renizmy/opencti-base:6.4.0
             docker tag renizmy/connector-abuseipdb-ipblacklist:6.4.0 renizmy/connector-abuseipdb-ipblacklist:latest
             docker push renizmy/connector-abuseipdb-ipblacklist:6.4.0
             docker push renizmy/connector-abuseipdb-ipblacklist:latest
       
-  build_external-import_sekoia:
+  build_external-import_sekoia_multi:
     docker:
       - image: cimg/base:stable-20.04
     steps:
       - checkout
       - setup_remote_docker
+
       - run:
-          name: Build external-import/sekoiaa
+          name: Install Docker Buildx
+          command: |
+            mkdir -p ~/.docker/cli-plugins/
+            curl -L https://github.com/docker/buildx/releases/download/v0.11.0/buildx-v0.11.0.linux-amd64 \
+              -o ~/.docker/cli-plugins/docker-buildx
+            chmod +x ~/.docker/cli-plugins/docker-buildx
+
+      - run:
+          name: Set up Buildx Builder
+          command: |
+            docker buildx create --name multiarch --use
+            docker buildx inspect --bootstrap
+
+      - run:
+          name: Build external-import/sekoia_multi
           command: |
             echo "Processing external-import/sekoia"
             cd external-import/sekoia
             echo "$DOCKERHUB_PASS" | docker login -u "$DOCKERHUB_USERNAME" --password-stdin
-            docker build -t renizmy/connector-sekoia:6.4.0 . --build-arg BASE_IMAGE=renizmy/opencti-base:6.4.0
+            docker buildx build --platform linux/amd64,linux/arm64 -t renizmy/connector-sekoia:6.4.0 . --build-arg BASE_IMAGE=renizmy/opencti-base:6.4.0
             docker tag renizmy/connector-sekoia:6.4.0 renizmy/connector-sekoia:latest
             docker push renizmy/connector-sekoia:6.4.0
             docker push renizmy/connector-sekoia:latest
       
-  build_external-import_vxvault:
+  build_external-import_vxvault_multi:
     docker:
       - image: cimg/base:stable-20.04
     steps:
       - checkout
       - setup_remote_docker
+
       - run:
-          name: Build external-import/vxvaulta
+          name: Install Docker Buildx
+          command: |
+            mkdir -p ~/.docker/cli-plugins/
+            curl -L https://github.com/docker/buildx/releases/download/v0.11.0/buildx-v0.11.0.linux-amd64 \
+              -o ~/.docker/cli-plugins/docker-buildx
+            chmod +x ~/.docker/cli-plugins/docker-buildx
+
+      - run:
+          name: Set up Buildx Builder
+          command: |
+            docker buildx create --name multiarch --use
+            docker buildx inspect --bootstrap
+
+      - run:
+          name: Build external-import/vxvault_multi
           command: |
             echo "Processing external-import/vxvault"
             cd external-import/vxvault
             echo "$DOCKERHUB_PASS" | docker login -u "$DOCKERHUB_USERNAME" --password-stdin
-            docker build -t renizmy/connector-vxvault:6.4.0 . --build-arg BASE_IMAGE=renizmy/opencti-base:6.4.0
+            docker buildx build --platform linux/amd64,linux/arm64 -t renizmy/connector-vxvault:6.4.0 . --build-arg BASE_IMAGE=renizmy/opencti-base:6.4.0
             docker tag renizmy/connector-vxvault:6.4.0 renizmy/connector-vxvault:latest
             docker push renizmy/connector-vxvault:6.4.0
             docker push renizmy/connector-vxvault:latest
       
-  build_external-import_mitre:
+  build_external-import_mitre_multi:
     docker:
       - image: cimg/base:stable-20.04
     steps:
       - checkout
       - setup_remote_docker
+
       - run:
-          name: Build external-import/mitrea
+          name: Install Docker Buildx
+          command: |
+            mkdir -p ~/.docker/cli-plugins/
+            curl -L https://github.com/docker/buildx/releases/download/v0.11.0/buildx-v0.11.0.linux-amd64 \
+              -o ~/.docker/cli-plugins/docker-buildx
+            chmod +x ~/.docker/cli-plugins/docker-buildx
+
+      - run:
+          name: Set up Buildx Builder
+          command: |
+            docker buildx create --name multiarch --use
+            docker buildx inspect --bootstrap
+
+      - run:
+          name: Build external-import/mitre_multi
           command: |
             echo "Processing external-import/mitre"
             cd external-import/mitre
             echo "$DOCKERHUB_PASS" | docker login -u "$DOCKERHUB_USERNAME" --password-stdin
-            docker build -t renizmy/connector-mitre:6.4.0 . --build-arg BASE_IMAGE=renizmy/opencti-base:6.4.0
+            docker buildx build --platform linux/amd64,linux/arm64 -t renizmy/connector-mitre:6.4.0 . --build-arg BASE_IMAGE=renizmy/opencti-base:6.4.0
             docker tag renizmy/connector-mitre:6.4.0 renizmy/connector-mitre:latest
             docker push renizmy/connector-mitre:6.4.0
             docker push renizmy/connector-mitre:latest
       
-  build_external-import_crtsh:
+  build_external-import_crtsh_multi:
     docker:
       - image: cimg/base:stable-20.04
     steps:
       - checkout
       - setup_remote_docker
+
       - run:
-          name: Build external-import/crtsha
+          name: Install Docker Buildx
+          command: |
+            mkdir -p ~/.docker/cli-plugins/
+            curl -L https://github.com/docker/buildx/releases/download/v0.11.0/buildx-v0.11.0.linux-amd64 \
+              -o ~/.docker/cli-plugins/docker-buildx
+            chmod +x ~/.docker/cli-plugins/docker-buildx
+
+      - run:
+          name: Set up Buildx Builder
+          command: |
+            docker buildx create --name multiarch --use
+            docker buildx inspect --bootstrap
+
+      - run:
+          name: Build external-import/crtsh_multi
           command: |
             echo "Processing external-import/crtsh"
             cd external-import/crtsh
             echo "$DOCKERHUB_PASS" | docker login -u "$DOCKERHUB_USERNAME" --password-stdin
-            docker build -t renizmy/connector-crtsh:6.4.0 . --build-arg BASE_IMAGE=renizmy/opencti-base:6.4.0
+            docker buildx build --platform linux/amd64,linux/arm64 -t renizmy/connector-crtsh:6.4.0 . --build-arg BASE_IMAGE=renizmy/opencti-base:6.4.0
             docker tag renizmy/connector-crtsh:6.4.0 renizmy/connector-crtsh:latest
             docker push renizmy/connector-crtsh:6.4.0
             docker push renizmy/connector-crtsh:latest
       
-  build_external-import_virustotal-livehunt-notifications:
+  build_external-import_virustotal-livehunt-notifications_multi:
     docker:
       - image: cimg/base:stable-20.04
     steps:
       - checkout
       - setup_remote_docker
+
       - run:
-          name: Build external-import/virustotal-livehunt-notificationsa
+          name: Install Docker Buildx
+          command: |
+            mkdir -p ~/.docker/cli-plugins/
+            curl -L https://github.com/docker/buildx/releases/download/v0.11.0/buildx-v0.11.0.linux-amd64 \
+              -o ~/.docker/cli-plugins/docker-buildx
+            chmod +x ~/.docker/cli-plugins/docker-buildx
+
+      - run:
+          name: Set up Buildx Builder
+          command: |
+            docker buildx create --name multiarch --use
+            docker buildx inspect --bootstrap
+
+      - run:
+          name: Build external-import/virustotal-livehunt-notifications_multi
           command: |
             echo "Processing external-import/virustotal-livehunt-notifications"
             cd external-import/virustotal-livehunt-notifications
             echo "$DOCKERHUB_PASS" | docker login -u "$DOCKERHUB_USERNAME" --password-stdin
-            docker build -t renizmy/connector-virustotal-livehunt-notifications:6.4.0 . --build-arg BASE_IMAGE=renizmy/opencti-base:6.4.0
+            docker buildx build --platform linux/amd64,linux/arm64 -t renizmy/connector-virustotal-livehunt-notifications:6.4.0 . --build-arg BASE_IMAGE=renizmy/opencti-base:6.4.0
             docker tag renizmy/connector-virustotal-livehunt-notifications:6.4.0 renizmy/connector-virustotal-livehunt-notifications:latest
             docker push renizmy/connector-virustotal-livehunt-notifications:6.4.0
             docker push renizmy/connector-virustotal-livehunt-notifications:latest
       
-  build_external-import_infoblox:
+  build_external-import_infoblox_multi:
     docker:
       - image: cimg/base:stable-20.04
     steps:
       - checkout
       - setup_remote_docker
+
       - run:
-          name: Build external-import/infobloxa
+          name: Install Docker Buildx
+          command: |
+            mkdir -p ~/.docker/cli-plugins/
+            curl -L https://github.com/docker/buildx/releases/download/v0.11.0/buildx-v0.11.0.linux-amd64 \
+              -o ~/.docker/cli-plugins/docker-buildx
+            chmod +x ~/.docker/cli-plugins/docker-buildx
+
+      - run:
+          name: Set up Buildx Builder
+          command: |
+            docker buildx create --name multiarch --use
+            docker buildx inspect --bootstrap
+
+      - run:
+          name: Build external-import/infoblox_multi
           command: |
             echo "Processing external-import/infoblox"
             cd external-import/infoblox
             echo "$DOCKERHUB_PASS" | docker login -u "$DOCKERHUB_USERNAME" --password-stdin
-            docker build -t renizmy/connector-infoblox:6.4.0 . --build-arg BASE_IMAGE=renizmy/opencti-base:6.4.0
+            docker buildx build --platform linux/amd64,linux/arm64 -t renizmy/connector-infoblox:6.4.0 . --build-arg BASE_IMAGE=renizmy/opencti-base:6.4.0
             docker tag renizmy/connector-infoblox:6.4.0 renizmy/connector-infoblox:latest
             docker push renizmy/connector-infoblox:6.4.0
             docker push renizmy/connector-infoblox:latest
       
-  build_external-import_cofense:
+  build_external-import_cofense_multi:
     docker:
       - image: cimg/base:stable-20.04
     steps:
       - checkout
       - setup_remote_docker
+
       - run:
-          name: Build external-import/cofensea
+          name: Install Docker Buildx
+          command: |
+            mkdir -p ~/.docker/cli-plugins/
+            curl -L https://github.com/docker/buildx/releases/download/v0.11.0/buildx-v0.11.0.linux-amd64 \
+              -o ~/.docker/cli-plugins/docker-buildx
+            chmod +x ~/.docker/cli-plugins/docker-buildx
+
+      - run:
+          name: Set up Buildx Builder
+          command: |
+            docker buildx create --name multiarch --use
+            docker buildx inspect --bootstrap
+
+      - run:
+          name: Build external-import/cofense_multi
           command: |
             echo "Processing external-import/cofense"
             cd external-import/cofense
             echo "$DOCKERHUB_PASS" | docker login -u "$DOCKERHUB_USERNAME" --password-stdin
-            docker build -t renizmy/connector-cofense:6.4.0 . --build-arg BASE_IMAGE=renizmy/opencti-base:6.4.0
+            docker buildx build --platform linux/amd64,linux/arm64 -t renizmy/connector-cofense:6.4.0 . --build-arg BASE_IMAGE=renizmy/opencti-base:6.4.0
             docker tag renizmy/connector-cofense:6.4.0 renizmy/connector-cofense:latest
             docker push renizmy/connector-cofense:6.4.0
             docker push renizmy/connector-cofense:latest
       
-  build_external-import_rst-threat-feed:
+  build_external-import_rst-threat-feed_multi:
     docker:
       - image: cimg/base:stable-20.04
     steps:
       - checkout
       - setup_remote_docker
+
       - run:
-          name: Build external-import/rst-threat-feeda
+          name: Install Docker Buildx
+          command: |
+            mkdir -p ~/.docker/cli-plugins/
+            curl -L https://github.com/docker/buildx/releases/download/v0.11.0/buildx-v0.11.0.linux-amd64 \
+              -o ~/.docker/cli-plugins/docker-buildx
+            chmod +x ~/.docker/cli-plugins/docker-buildx
+
+      - run:
+          name: Set up Buildx Builder
+          command: |
+            docker buildx create --name multiarch --use
+            docker buildx inspect --bootstrap
+
+      - run:
+          name: Build external-import/rst-threat-feed_multi
           command: |
             echo "Processing external-import/rst-threat-feed"
             cd external-import/rst-threat-feed
             echo "$DOCKERHUB_PASS" | docker login -u "$DOCKERHUB_USERNAME" --password-stdin
-            docker build -t renizmy/connector-rst-threat-feed:6.4.0 . --build-arg BASE_IMAGE=renizmy/opencti-base:6.4.0
+            docker buildx build --platform linux/amd64,linux/arm64 -t renizmy/connector-rst-threat-feed:6.4.0 . --build-arg BASE_IMAGE=renizmy/opencti-base:6.4.0
             docker tag renizmy/connector-rst-threat-feed:6.4.0 renizmy/connector-rst-threat-feed:latest
             docker push renizmy/connector-rst-threat-feed:6.4.0
             docker push renizmy/connector-rst-threat-feed:latest
       
-  build_external-import_siemrules:
+  build_external-import_siemrules_multi:
     docker:
       - image: cimg/base:stable-20.04
     steps:
       - checkout
       - setup_remote_docker
+
       - run:
-          name: Build external-import/siemrulesa
+          name: Install Docker Buildx
+          command: |
+            mkdir -p ~/.docker/cli-plugins/
+            curl -L https://github.com/docker/buildx/releases/download/v0.11.0/buildx-v0.11.0.linux-amd64 \
+              -o ~/.docker/cli-plugins/docker-buildx
+            chmod +x ~/.docker/cli-plugins/docker-buildx
+
+      - run:
+          name: Set up Buildx Builder
+          command: |
+            docker buildx create --name multiarch --use
+            docker buildx inspect --bootstrap
+
+      - run:
+          name: Build external-import/siemrules_multi
           command: |
             echo "Processing external-import/siemrules"
             cd external-import/siemrules
             echo "$DOCKERHUB_PASS" | docker login -u "$DOCKERHUB_USERNAME" --password-stdin
-            docker build -t renizmy/connector-siemrules:6.4.0 . --build-arg BASE_IMAGE=renizmy/opencti-base:6.4.0
+            docker buildx build --platform linux/amd64,linux/arm64 -t renizmy/connector-siemrules:6.4.0 . --build-arg BASE_IMAGE=renizmy/opencti-base:6.4.0
             docker tag renizmy/connector-siemrules:6.4.0 renizmy/connector-siemrules:latest
             docker push renizmy/connector-siemrules:6.4.0
             docker push renizmy/connector-siemrules:latest
       
-  build_external-import_cape:
+  build_external-import_cape_multi:
     docker:
       - image: cimg/base:stable-20.04
     steps:
       - checkout
       - setup_remote_docker
+
       - run:
-          name: Build external-import/capea
+          name: Install Docker Buildx
+          command: |
+            mkdir -p ~/.docker/cli-plugins/
+            curl -L https://github.com/docker/buildx/releases/download/v0.11.0/buildx-v0.11.0.linux-amd64 \
+              -o ~/.docker/cli-plugins/docker-buildx
+            chmod +x ~/.docker/cli-plugins/docker-buildx
+
+      - run:
+          name: Set up Buildx Builder
+          command: |
+            docker buildx create --name multiarch --use
+            docker buildx inspect --bootstrap
+
+      - run:
+          name: Build external-import/cape_multi
           command: |
             echo "Processing external-import/cape"
             cd external-import/cape
             echo "$DOCKERHUB_PASS" | docker login -u "$DOCKERHUB_USERNAME" --password-stdin
-            docker build -t renizmy/connector-cape:6.4.0 . --build-arg BASE_IMAGE=renizmy/opencti-base:6.4.0
+            docker buildx build --platform linux/amd64,linux/arm64 -t renizmy/connector-cape:6.4.0 . --build-arg BASE_IMAGE=renizmy/opencti-base:6.4.0
             docker tag renizmy/connector-cape:6.4.0 renizmy/connector-cape:latest
             docker push renizmy/connector-cape:6.4.0
             docker push renizmy/connector-cape:latest
       
-  build_external-import_ironnet:
+  build_external-import_ironnet_multi:
     docker:
       - image: cimg/base:stable-20.04
     steps:
       - checkout
       - setup_remote_docker
+
       - run:
-          name: Build external-import/ironneta
+          name: Install Docker Buildx
+          command: |
+            mkdir -p ~/.docker/cli-plugins/
+            curl -L https://github.com/docker/buildx/releases/download/v0.11.0/buildx-v0.11.0.linux-amd64 \
+              -o ~/.docker/cli-plugins/docker-buildx
+            chmod +x ~/.docker/cli-plugins/docker-buildx
+
+      - run:
+          name: Set up Buildx Builder
+          command: |
+            docker buildx create --name multiarch --use
+            docker buildx inspect --bootstrap
+
+      - run:
+          name: Build external-import/ironnet_multi
           command: |
             echo "Processing external-import/ironnet"
             cd external-import/ironnet
             echo "$DOCKERHUB_PASS" | docker login -u "$DOCKERHUB_USERNAME" --password-stdin
-            docker build -t renizmy/connector-ironnet:6.4.0 . --build-arg BASE_IMAGE=renizmy/opencti-base:6.4.0
+            docker buildx build --platform linux/amd64,linux/arm64 -t renizmy/connector-ironnet:6.4.0 . --build-arg BASE_IMAGE=renizmy/opencti-base:6.4.0
             docker tag renizmy/connector-ironnet:6.4.0 renizmy/connector-ironnet:latest
             docker push renizmy/connector-ironnet:6.4.0
             docker push renizmy/connector-ironnet:latest
       
-  build_external-import_urlscan:
+  build_external-import_urlscan_multi:
     docker:
       - image: cimg/base:stable-20.04
     steps:
       - checkout
       - setup_remote_docker
+
       - run:
-          name: Build external-import/urlscana
+          name: Install Docker Buildx
+          command: |
+            mkdir -p ~/.docker/cli-plugins/
+            curl -L https://github.com/docker/buildx/releases/download/v0.11.0/buildx-v0.11.0.linux-amd64 \
+              -o ~/.docker/cli-plugins/docker-buildx
+            chmod +x ~/.docker/cli-plugins/docker-buildx
+
+      - run:
+          name: Set up Buildx Builder
+          command: |
+            docker buildx create --name multiarch --use
+            docker buildx inspect --bootstrap
+
+      - run:
+          name: Build external-import/urlscan_multi
           command: |
             echo "Processing external-import/urlscan"
             cd external-import/urlscan
             echo "$DOCKERHUB_PASS" | docker login -u "$DOCKERHUB_USERNAME" --password-stdin
-            docker build -t renizmy/connector-urlscan:6.4.0 . --build-arg BASE_IMAGE=renizmy/opencti-base:6.4.0
+            docker buildx build --platform linux/amd64,linux/arm64 -t renizmy/connector-urlscan:6.4.0 . --build-arg BASE_IMAGE=renizmy/opencti-base:6.4.0
             docker tag renizmy/connector-urlscan:6.4.0 renizmy/connector-urlscan:latest
             docker push renizmy/connector-urlscan:6.4.0
             docker push renizmy/connector-urlscan:latest
       
-  build_external-import_anyrun-feed:
+  build_external-import_anyrun-feed_multi:
     docker:
       - image: cimg/base:stable-20.04
     steps:
       - checkout
       - setup_remote_docker
+
       - run:
-          name: Build external-import/anyrun-feeda
+          name: Install Docker Buildx
+          command: |
+            mkdir -p ~/.docker/cli-plugins/
+            curl -L https://github.com/docker/buildx/releases/download/v0.11.0/buildx-v0.11.0.linux-amd64 \
+              -o ~/.docker/cli-plugins/docker-buildx
+            chmod +x ~/.docker/cli-plugins/docker-buildx
+
+      - run:
+          name: Set up Buildx Builder
+          command: |
+            docker buildx create --name multiarch --use
+            docker buildx inspect --bootstrap
+
+      - run:
+          name: Build external-import/anyrun-feed_multi
           command: |
             echo "Processing external-import/anyrun-feed"
             cd external-import/anyrun-feed
             echo "$DOCKERHUB_PASS" | docker login -u "$DOCKERHUB_USERNAME" --password-stdin
-            docker build -t renizmy/connector-anyrun-feed:6.4.0 . --build-arg BASE_IMAGE=renizmy/opencti-base:6.4.0
+            docker buildx build --platform linux/amd64,linux/arm64 -t renizmy/connector-anyrun-feed:6.4.0 . --build-arg BASE_IMAGE=renizmy/opencti-base:6.4.0
             docker tag renizmy/connector-anyrun-feed:6.4.0 renizmy/connector-anyrun-feed:latest
             docker push renizmy/connector-anyrun-feed:6.4.0
             docker push renizmy/connector-anyrun-feed:latest
       
-  build_external-import_ransomwarelive:
+  build_external-import_ransomwarelive_multi:
     docker:
       - image: cimg/base:stable-20.04
     steps:
       - checkout
       - setup_remote_docker
+
       - run:
-          name: Build external-import/ransomwarelivea
+          name: Install Docker Buildx
+          command: |
+            mkdir -p ~/.docker/cli-plugins/
+            curl -L https://github.com/docker/buildx/releases/download/v0.11.0/buildx-v0.11.0.linux-amd64 \
+              -o ~/.docker/cli-plugins/docker-buildx
+            chmod +x ~/.docker/cli-plugins/docker-buildx
+
+      - run:
+          name: Set up Buildx Builder
+          command: |
+            docker buildx create --name multiarch --use
+            docker buildx inspect --bootstrap
+
+      - run:
+          name: Build external-import/ransomwarelive_multi
           command: |
             echo "Processing external-import/ransomwarelive"
             cd external-import/ransomwarelive
             echo "$DOCKERHUB_PASS" | docker login -u "$DOCKERHUB_USERNAME" --password-stdin
-            docker build -t renizmy/connector-ransomwarelive:6.4.0 . --build-arg BASE_IMAGE=renizmy/opencti-base:6.4.0
+            docker buildx build --platform linux/amd64,linux/arm64 -t renizmy/connector-ransomwarelive:6.4.0 . --build-arg BASE_IMAGE=renizmy/opencti-base:6.4.0
             docker tag renizmy/connector-ransomwarelive:6.4.0 renizmy/connector-ransomwarelive:latest
             docker push renizmy/connector-ransomwarelive:6.4.0
             docker push renizmy/connector-ransomwarelive:latest
       
-  build_external-import_feedly:
+  build_external-import_feedly_multi:
     docker:
       - image: cimg/base:stable-20.04
     steps:
       - checkout
       - setup_remote_docker
+
       - run:
-          name: Build external-import/feedlya
+          name: Install Docker Buildx
+          command: |
+            mkdir -p ~/.docker/cli-plugins/
+            curl -L https://github.com/docker/buildx/releases/download/v0.11.0/buildx-v0.11.0.linux-amd64 \
+              -o ~/.docker/cli-plugins/docker-buildx
+            chmod +x ~/.docker/cli-plugins/docker-buildx
+
+      - run:
+          name: Set up Buildx Builder
+          command: |
+            docker buildx create --name multiarch --use
+            docker buildx inspect --bootstrap
+
+      - run:
+          name: Build external-import/feedly_multi
           command: |
             echo "Processing external-import/feedly"
             cd external-import/feedly
             echo "$DOCKERHUB_PASS" | docker login -u "$DOCKERHUB_USERNAME" --password-stdin
-            docker build -t renizmy/connector-feedly:6.4.0 . --build-arg BASE_IMAGE=renizmy/opencti-base:6.4.0
+            docker buildx build --platform linux/amd64,linux/arm64 -t renizmy/connector-feedly:6.4.0 . --build-arg BASE_IMAGE=renizmy/opencti-base:6.4.0
             docker tag renizmy/connector-feedly:6.4.0 renizmy/connector-feedly:latest
             docker push renizmy/connector-feedly:6.4.0
             docker push renizmy/connector-feedly:latest
       
-  build_external-import_socprime:
+  build_external-import_socprime_multi:
     docker:
       - image: cimg/base:stable-20.04
     steps:
       - checkout
       - setup_remote_docker
+
       - run:
-          name: Build external-import/socprimea
+          name: Install Docker Buildx
+          command: |
+            mkdir -p ~/.docker/cli-plugins/
+            curl -L https://github.com/docker/buildx/releases/download/v0.11.0/buildx-v0.11.0.linux-amd64 \
+              -o ~/.docker/cli-plugins/docker-buildx
+            chmod +x ~/.docker/cli-plugins/docker-buildx
+
+      - run:
+          name: Set up Buildx Builder
+          command: |
+            docker buildx create --name multiarch --use
+            docker buildx inspect --bootstrap
+
+      - run:
+          name: Build external-import/socprime_multi
           command: |
             echo "Processing external-import/socprime"
             cd external-import/socprime
             echo "$DOCKERHUB_PASS" | docker login -u "$DOCKERHUB_USERNAME" --password-stdin
-            docker build -t renizmy/connector-socprime:6.4.0 . --build-arg BASE_IMAGE=renizmy/opencti-base:6.4.0
+            docker buildx build --platform linux/amd64,linux/arm64 -t renizmy/connector-socprime:6.4.0 . --build-arg BASE_IMAGE=renizmy/opencti-base:6.4.0
             docker tag renizmy/connector-socprime:6.4.0 renizmy/connector-socprime:latest
             docker push renizmy/connector-socprime:6.4.0
             docker push renizmy/connector-socprime:latest
       
-  build_external-import_diode-import:
+  build_external-import_diode-import_multi:
     docker:
       - image: cimg/base:stable-20.04
     steps:
       - checkout
       - setup_remote_docker
+
       - run:
-          name: Build external-import/diode-importa
+          name: Install Docker Buildx
+          command: |
+            mkdir -p ~/.docker/cli-plugins/
+            curl -L https://github.com/docker/buildx/releases/download/v0.11.0/buildx-v0.11.0.linux-amd64 \
+              -o ~/.docker/cli-plugins/docker-buildx
+            chmod +x ~/.docker/cli-plugins/docker-buildx
+
+      - run:
+          name: Set up Buildx Builder
+          command: |
+            docker buildx create --name multiarch --use
+            docker buildx inspect --bootstrap
+
+      - run:
+          name: Build external-import/diode-import_multi
           command: |
             echo "Processing external-import/diode-import"
             cd external-import/diode-import
             echo "$DOCKERHUB_PASS" | docker login -u "$DOCKERHUB_USERNAME" --password-stdin
-            docker build -t renizmy/connector-diode-import:6.4.0 . --build-arg BASE_IMAGE=renizmy/opencti-base:6.4.0
+            docker buildx build --platform linux/amd64,linux/arm64 -t renizmy/connector-diode-import:6.4.0 . --build-arg BASE_IMAGE=renizmy/opencti-base:6.4.0
             docker tag renizmy/connector-diode-import:6.4.0 renizmy/connector-diode-import:latest
             docker push renizmy/connector-diode-import:6.4.0
             docker push renizmy/connector-diode-import:latest
       
-  build_external-import_threatmatch:
+  build_external-import_threatmatch_multi:
     docker:
       - image: cimg/base:stable-20.04
     steps:
       - checkout
       - setup_remote_docker
+
       - run:
-          name: Build external-import/threatmatcha
+          name: Install Docker Buildx
+          command: |
+            mkdir -p ~/.docker/cli-plugins/
+            curl -L https://github.com/docker/buildx/releases/download/v0.11.0/buildx-v0.11.0.linux-amd64 \
+              -o ~/.docker/cli-plugins/docker-buildx
+            chmod +x ~/.docker/cli-plugins/docker-buildx
+
+      - run:
+          name: Set up Buildx Builder
+          command: |
+            docker buildx create --name multiarch --use
+            docker buildx inspect --bootstrap
+
+      - run:
+          name: Build external-import/threatmatch_multi
           command: |
             echo "Processing external-import/threatmatch"
             cd external-import/threatmatch
             echo "$DOCKERHUB_PASS" | docker login -u "$DOCKERHUB_USERNAME" --password-stdin
-            docker build -t renizmy/connector-threatmatch:6.4.0 . --build-arg BASE_IMAGE=renizmy/opencti-base:6.4.0
+            docker buildx build --platform linux/amd64,linux/arm64 -t renizmy/connector-threatmatch:6.4.0 . --build-arg BASE_IMAGE=renizmy/opencti-base:6.4.0
             docker tag renizmy/connector-threatmatch:6.4.0 renizmy/connector-threatmatch:latest
             docker push renizmy/connector-threatmatch:6.4.0
             docker push renizmy/connector-threatmatch:latest
       
-  build_external-import_vulmatch:
+  build_external-import_vulmatch_multi:
     docker:
       - image: cimg/base:stable-20.04
     steps:
       - checkout
       - setup_remote_docker
+
       - run:
-          name: Build external-import/vulmatcha
+          name: Install Docker Buildx
+          command: |
+            mkdir -p ~/.docker/cli-plugins/
+            curl -L https://github.com/docker/buildx/releases/download/v0.11.0/buildx-v0.11.0.linux-amd64 \
+              -o ~/.docker/cli-plugins/docker-buildx
+            chmod +x ~/.docker/cli-plugins/docker-buildx
+
+      - run:
+          name: Set up Buildx Builder
+          command: |
+            docker buildx create --name multiarch --use
+            docker buildx inspect --bootstrap
+
+      - run:
+          name: Build external-import/vulmatch_multi
           command: |
             echo "Processing external-import/vulmatch"
             cd external-import/vulmatch
             echo "$DOCKERHUB_PASS" | docker login -u "$DOCKERHUB_USERNAME" --password-stdin
-            docker build -t renizmy/connector-vulmatch:6.4.0 . --build-arg BASE_IMAGE=renizmy/opencti-base:6.4.0
+            docker buildx build --platform linux/amd64,linux/arm64 -t renizmy/connector-vulmatch:6.4.0 . --build-arg BASE_IMAGE=renizmy/opencti-base:6.4.0
             docker tag renizmy/connector-vulmatch:6.4.0 renizmy/connector-vulmatch:latest
             docker push renizmy/connector-vulmatch:6.4.0
             docker push renizmy/connector-vulmatch:latest
       
 
   
-  build_stream_harfanglab-intel:
+  build_stream_harfanglab-intel_multi:
     docker:
       - image: cimg/base:stable-20.04
     steps:
       - checkout
       - setup_remote_docker
+
       - run:
-          name: Build stream/harfanglab-intela
+          name: Install Docker Buildx
+          command: |
+            mkdir -p ~/.docker/cli-plugins/
+            curl -L https://github.com/docker/buildx/releases/download/v0.11.0/buildx-v0.11.0.linux-amd64 \
+              -o ~/.docker/cli-plugins/docker-buildx
+            chmod +x ~/.docker/cli-plugins/docker-buildx
+
+      - run:
+          name: Set up Buildx Builder
+          command: |
+            docker buildx create --name multiarch --use
+            docker buildx inspect --bootstrap
+
+      - run:
+          name: Build stream/harfanglab-intel_multi
           command: |
             echo "Processing stream/harfanglab-intel"
             cd stream/harfanglab-intel
             echo "$DOCKERHUB_PASS" | docker login -u "$DOCKERHUB_USERNAME" --password-stdin
-            docker build -t renizmy/connector-harfanglab-intel:6.4.0 . --build-arg BASE_IMAGE=renizmy/opencti-base:6.4.0-python3-11
+            docker buildx build --platform linux/amd64,linux/arm64 -t renizmy/connector-harfanglab-intel:6.4.0 . --build-arg BASE_IMAGE=renizmy/opencti-base:6.4.0-python3-11
             docker tag renizmy/connector-harfanglab-intel:6.4.0 renizmy/connector-harfanglab-intel:latest
             docker push renizmy/connector-harfanglab-intel:6.4.0
             docker push renizmy/connector-harfanglab-intel:latest
       
-  build_stream_crowdstrike-endpoint-security:
+  build_stream_crowdstrike-endpoint-security_multi:
     docker:
       - image: cimg/base:stable-20.04
     steps:
       - checkout
       - setup_remote_docker
+
       - run:
-          name: Build stream/crowdstrike-endpoint-securitya
+          name: Install Docker Buildx
+          command: |
+            mkdir -p ~/.docker/cli-plugins/
+            curl -L https://github.com/docker/buildx/releases/download/v0.11.0/buildx-v0.11.0.linux-amd64 \
+              -o ~/.docker/cli-plugins/docker-buildx
+            chmod +x ~/.docker/cli-plugins/docker-buildx
+
+      - run:
+          name: Set up Buildx Builder
+          command: |
+            docker buildx create --name multiarch --use
+            docker buildx inspect --bootstrap
+
+      - run:
+          name: Build stream/crowdstrike-endpoint-security_multi
           command: |
             echo "Processing stream/crowdstrike-endpoint-security"
             cd stream/crowdstrike-endpoint-security
             echo "$DOCKERHUB_PASS" | docker login -u "$DOCKERHUB_USERNAME" --password-stdin
-            docker build -t renizmy/connector-crowdstrike-endpoint-security:6.4.0 . --build-arg BASE_IMAGE=renizmy/opencti-base:6.4.0
+            docker buildx build --platform linux/amd64,linux/arm64 -t renizmy/connector-crowdstrike-endpoint-security:6.4.0 . --build-arg BASE_IMAGE=renizmy/opencti-base:6.4.0
             docker tag renizmy/connector-crowdstrike-endpoint-security:6.4.0 renizmy/connector-crowdstrike-endpoint-security:latest
             docker push renizmy/connector-crowdstrike-endpoint-security:6.4.0
             docker push renizmy/connector-crowdstrike-endpoint-security:latest
       
-  build_stream_webhook:
+  build_stream_webhook_multi:
     docker:
       - image: cimg/base:stable-20.04
     steps:
       - checkout
       - setup_remote_docker
+
       - run:
-          name: Build stream/webhooka
+          name: Install Docker Buildx
+          command: |
+            mkdir -p ~/.docker/cli-plugins/
+            curl -L https://github.com/docker/buildx/releases/download/v0.11.0/buildx-v0.11.0.linux-amd64 \
+              -o ~/.docker/cli-plugins/docker-buildx
+            chmod +x ~/.docker/cli-plugins/docker-buildx
+
+      - run:
+          name: Set up Buildx Builder
+          command: |
+            docker buildx create --name multiarch --use
+            docker buildx inspect --bootstrap
+
+      - run:
+          name: Build stream/webhook_multi
           command: |
             echo "Processing stream/webhook"
             cd stream/webhook
             echo "$DOCKERHUB_PASS" | docker login -u "$DOCKERHUB_USERNAME" --password-stdin
-            docker build -t renizmy/connector-webhook:6.4.0 . --build-arg BASE_IMAGE=renizmy/opencti-base:6.4.0-python3-11
+            docker buildx build --platform linux/amd64,linux/arm64 -t renizmy/connector-webhook:6.4.0 . --build-arg BASE_IMAGE=renizmy/opencti-base:6.4.0-python3-11
             docker tag renizmy/connector-webhook:6.4.0 renizmy/connector-webhook:latest
             docker push renizmy/connector-webhook:6.4.0
             docker push renizmy/connector-webhook:latest
       
-  build_stream_splunk:
+  build_stream_splunk_multi:
     docker:
       - image: cimg/base:stable-20.04
     steps:
       - checkout
       - setup_remote_docker
+
       - run:
-          name: Build stream/splunka
+          name: Install Docker Buildx
+          command: |
+            mkdir -p ~/.docker/cli-plugins/
+            curl -L https://github.com/docker/buildx/releases/download/v0.11.0/buildx-v0.11.0.linux-amd64 \
+              -o ~/.docker/cli-plugins/docker-buildx
+            chmod +x ~/.docker/cli-plugins/docker-buildx
+
+      - run:
+          name: Set up Buildx Builder
+          command: |
+            docker buildx create --name multiarch --use
+            docker buildx inspect --bootstrap
+
+      - run:
+          name: Build stream/splunk_multi
           command: |
             echo "Processing stream/splunk"
             cd stream/splunk
             echo "$DOCKERHUB_PASS" | docker login -u "$DOCKERHUB_USERNAME" --password-stdin
-            docker build -t renizmy/connector-splunk:6.4.0 . --build-arg BASE_IMAGE=renizmy/opencti-base:6.4.0-python3-11
+            docker buildx build --platform linux/amd64,linux/arm64 -t renizmy/connector-splunk:6.4.0 . --build-arg BASE_IMAGE=renizmy/opencti-base:6.4.0-python3-11
             docker tag renizmy/connector-splunk:6.4.0 renizmy/connector-splunk:latest
             docker push renizmy/connector-splunk:6.4.0
             docker push renizmy/connector-splunk:latest
       
-  build_stream_sentinel-intel:
+  build_stream_sentinel-intel_multi:
     docker:
       - image: cimg/base:stable-20.04
     steps:
       - checkout
       - setup_remote_docker
+
       - run:
-          name: Build stream/sentinel-intela
+          name: Install Docker Buildx
+          command: |
+            mkdir -p ~/.docker/cli-plugins/
+            curl -L https://github.com/docker/buildx/releases/download/v0.11.0/buildx-v0.11.0.linux-amd64 \
+              -o ~/.docker/cli-plugins/docker-buildx
+            chmod +x ~/.docker/cli-plugins/docker-buildx
+
+      - run:
+          name: Set up Buildx Builder
+          command: |
+            docker buildx create --name multiarch --use
+            docker buildx inspect --bootstrap
+
+      - run:
+          name: Build stream/sentinel-intel_multi
           command: |
             echo "Processing stream/sentinel-intel"
             cd stream/sentinel-intel
             echo "$DOCKERHUB_PASS" | docker login -u "$DOCKERHUB_USERNAME" --password-stdin
-            docker build -t renizmy/connector-sentinel-intel:6.4.0 . --build-arg BASE_IMAGE=renizmy/opencti-base:6.4.0-python3-11
+            docker buildx build --platform linux/amd64,linux/arm64 -t renizmy/connector-sentinel-intel:6.4.0 . --build-arg BASE_IMAGE=renizmy/opencti-base:6.4.0-python3-11
             docker tag renizmy/connector-sentinel-intel:6.4.0 renizmy/connector-sentinel-intel:latest
             docker push renizmy/connector-sentinel-intel:6.4.0
             docker push renizmy/connector-sentinel-intel:latest
       
-  build_stream_qradar:
+  build_stream_qradar_multi:
     docker:
       - image: cimg/base:stable-20.04
     steps:
       - checkout
       - setup_remote_docker
+
       - run:
-          name: Build stream/qradara
+          name: Install Docker Buildx
+          command: |
+            mkdir -p ~/.docker/cli-plugins/
+            curl -L https://github.com/docker/buildx/releases/download/v0.11.0/buildx-v0.11.0.linux-amd64 \
+              -o ~/.docker/cli-plugins/docker-buildx
+            chmod +x ~/.docker/cli-plugins/docker-buildx
+
+      - run:
+          name: Set up Buildx Builder
+          command: |
+            docker buildx create --name multiarch --use
+            docker buildx inspect --bootstrap
+
+      - run:
+          name: Build stream/qradar_multi
           command: |
             echo "Processing stream/qradar"
             cd stream/qradar
             echo "$DOCKERHUB_PASS" | docker login -u "$DOCKERHUB_USERNAME" --password-stdin
-            docker build -t renizmy/connector-qradar:6.4.0 . --build-arg BASE_IMAGE=renizmy/opencti-base:6.4.0
+            docker buildx build --platform linux/amd64,linux/arm64 -t renizmy/connector-qradar:6.4.0 . --build-arg BASE_IMAGE=renizmy/opencti-base:6.4.0-python3-11
             docker tag renizmy/connector-qradar:6.4.0 renizmy/connector-qradar:latest
             docker push renizmy/connector-qradar:6.4.0
             docker push renizmy/connector-qradar:latest
       
-  build_stream_harfanglab:
+  build_stream_harfanglab_multi:
     docker:
       - image: cimg/base:stable-20.04
     steps:
       - checkout
       - setup_remote_docker
+
       - run:
-          name: Build stream/harfanglaba
+          name: Install Docker Buildx
+          command: |
+            mkdir -p ~/.docker/cli-plugins/
+            curl -L https://github.com/docker/buildx/releases/download/v0.11.0/buildx-v0.11.0.linux-amd64 \
+              -o ~/.docker/cli-plugins/docker-buildx
+            chmod +x ~/.docker/cli-plugins/docker-buildx
+
+      - run:
+          name: Set up Buildx Builder
+          command: |
+            docker buildx create --name multiarch --use
+            docker buildx inspect --bootstrap
+
+      - run:
+          name: Build stream/harfanglab_multi
           command: |
             echo "Processing stream/harfanglab"
             cd stream/harfanglab
             echo "$DOCKERHUB_PASS" | docker login -u "$DOCKERHUB_USERNAME" --password-stdin
-            docker build -t renizmy/connector-harfanglab:6.4.0 . --build-arg BASE_IMAGE=renizmy/opencti-base:6.4.0-python3-11
+            docker buildx build --platform linux/amd64,linux/arm64 -t renizmy/connector-harfanglab:6.4.0 . --build-arg BASE_IMAGE=renizmy/opencti-base:6.4.0-python3-11
             docker tag renizmy/connector-harfanglab:6.4.0 renizmy/connector-harfanglab:latest
             docker push renizmy/connector-harfanglab:6.4.0
             docker push renizmy/connector-harfanglab:latest
       
-  build_stream_virustotal-livehunt-rules:
+  build_stream_virustotal-livehunt-rules_multi:
     docker:
       - image: cimg/base:stable-20.04
     steps:
       - checkout
       - setup_remote_docker
+
       - run:
-          name: Build stream/virustotal-livehunt-rulesa
+          name: Install Docker Buildx
+          command: |
+            mkdir -p ~/.docker/cli-plugins/
+            curl -L https://github.com/docker/buildx/releases/download/v0.11.0/buildx-v0.11.0.linux-amd64 \
+              -o ~/.docker/cli-plugins/docker-buildx
+            chmod +x ~/.docker/cli-plugins/docker-buildx
+
+      - run:
+          name: Set up Buildx Builder
+          command: |
+            docker buildx create --name multiarch --use
+            docker buildx inspect --bootstrap
+
+      - run:
+          name: Build stream/virustotal-livehunt-rules_multi
           command: |
             echo "Processing stream/virustotal-livehunt-rules"
             cd stream/virustotal-livehunt-rules
             echo "$DOCKERHUB_PASS" | docker login -u "$DOCKERHUB_USERNAME" --password-stdin
-            docker build -t renizmy/connector-virustotal-livehunt-rules:6.4.0 . --build-arg BASE_IMAGE=renizmy/opencti-base:6.4.0
+            docker buildx build --platform linux/amd64,linux/arm64 -t renizmy/connector-virustotal-livehunt-rules:6.4.0 . --build-arg BASE_IMAGE=renizmy/opencti-base:6.4.0
             docker tag renizmy/connector-virustotal-livehunt-rules:6.4.0 renizmy/connector-virustotal-livehunt-rules:latest
             docker push renizmy/connector-virustotal-livehunt-rules:6.4.0
             docker push renizmy/connector-virustotal-livehunt-rules:latest
       
-  build_stream_backup-files:
+  build_stream_backup-files_multi:
     docker:
       - image: cimg/base:stable-20.04
     steps:
       - checkout
       - setup_remote_docker
+
       - run:
-          name: Build stream/backup-filesa
+          name: Install Docker Buildx
+          command: |
+            mkdir -p ~/.docker/cli-plugins/
+            curl -L https://github.com/docker/buildx/releases/download/v0.11.0/buildx-v0.11.0.linux-amd64 \
+              -o ~/.docker/cli-plugins/docker-buildx
+            chmod +x ~/.docker/cli-plugins/docker-buildx
+
+      - run:
+          name: Set up Buildx Builder
+          command: |
+            docker buildx create --name multiarch --use
+            docker buildx inspect --bootstrap
+
+      - run:
+          name: Build stream/backup-files_multi
           command: |
             echo "Processing stream/backup-files"
             cd stream/backup-files
             echo "$DOCKERHUB_PASS" | docker login -u "$DOCKERHUB_USERNAME" --password-stdin
-            docker build -t renizmy/connector-backup-files:6.4.0 . --build-arg BASE_IMAGE=renizmy/opencti-base:6.4.0
+            docker buildx build --platform linux/amd64,linux/arm64 -t renizmy/connector-backup-files:6.4.0 . --build-arg BASE_IMAGE=renizmy/opencti-base:6.4.0
             docker tag renizmy/connector-backup-files:6.4.0 renizmy/connector-backup-files:latest
             docker push renizmy/connector-backup-files:6.4.0
             docker push renizmy/connector-backup-files:latest
       
-  build_stream_logrhythm:
+  build_stream_logrhythm_multi:
     docker:
       - image: cimg/base:stable-20.04
     steps:
       - checkout
       - setup_remote_docker
+
       - run:
-          name: Build stream/logrhythma
+          name: Install Docker Buildx
+          command: |
+            mkdir -p ~/.docker/cli-plugins/
+            curl -L https://github.com/docker/buildx/releases/download/v0.11.0/buildx-v0.11.0.linux-amd64 \
+              -o ~/.docker/cli-plugins/docker-buildx
+            chmod +x ~/.docker/cli-plugins/docker-buildx
+
+      - run:
+          name: Set up Buildx Builder
+          command: |
+            docker buildx create --name multiarch --use
+            docker buildx inspect --bootstrap
+
+      - run:
+          name: Build stream/logrhythm_multi
           command: |
             echo "Processing stream/logrhythm"
             cd stream/logrhythm
             echo "$DOCKERHUB_PASS" | docker login -u "$DOCKERHUB_USERNAME" --password-stdin
-            docker build -t renizmy/connector-logrhythm:6.4.0 . --build-arg BASE_IMAGE=renizmy/opencti-base:6.4.0
+            docker buildx build --platform linux/amd64,linux/arm64 -t renizmy/connector-logrhythm:6.4.0 . --build-arg BASE_IMAGE=renizmy/opencti-base:6.4.0
             docker tag renizmy/connector-logrhythm:6.4.0 renizmy/connector-logrhythm:latest
             docker push renizmy/connector-logrhythm:6.4.0
             docker push renizmy/connector-logrhythm:latest
       
-  build_stream_taxii-post:
+  build_stream_taxii-post_multi:
     docker:
       - image: cimg/base:stable-20.04
     steps:
       - checkout
       - setup_remote_docker
+
       - run:
-          name: Build stream/taxii-posta
+          name: Install Docker Buildx
+          command: |
+            mkdir -p ~/.docker/cli-plugins/
+            curl -L https://github.com/docker/buildx/releases/download/v0.11.0/buildx-v0.11.0.linux-amd64 \
+              -o ~/.docker/cli-plugins/docker-buildx
+            chmod +x ~/.docker/cli-plugins/docker-buildx
+
+      - run:
+          name: Set up Buildx Builder
+          command: |
+            docker buildx create --name multiarch --use
+            docker buildx inspect --bootstrap
+
+      - run:
+          name: Build stream/taxii-post_multi
           command: |
             echo "Processing stream/taxii-post"
             cd stream/taxii-post
             echo "$DOCKERHUB_PASS" | docker login -u "$DOCKERHUB_USERNAME" --password-stdin
-            docker build -t renizmy/connector-taxii-post:6.4.0 . --build-arg BASE_IMAGE=renizmy/opencti-base:6.4.0
+            docker buildx build --platform linux/amd64,linux/arm64 -t renizmy/connector-taxii-post:6.4.0 . --build-arg BASE_IMAGE=renizmy/opencti-base:6.4.0
             docker tag renizmy/connector-taxii-post:6.4.0 renizmy/connector-taxii-post:latest
             docker push renizmy/connector-taxii-post:6.4.0
             docker push renizmy/connector-taxii-post:latest
       
-  build_stream_tanium:
+  build_stream_tanium_multi:
     docker:
       - image: cimg/base:stable-20.04
     steps:
       - checkout
       - setup_remote_docker
+
       - run:
-          name: Build stream/taniuma
+          name: Install Docker Buildx
+          command: |
+            mkdir -p ~/.docker/cli-plugins/
+            curl -L https://github.com/docker/buildx/releases/download/v0.11.0/buildx-v0.11.0.linux-amd64 \
+              -o ~/.docker/cli-plugins/docker-buildx
+            chmod +x ~/.docker/cli-plugins/docker-buildx
+
+      - run:
+          name: Set up Buildx Builder
+          command: |
+            docker buildx create --name multiarch --use
+            docker buildx inspect --bootstrap
+
+      - run:
+          name: Build stream/tanium_multi
           command: |
             echo "Processing stream/tanium"
             cd stream/tanium
             echo "$DOCKERHUB_PASS" | docker login -u "$DOCKERHUB_USERNAME" --password-stdin
-            docker build -t renizmy/connector-tanium:6.4.0 . --build-arg BASE_IMAGE=renizmy/opencti-base:6.4.0
+            docker buildx build --platform linux/amd64,linux/arm64 -t renizmy/connector-tanium:6.4.0 . --build-arg BASE_IMAGE=renizmy/opencti-base:6.4.0
             docker tag renizmy/connector-tanium:6.4.0 renizmy/connector-tanium:latest
             docker push renizmy/connector-tanium:6.4.0
             docker push renizmy/connector-tanium:latest
       
-  build_stream_chronicle:
+  build_stream_chronicle_multi:
     docker:
       - image: cimg/base:stable-20.04
     steps:
       - checkout
       - setup_remote_docker
+
       - run:
-          name: Build stream/chroniclea
+          name: Install Docker Buildx
+          command: |
+            mkdir -p ~/.docker/cli-plugins/
+            curl -L https://github.com/docker/buildx/releases/download/v0.11.0/buildx-v0.11.0.linux-amd64 \
+              -o ~/.docker/cli-plugins/docker-buildx
+            chmod +x ~/.docker/cli-plugins/docker-buildx
+
+      - run:
+          name: Set up Buildx Builder
+          command: |
+            docker buildx create --name multiarch --use
+            docker buildx inspect --bootstrap
+
+      - run:
+          name: Build stream/chronicle_multi
           command: |
             echo "Processing stream/chronicle"
             cd stream/chronicle
             echo "$DOCKERHUB_PASS" | docker login -u "$DOCKERHUB_USERNAME" --password-stdin
-            docker build -t renizmy/connector-chronicle:6.4.0 . --build-arg BASE_IMAGE=renizmy/opencti-base:6.4.0
+            docker buildx build --platform linux/amd64,linux/arm64 -t renizmy/connector-chronicle:6.4.0 . --build-arg BASE_IMAGE=renizmy/opencti-base:6.4.0
             docker tag renizmy/connector-chronicle:6.4.0 renizmy/connector-chronicle:latest
             docker push renizmy/connector-chronicle:6.4.0
             docker push renizmy/connector-chronicle:latest
       
-  build_stream_jira:
+  build_stream_jira_multi:
     docker:
       - image: cimg/base:stable-20.04
     steps:
       - checkout
       - setup_remote_docker
+
       - run:
-          name: Build stream/jiraa
+          name: Install Docker Buildx
+          command: |
+            mkdir -p ~/.docker/cli-plugins/
+            curl -L https://github.com/docker/buildx/releases/download/v0.11.0/buildx-v0.11.0.linux-amd64 \
+              -o ~/.docker/cli-plugins/docker-buildx
+            chmod +x ~/.docker/cli-plugins/docker-buildx
+
+      - run:
+          name: Set up Buildx Builder
+          command: |
+            docker buildx create --name multiarch --use
+            docker buildx inspect --bootstrap
+
+      - run:
+          name: Build stream/jira_multi
           command: |
             echo "Processing stream/jira"
             cd stream/jira
             echo "$DOCKERHUB_PASS" | docker login -u "$DOCKERHUB_USERNAME" --password-stdin
-            docker build -t renizmy/connector-jira:6.4.0 . --build-arg BASE_IMAGE=renizmy/opencti-base:6.4.0
+            docker buildx build --platform linux/amd64,linux/arm64 -t renizmy/connector-jira:6.4.0 . --build-arg BASE_IMAGE=renizmy/opencti-base:6.4.0
             docker tag renizmy/connector-jira:6.4.0 renizmy/connector-jira:latest
             docker push renizmy/connector-jira:6.4.0
             docker push renizmy/connector-jira:latest
       
-  build_stream_elastic:
+  build_stream_elastic_multi:
     docker:
       - image: cimg/base:stable-20.04
     steps:
       - checkout
       - setup_remote_docker
+
       - run:
-          name: Build stream/elastica
+          name: Install Docker Buildx
+          command: |
+            mkdir -p ~/.docker/cli-plugins/
+            curl -L https://github.com/docker/buildx/releases/download/v0.11.0/buildx-v0.11.0.linux-amd64 \
+              -o ~/.docker/cli-plugins/docker-buildx
+            chmod +x ~/.docker/cli-plugins/docker-buildx
+
+      - run:
+          name: Set up Buildx Builder
+          command: |
+            docker buildx create --name multiarch --use
+            docker buildx inspect --bootstrap
+
+      - run:
+          name: Build stream/elastic_multi
           command: |
             echo "Processing stream/elastic"
             cd stream/elastic
             echo "$DOCKERHUB_PASS" | docker login -u "$DOCKERHUB_USERNAME" --password-stdin
-            docker build -t renizmy/connector-elastic:6.4.0 . --build-arg BASE_IMAGE=renizmy/opencti-base:6.4.0
+            docker buildx build --platform linux/amd64,linux/arm64 -t renizmy/connector-elastic:6.4.0 . --build-arg BASE_IMAGE=renizmy/opencti-base:6.4.0
             docker tag renizmy/connector-elastic:6.4.0 renizmy/connector-elastic:latest
             docker push renizmy/connector-elastic:6.4.0
             docker push renizmy/connector-elastic:latest
       
-  build_stream_sentinel:
+  build_stream_sentinel_multi:
     docker:
       - image: cimg/base:stable-20.04
     steps:
       - checkout
       - setup_remote_docker
+
       - run:
-          name: Build stream/sentinela
+          name: Install Docker Buildx
+          command: |
+            mkdir -p ~/.docker/cli-plugins/
+            curl -L https://github.com/docker/buildx/releases/download/v0.11.0/buildx-v0.11.0.linux-amd64 \
+              -o ~/.docker/cli-plugins/docker-buildx
+            chmod +x ~/.docker/cli-plugins/docker-buildx
+
+      - run:
+          name: Set up Buildx Builder
+          command: |
+            docker buildx create --name multiarch --use
+            docker buildx inspect --bootstrap
+
+      - run:
+          name: Build stream/sentinel_multi
           command: |
             echo "Processing stream/sentinel"
             cd stream/sentinel
             echo "$DOCKERHUB_PASS" | docker login -u "$DOCKERHUB_USERNAME" --password-stdin
-            docker build -t renizmy/connector-sentinel:6.4.0 . --build-arg BASE_IMAGE=renizmy/opencti-base:6.4.0-python3-11
+            docker buildx build --platform linux/amd64,linux/arm64 -t renizmy/connector-sentinel:6.4.0 . --build-arg BASE_IMAGE=renizmy/opencti-base:6.4.0-python3-11
             docker tag renizmy/connector-sentinel:6.4.0 renizmy/connector-sentinel:latest
             docker push renizmy/connector-sentinel:6.4.0
             docker push renizmy/connector-sentinel:latest
       
-  build_stream_tanium-intel:
+  build_stream_tanium-intel_multi:
     docker:
       - image: cimg/base:stable-20.04
     steps:
       - checkout
       - setup_remote_docker
+
       - run:
-          name: Build stream/tanium-intela
+          name: Install Docker Buildx
+          command: |
+            mkdir -p ~/.docker/cli-plugins/
+            curl -L https://github.com/docker/buildx/releases/download/v0.11.0/buildx-v0.11.0.linux-amd64 \
+              -o ~/.docker/cli-plugins/docker-buildx
+            chmod +x ~/.docker/cli-plugins/docker-buildx
+
+      - run:
+          name: Set up Buildx Builder
+          command: |
+            docker buildx create --name multiarch --use
+            docker buildx inspect --bootstrap
+
+      - run:
+          name: Build stream/tanium-intel_multi
           command: |
             echo "Processing stream/tanium-intel"
             cd stream/tanium-intel
             echo "$DOCKERHUB_PASS" | docker login -u "$DOCKERHUB_USERNAME" --password-stdin
-            docker build -t renizmy/connector-tanium-intel:6.4.0 . --build-arg BASE_IMAGE=renizmy/opencti-base:6.4.0
+            docker buildx build --platform linux/amd64,linux/arm64 -t renizmy/connector-tanium-intel:6.4.0 . --build-arg BASE_IMAGE=renizmy/opencti-base:6.4.0
             docker tag renizmy/connector-tanium-intel:6.4.0 renizmy/connector-tanium-intel:latest
             docker push renizmy/connector-tanium-intel:6.4.0
             docker push renizmy/connector-tanium-intel:latest
       
 
   
-  build_internal-export-file_export-ttps-file-navigator:
+  build_internal-export-file_export-ttps-file-navigator_multi:
     docker:
       - image: cimg/base:stable-20.04
     steps:
       - checkout
       - setup_remote_docker
+
       - run:
-          name: Build internal-export-file/export-ttps-file-navigatora
+          name: Install Docker Buildx
+          command: |
+            mkdir -p ~/.docker/cli-plugins/
+            curl -L https://github.com/docker/buildx/releases/download/v0.11.0/buildx-v0.11.0.linux-amd64 \
+              -o ~/.docker/cli-plugins/docker-buildx
+            chmod +x ~/.docker/cli-plugins/docker-buildx
+
+      - run:
+          name: Set up Buildx Builder
+          command: |
+            docker buildx create --name multiarch --use
+            docker buildx inspect --bootstrap
+
+      - run:
+          name: Build internal-export-file/export-ttps-file-navigator_multi
           command: |
             echo "Processing internal-export-file/export-ttps-file-navigator"
             cd internal-export-file/export-ttps-file-navigator
             echo "$DOCKERHUB_PASS" | docker login -u "$DOCKERHUB_USERNAME" --password-stdin
-            docker build -t renizmy/connector-export-ttps-file-navigator:6.4.0 . --build-arg BASE_IMAGE=renizmy/opencti-base:6.4.0
+            docker buildx build --platform linux/amd64,linux/arm64 -t renizmy/connector-export-ttps-file-navigator:6.4.0 . --build-arg BASE_IMAGE=renizmy/opencti-base:6.4.0
             docker tag renizmy/connector-export-ttps-file-navigator:6.4.0 renizmy/connector-export-ttps-file-navigator:latest
             docker push renizmy/connector-export-ttps-file-navigator:6.4.0
             docker push renizmy/connector-export-ttps-file-navigator:latest
       
-  build_internal-export-file_export-report-pdf:
+  build_internal-export-file_export-report-pdf_multi:
     docker:
       - image: cimg/base:stable-20.04
     steps:
       - checkout
       - setup_remote_docker
+
       - run:
-          name: Build internal-export-file/export-report-pdfa
+          name: Install Docker Buildx
+          command: |
+            mkdir -p ~/.docker/cli-plugins/
+            curl -L https://github.com/docker/buildx/releases/download/v0.11.0/buildx-v0.11.0.linux-amd64 \
+              -o ~/.docker/cli-plugins/docker-buildx
+            chmod +x ~/.docker/cli-plugins/docker-buildx
+
+      - run:
+          name: Set up Buildx Builder
+          command: |
+            docker buildx create --name multiarch --use
+            docker buildx inspect --bootstrap
+
+      - run:
+          name: Build internal-export-file/export-report-pdf_multi
           command: |
             echo "Processing internal-export-file/export-report-pdf"
             cd internal-export-file/export-report-pdf
             echo "$DOCKERHUB_PASS" | docker login -u "$DOCKERHUB_USERNAME" --password-stdin
-            docker build -t renizmy/connector-export-report-pdf:6.4.0 . --build-arg BASE_IMAGE=renizmy/opencti-base:6.4.0
+            docker buildx build --platform linux/amd64,linux/arm64 -t renizmy/connector-export-report-pdf:6.4.0 . --build-arg BASE_IMAGE=renizmy/opencti-base:6.4.0
             docker tag renizmy/connector-export-report-pdf:6.4.0 renizmy/connector-export-report-pdf:latest
             docker push renizmy/connector-export-report-pdf:6.4.0
             docker push renizmy/connector-export-report-pdf:latest
       
-  build_internal-export-file_export-file-txt:
+  build_internal-export-file_export-file-txt_multi:
     docker:
       - image: cimg/base:stable-20.04
     steps:
       - checkout
       - setup_remote_docker
+
       - run:
-          name: Build internal-export-file/export-file-txta
+          name: Install Docker Buildx
+          command: |
+            mkdir -p ~/.docker/cli-plugins/
+            curl -L https://github.com/docker/buildx/releases/download/v0.11.0/buildx-v0.11.0.linux-amd64 \
+              -o ~/.docker/cli-plugins/docker-buildx
+            chmod +x ~/.docker/cli-plugins/docker-buildx
+
+      - run:
+          name: Set up Buildx Builder
+          command: |
+            docker buildx create --name multiarch --use
+            docker buildx inspect --bootstrap
+
+      - run:
+          name: Build internal-export-file/export-file-txt_multi
           command: |
             echo "Processing internal-export-file/export-file-txt"
             cd internal-export-file/export-file-txt
             echo "$DOCKERHUB_PASS" | docker login -u "$DOCKERHUB_USERNAME" --password-stdin
-            docker build -t renizmy/connector-export-file-txt:6.4.0 . --build-arg BASE_IMAGE=renizmy/opencti-base:6.4.0
+            docker buildx build --platform linux/amd64,linux/arm64 -t renizmy/connector-export-file-txt:6.4.0 . --build-arg BASE_IMAGE=renizmy/opencti-base:6.4.0
             docker tag renizmy/connector-export-file-txt:6.4.0 renizmy/connector-export-file-txt:latest
             docker push renizmy/connector-export-file-txt:6.4.0
             docker push renizmy/connector-export-file-txt:latest
       
-  build_internal-export-file_export-file-csv:
+  build_internal-export-file_export-file-csv_multi:
     docker:
       - image: cimg/base:stable-20.04
     steps:
       - checkout
       - setup_remote_docker
+
       - run:
-          name: Build internal-export-file/export-file-csva
+          name: Install Docker Buildx
+          command: |
+            mkdir -p ~/.docker/cli-plugins/
+            curl -L https://github.com/docker/buildx/releases/download/v0.11.0/buildx-v0.11.0.linux-amd64 \
+              -o ~/.docker/cli-plugins/docker-buildx
+            chmod +x ~/.docker/cli-plugins/docker-buildx
+
+      - run:
+          name: Set up Buildx Builder
+          command: |
+            docker buildx create --name multiarch --use
+            docker buildx inspect --bootstrap
+
+      - run:
+          name: Build internal-export-file/export-file-csv_multi
           command: |
             echo "Processing internal-export-file/export-file-csv"
             cd internal-export-file/export-file-csv
             echo "$DOCKERHUB_PASS" | docker login -u "$DOCKERHUB_USERNAME" --password-stdin
-            docker build -t renizmy/connector-export-file-csv:6.4.0 . --build-arg BASE_IMAGE=renizmy/opencti-base:6.4.0
+            docker buildx build --platform linux/amd64,linux/arm64 -t renizmy/connector-export-file-csv:6.4.0 . --build-arg BASE_IMAGE=renizmy/opencti-base:6.4.0
             docker tag renizmy/connector-export-file-csv:6.4.0 renizmy/connector-export-file-csv:latest
             docker push renizmy/connector-export-file-csv:6.4.0
             docker push renizmy/connector-export-file-csv:latest
       
-  build_internal-export-file_export-file-stix:
+  build_internal-export-file_export-file-stix_multi:
     docker:
       - image: cimg/base:stable-20.04
     steps:
       - checkout
       - setup_remote_docker
+
       - run:
-          name: Build internal-export-file/export-file-stixa
+          name: Install Docker Buildx
+          command: |
+            mkdir -p ~/.docker/cli-plugins/
+            curl -L https://github.com/docker/buildx/releases/download/v0.11.0/buildx-v0.11.0.linux-amd64 \
+              -o ~/.docker/cli-plugins/docker-buildx
+            chmod +x ~/.docker/cli-plugins/docker-buildx
+
+      - run:
+          name: Set up Buildx Builder
+          command: |
+            docker buildx create --name multiarch --use
+            docker buildx inspect --bootstrap
+
+      - run:
+          name: Build internal-export-file/export-file-stix_multi
           command: |
             echo "Processing internal-export-file/export-file-stix"
             cd internal-export-file/export-file-stix
             echo "$DOCKERHUB_PASS" | docker login -u "$DOCKERHUB_USERNAME" --password-stdin
-            docker build -t renizmy/connector-export-file-stix:6.4.0 . --build-arg BASE_IMAGE=renizmy/opencti-base:6.4.0
+            docker buildx build --platform linux/amd64,linux/arm64 -t renizmy/connector-export-file-stix:6.4.0 . --build-arg BASE_IMAGE=renizmy/opencti-base:6.4.0
             docker tag renizmy/connector-export-file-stix:6.4.0 renizmy/connector-export-file-stix:latest
             docker push renizmy/connector-export-file-stix:6.4.0
             docker push renizmy/connector-export-file-stix:latest
       
 
   
-  build_internal-import-file_import-file-stix:
+  build_internal-import-file_import-file-stix_multi:
     docker:
       - image: cimg/base:stable-20.04
     steps:
       - checkout
       - setup_remote_docker
+
       - run:
-          name: Build internal-import-file/import-file-stixa
+          name: Install Docker Buildx
+          command: |
+            mkdir -p ~/.docker/cli-plugins/
+            curl -L https://github.com/docker/buildx/releases/download/v0.11.0/buildx-v0.11.0.linux-amd64 \
+              -o ~/.docker/cli-plugins/docker-buildx
+            chmod +x ~/.docker/cli-plugins/docker-buildx
+
+      - run:
+          name: Set up Buildx Builder
+          command: |
+            docker buildx create --name multiarch --use
+            docker buildx inspect --bootstrap
+
+      - run:
+          name: Build internal-import-file/import-file-stix_multi
           command: |
             echo "Processing internal-import-file/import-file-stix"
             cd internal-import-file/import-file-stix
             echo "$DOCKERHUB_PASS" | docker login -u "$DOCKERHUB_USERNAME" --password-stdin
-            docker build -t renizmy/connector-import-file-stix:6.4.0 . --build-arg BASE_IMAGE=renizmy/opencti-base:6.4.0
+            docker buildx build --platform linux/amd64,linux/arm64 -t renizmy/connector-import-file-stix:6.4.0 . --build-arg BASE_IMAGE=renizmy/opencti-base:6.4.0
             docker tag renizmy/connector-import-file-stix:6.4.0 renizmy/connector-import-file-stix:latest
             docker push renizmy/connector-import-file-stix:6.4.0
             docker push renizmy/connector-import-file-stix:latest
       
-  build_internal-import-file_import-file-misp:
+  build_internal-import-file_import-file-misp_multi:
     docker:
       - image: cimg/base:stable-20.04
     steps:
       - checkout
       - setup_remote_docker
+
       - run:
-          name: Build internal-import-file/import-file-mispa
+          name: Install Docker Buildx
+          command: |
+            mkdir -p ~/.docker/cli-plugins/
+            curl -L https://github.com/docker/buildx/releases/download/v0.11.0/buildx-v0.11.0.linux-amd64 \
+              -o ~/.docker/cli-plugins/docker-buildx
+            chmod +x ~/.docker/cli-plugins/docker-buildx
+
+      - run:
+          name: Set up Buildx Builder
+          command: |
+            docker buildx create --name multiarch --use
+            docker buildx inspect --bootstrap
+
+      - run:
+          name: Build internal-import-file/import-file-misp_multi
           command: |
             echo "Processing internal-import-file/import-file-misp"
             cd internal-import-file/import-file-misp
             echo "$DOCKERHUB_PASS" | docker login -u "$DOCKERHUB_USERNAME" --password-stdin
-            docker build -t renizmy/connector-import-file-misp:6.4.0 . --build-arg BASE_IMAGE=renizmy/opencti-base:6.4.0
+            docker buildx build --platform linux/amd64,linux/arm64 -t renizmy/connector-import-file-misp:6.4.0 . --build-arg BASE_IMAGE=renizmy/opencti-base:6.4.0
             docker tag renizmy/connector-import-file-misp:6.4.0 renizmy/connector-import-file-misp:latest
             docker push renizmy/connector-import-file-misp:6.4.0
             docker push renizmy/connector-import-file-misp:latest
       
-  build_internal-import-file_import-document:
+  build_internal-import-file_import-document_multi:
     docker:
       - image: cimg/base:stable-20.04
     steps:
       - checkout
       - setup_remote_docker
+
       - run:
-          name: Build internal-import-file/import-documenta
+          name: Install Docker Buildx
+          command: |
+            mkdir -p ~/.docker/cli-plugins/
+            curl -L https://github.com/docker/buildx/releases/download/v0.11.0/buildx-v0.11.0.linux-amd64 \
+              -o ~/.docker/cli-plugins/docker-buildx
+            chmod +x ~/.docker/cli-plugins/docker-buildx
+
+      - run:
+          name: Set up Buildx Builder
+          command: |
+            docker buildx create --name multiarch --use
+            docker buildx inspect --bootstrap
+
+      - run:
+          name: Build internal-import-file/import-document_multi
           command: |
             echo "Processing internal-import-file/import-document"
             cd internal-import-file/import-document
             echo "$DOCKERHUB_PASS" | docker login -u "$DOCKERHUB_USERNAME" --password-stdin
-            docker build -t renizmy/connector-import-document:6.4.0 . --build-arg BASE_IMAGE=renizmy/opencti-base:6.4.0
+            docker buildx build --platform linux/amd64,linux/arm64 -t renizmy/connector-import-document:6.4.0 . --build-arg BASE_IMAGE=renizmy/opencti-base:6.4.0
             docker tag renizmy/connector-import-document:6.4.0 renizmy/connector-import-document:latest
             docker push renizmy/connector-import-document:6.4.0
             docker push renizmy/connector-import-document:latest
