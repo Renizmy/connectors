@@ -3,7 +3,7 @@ chardet
 datefinder
 idna
 pika
-pycti==6.4.0
+pycti==6.4.2
 python-dateutil
 pytz
 PyYAML
