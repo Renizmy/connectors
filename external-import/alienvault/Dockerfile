@@ -4,7 +4,7 @@ ENV CONNECTOR_TYPE=EXTERNAL_IMPORT
 
 COPY requirements.txt /opt/opencti-connector-alienvault/
 
-RUN cd /opt/opencti-abuse-ssl && \
+RUN cd /opt/opencti-connector-alienvault/ && \
     pip3 install --no-cache-dir -r requirements.txt
 
 # Copy the connector

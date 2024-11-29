@@ -7,7 +7,7 @@ COPY src /opt/abuseipdb-ipblacklist
 
 # Install Python modules
 # hadolint ignore=DL3003
-RUN cd /opt/opencti-abuse-ssl && \
+RUN cd /opt/abuseipdb-ipblacklist && \
     pip3 install --no-cache-dir -r requirements.txt
 
 # Expose and entrypoint
